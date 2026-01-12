@@ -4,297 +4,626 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hakuna Links – Horas Santas por Ciudad</title>
-
+    <title>Hakuna Links Groups – Horas Santas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --bg-dark: #050b10;
-            --bg-card: #0c1a24;
-            --accent: #22c55e;
-            --accent-soft: #4ade80;
-            --text-main: #ecfdf5;
-            --text-soft: #b7e6d3;
-        }
-
+        /* RESET GENERAL */
         * {
+            margin: 0;
+            padding: 0;
             box-sizing: border-box;
             font-family: 'Montserrat', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: geometricPrecision;
         }
 
         body {
-            margin: 0;
-            background: radial-gradient(circle at top, #0b1f2a, #050b10);
-            color: var(--text-main);
+            background: linear-gradient(135deg, #0a1f3a, #1c3a5a);
+            color: #ffffff;
+            overflow-x: hidden;
         }
 
-        /* HEADER */
-        header {
+        /* CONTENEDOR PRINCIPAL */
+        .container {
+            width: 95%;
+            max-width: 1400px;
+            margin: 40px auto;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        /* PIE PAGINA */
+        .footer {
+            width: 100%;
             padding: 40px 20px;
+            margin-top: 50px;
+            background: linear-gradient(135deg, #0c2b4a, #19517b);
+            color: #ffffff;
+            border-radius: 16px;
             text-align: center;
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.3);
         }
 
-        header h1 {
-            font-size: 3em;
-            margin: 0;
+        .footer-content h2 {
+            font-size: 1.6em;
             font-weight: 900;
+            margin-bottom: 15px;
+            color: #a1e0ff;
         }
 
-        header p {
-            color: var(--text-soft);
-            max-width: 700px;
-            margin: 10px auto 0;
+        .footer-content p {
+            font-size: 1em;
+            line-height: 1.6;
+            margin-bottom: 10px;
+            color: #d0f0ff;
         }
 
-        /* CONTROLES */
-        .controls {
+        .footer-content a {
+            color: #ffb3b3;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .footer-content a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* -------------BUSCADOR Y FILTROS */
+        .search-bar {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
-            justify-content: center;
-            padding: 20px;
+            gap: 15px;
+            justify-content: space-between;
+            margin-bottom: 20px;
         }
 
-        .controls input {
-            padding: 14px 18px;
+        .search-bar input[type="text"] {
+            flex: 1 1 300px;
+            padding: 12px 18px;
             border-radius: 12px;
             border: none;
-            min-width: 260px;
+            outline: none;
             font-size: 1em;
+            color: #0a1f3a;
+            background-color: #e0f7ff;
         }
 
-        .filter-btn {
-            background: transparent;
-            border: 2px solid var(--accent);
-            color: var(--accent);
-            padding: 12px 18px;
-            border-radius: 999px;
+        .filter-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .filter-buttons button {
+            padding: 10px 18px;
+            border-radius: 12px;
+            border: none;
+            background: #56c1f1;
+            color: #0a1f3a;
+            font-weight: 700;
             cursor: pointer;
             transition: 0.3s;
         }
 
-        .filter-btn.active,
-        .filter-btn:hover {
-            background: var(--accent);
-            color: #022c22;
+        .filter-buttons button.active,
+        .filter-buttons button:hover {
+            background: #0a95d1;
+            color: #ffffff;
         }
 
-        /* GRID */
-        .section {
-            padding: 30px 20px;
+        .clear-btn {
+            padding: 10px 18px;
+            border-radius: 12px;
+            border: none;
+            background: #ff4c4c;
+            color: #ffffff;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
         }
 
-        .section h2 {
+        .clear-btn:hover {
+            background: #e03636;
+        }
+
+
+        /* SECCIONES POR COMUNIDAD AUTONOMA */
+        .region {
+            margin-bottom: 40px;
+        }
+
+        .region h2 {
+            font-size: 1.8em;
             margin-bottom: 15px;
-            color: var(--accent-soft);
+            border-bottom: 2px solid #56c1f1;
+            display: inline-block;
+            padding-bottom: 5px;
         }
 
+        /* LISTA DE CIUDADES */
         .city-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 15px;
         }
 
         .city-card {
-            background: linear-gradient(135deg, #0b2532, #07141c);
-            border: 1px solid rgba(34, 197, 94, 0.25);
-            border-radius: 16px;
-            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
             cursor: pointer;
-            transition: 0.3s;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .city-card:hover {
-            transform: translateY(-6px) scale(1.02);
-            box-shadow: 0 0 35px rgba(34, 197, 94, 0.4);
+            transform: translateY(-5px);
+            box-shadow: 0 0 15px rgba(86, 193, 241, 0.6);
         }
 
         .city-card h3 {
-            margin: 0;
-            font-size: 1.4em;
+            font-size: 1.2em;
+            color: #ffffff;
         }
 
-        .city-tags {
-            margin-top: 10px;
+        /* POPUP MENU CIUDAD */
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+        }
+
+        .popup.active {
+            display: flex;
+        }
+
+        .popup-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backdrop-filter: blur(8px);
+            background-color: rgba(0, 0, 0, 0.6);
+            top: 0;
+            left: 0;
+        }
+
+        .popup-content {
+            position: relative;
+            background: linear-gradient(135deg, #0c2b4a, #19517b);
+            border-radius: 16px;
+            padding: 25px 30px;
+            max-width: 500px;
+            width: 90%;
+            z-index: 10;
+            color: #ffffff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .popup-content h2 {
+            margin-bottom: 15px;
+            color: #a1e0ff;
+        }
+
+        .hour-section {
+            margin-bottom: 15px;
+            padding: 12px 15px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .hour-section h3 {
+            font-size: 1.1em;
+            margin-bottom: 5px;
+            color: #d0f0ff;
+        }
+
+        .hour-section p {
+            font-size: 0.95em;
+            color: #cbefff;
+        }
+
+        /* CIERRE */
+        .close-btn {
+            position: absolute;
+            top: 12px;
+            right: 15px;
+            font-size: 1.3em;
+            cursor: pointer;
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        /* RESPONSIVE */
+        @media(max-width:768px) {
+            .city-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            }
+
+            .search-bar {
+                flex-direction: column;
+            }
+        }
+
+        /* -----------------------------CABECERA SUPERIOR */
+        .header-container {
+            width: 100%;
+            padding: 25px 15px;
+            background: linear-gradient(135deg, #e0f7ff, #a1e0ff);
+            border-radius: 16px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            margin-bottom: 30px;
+            color: #0a1f3a;
+        }
+
+        .header-content {
             display: flex;
             flex-wrap: wrap;
-            gap: 6px;
-        }
-
-        .tag {
-            font-size: 0.75em;
-            padding: 5px 10px;
-            border-radius: 999px;
-            background: rgba(34, 197, 94, 0.15);
-            color: var(--accent-soft);
-        }
-
-        /* MODAL */
-        .modal {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.75);
-            display: none;
             align-items: center;
-            justify-content: center;
-            padding: 20px;
-            z-index: 100;
+            gap: 20px;
+            justify-content: flex-start;
         }
 
-        .modal.active {
-            display: flex;
+        .header-logo {
+            width: 90px;
+            height: 90px;
+            object-fit: contain;
+            border-radius: 12px;
+            background: #ffffff20;
+            padding: 5px;
         }
 
-        .modal-content {
-            background: linear-gradient(135deg, #071a24, #0c2430);
-            border-radius: 20px;
-            padding: 30px;
-            max-width: 700px;
-            width: 100%;
-            animation: zoomIn 0.4s ease;
+        .header-text h1 {
+            font-size: 1.8em;
+            font-weight: 900;
+            margin-bottom: 8px;
+            color: #0a1f3a;
         }
 
-        @keyframes zoomIn {
-            from {
-                transform: scale(0.9);
-                opacity: 0;
+        .header-text p {
+            font-size: 1em;
+            color: #0a1f3a;
+        }
+
+        /* RESPONSIVE */
+        @media(max-width:768px) {
+            .header-content {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
             }
 
-            to {
-                transform: scale(1);
-                opacity: 1;
+            .header-logo {
+                width: 50px;
+                height: 50px;
             }
-        }
 
-        .modal h3 {
-            margin-top: 0;
-            font-size: 2em;
-        }
-
-        .group {
-            margin-top: 15px;
-            padding: 14px;
-            border-radius: 14px;
-            background: rgba(255, 255, 255, 0.04);
-        }
-
-        .group h4 {
-            margin: 0 0 6px;
-            color: var(--accent);
-        }
-
-        .group p {
-            margin: 0;
-            font-size: 0.95em;
-            color: var(--text-soft);
-        }
-
-        .close {
-            text-align: right;
-            cursor: pointer;
-            color: var(--accent-soft);
-            font-size: 0.9em;
+            .header-text h1 {
+                font-size: 1.5em;
+            }
         }
     </style>
 </head>
 
 <body>
-
-    <header>
-        <h1>Hakuna Links</h1>
-        <p>Encuentra Horas Santas y grupos de Hakuna por ciudad. Una web no oficial para tener todos los enlaces
-            organizados y accesibles.</p>
-    </header>
-
-    <div class="controls">
-        <input type="text" id="search" placeholder="Buscar por ciudad o rama...">
-        <button class="filter-btn active" data-filter="all">Todas</button>
-        <button class="filter-btn" data-filter="Universitarios">Universitarios</button>
-        <button class="filter-btn" data-filter="Profesionales">Profesionales</button>
-        <button class="filter-btn" data-filter="Frontera">Frontera</button>
-        <button class="filter-btn" data-filter="Summit">Summit</button>
-        <button class="filter-btn" data-filter="Senior">Senior</button>
-    </div>
-
-    <div class="section">
-        <h2>Ciudades con Hakuna</h2>
-        <div class="city-grid" id="cities"></div>
-    </div>
-
-    <div class="modal" id="modal">
-        <div class="modal-content">
-            <div class="close" onclick="closeModal()">Cerrar ✕</div>
-            <h3 id="modalCity"></h3>
-
-            <div class="group">
-                <h4>Universitarios</h4>
-                <p>Jóvenes estudiantes de grado o máster (18–23 años aprox.).</p>
+    <div class="container">
+        <!-- HEADER SUPERIOR -->
+        <div class="header-container">
+            <div class="header-content">
+                <img src="https://raw.githubusercontent.com/Fedes10/HakunaGroupsLinks/refs/heads/main/Im%C3%A1genes/LogoHakunaLinksGroups.png"
+                    alt="Logo Hakuna" class="header-logo">
+                <div class="header-text">
+                    <h1>Hakuna Links Groups</h1>
+                    <p>Accede de forma rápida y centralizada a las Horas Santas y grupos de WhatsApp por ciudad.</p>
+                </div>
             </div>
-            <div class="group">
-                <h4>Profesionales</h4>
-                <p>Jóvenes que ya trabajan, hasta 35–40 años.</p>
-            </div>
-            <div class="group">
-                <h4>Frontera</h4>
-                <p>Parejas próximas a casarse o matrimonios recientes.</p>
-            </div>
-            <div class="group">
-                <h4>Summit</h4>
-                <p>Adultos en madurez personal y profesional.</p>
-            </div>
-            <div class="group">
-                <h4>Senior</h4>
-                <p>Adultos mayores de 50 años.</p>
-            </div>
+        </div>
 
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Buscar ciudad o tipo de Hora Santa...">
+            <button id="clearSearch" class="clear-btn">Borrar</button>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-type="all">Todos</button>
+                <button class="filter-btn" data-type="Universitarios">🎓 Universitarios</button>
+                <button class="filter-btn" data-type="Profesionales">💼 Profesionales</button>
+                <button class="filter-btn" data-type="Frontera">💍 Frontera</button>
+                <button class="filter-btn" data-type="Summit">🏔️ Summit</button>
+                <button class="filter-btn" data-type="Senior">👥 Senior</button>
+            </div>
+        </div>
+
+        <!-- ANDALUCÍA -->
+        <div class="region">
+            <h2>Andalucía</h2>
+            <div class="city-grid">
+                <div class="city-card" data-city="Almería"
+                    data-types="Universitarios,Profesionales,Frontera,Summit,Senior">
+                    Almería</div>
+                <div class="city-card" data-city="Cádiz"
+                    data-types="Universitarios,Profesionales,Frontera,Summit,Senior">
+                    Cádiz</div>
+                <div class="city-card" data-city="Córdoba"
+                    data-types="Universitarios,Profesionales,Frontera,Summit,Senior">
+                    Córdoba</div>
+                <div class="city-card" data-city="Granada"
+                    data-types="Universitarios,Profesionales,Frontera,Summit,Senior">
+                    Granada</div>
+                <div class="city-card" data-city="Huelva"
+                    data-types="Universitarios,Profesionales,Frontera,Summit,Senior">
+                    Huelva</div>
+                <div class="city-card" data-city="Jaén"
+                    data-types="Universitarios,Profesionales,Frontera,Summit,Senior">
+                    Jaén</div>
+                <div class="city-card" data-city="Málaga"
+                    data-types="Universitarios,Profesionales,Frontera,Summit,Senior">
+                    Málaga</div>
+                <div class="city-card" data-city="Sevilla"
+                    data-types="Universitarios,Profesionales,Frontera,Summit,Senior">
+                    Sevilla</div>
+            </div>
+        </div>
+
+        <!-- EXTREMADURA -->
+        <div class="region">
+            <h2>Extremadura</h2>
+            <div class="city-grid">
+                <div class="city-card" data-city="Badajoz"
+                    data-types="Universitarios,Profesionales,Frontera,Summit,Senior">
+                    Badajoz</div>
+                <div class="city-card" data-city="Cáceres"
+                    data-types="Universitarios,Profesionales,Frontera,Summit,Senior">
+                    Cáceres</div>
+                <div class="city-card" data-city="Mérida"
+                    data-types="Universitarios,Profesionales,Frontera,Summit,Senior">
+                    Mérida</div>
+            </div>
+        </div>
+
+        <!-- CASTILLA-LA MANCHA -->
+        <div class="region">
+            <h2>Castilla-La Mancha</h2>
+            <div class="city-grid">
+                <div class="city-card" data-city="Albacete"
+                    data-types="Universitarios,Profesionales,Frontera,Summit,Senior">Albacete</div>
+                <div class="city-card" data-city="Ciudad Real"
+                    data-types="Universitarios,Profesionales,Frontera,Summit,Senior">Ciudad Real</div>
+                <div class="city-card" data-city="Toledo"
+                    data-types="Universitarios,Profesionales,Frontera,Summit,Senior">
+                    Toledo</div>
+                <div class="city-card" data-city="Talavera de la Reina"
+                    data-types="Universitarios,Profesionales,Frontera,Summit,Senior">Talavera de la Reina</div>
+            </div>
+        </div>
+
+        <!-- CASTILLA Y LEÓN -->
+        <div class="region">
+            <h2>Castilla y León</h2>
+            <div class="city-grid">
+                <div class="city-card" data-city="Burgos"
+                    data-types="Universitarios,Profesionales,Frontera,Summit,Senior">
+                    Burgos</div>
+                <div class="city-card" data-city="León"
+                    data-types="Universitarios,Profesionales,Frontera,Summit,Senior">
+                    León</div>
+                <div class="city-card" data-city="Logroño"
+                    data-types="Universitarios,Profesionales,Frontera,Summit,Senior">
+                    Logroño</div>
+                <div class="city-card" data-city="Salamanca"
+                    data-types="Universitarios,Profesionales,Frontera,Summit,Senior">Salamanca</div>
+                <div class="city-card" data-city="Valladolid"
+                    data-types="Universitarios,Profesionales,Frontera,Summit,Senior">Valladolid</div>
+            </div>
+        </div>
+
+        <!-- CATALUÑA -->
+        <div class="region">
+            <h2>Cataluña</h2>
+            <div class="city-grid">
+                <div class="city-card" data-city="Barcelona"
+                    data-types="Universitarios,Profesionales,Frontera,Summit,Senior">Barcelona</div>
+                <div class="city-card" data-city="Girona"
+                    data-types="Universitarios,Profesionales,Frontera,Summit,Senior">
+                    Girona</div>
+                <div class="city-card" data-city="Lleida"
+                    data-types="Universitarios,Profesionales,Frontera,Summit,Senior">
+                    Lleida</div>
+                <div class="city-card" data-city="Tarragona"
+                    data-types="Universitarios,Profesionales,Frontera,Summit,Senior">Tarragona</div>
+                <div class="city-card" data-city="Alcoy"
+                    data-types="Universitarios,Profesionales,Frontera,Summit,Senior">
+                    Alcoy</div>
+            </div>
+        </div>
+
+        <!-- COMUNIDAD VALENCIANA -->
+        <div class="region">
+            <h2>Comunidad Valenciana</h2>
+            <div class="city-grid">
+                <div class="city-card" data-city="Alicante"
+                    data-types="Universitarios,Profesionales,Frontera,Summit,Senior">Alicante</div>
+                <div class="city-card" data-city="Murcia"
+                    data-types="Universitarios,Profesionales,Frontera,Summit,Senior">
+                    Murcia</div>
+                <div class="city-card" data-city="Ontinyent"
+                    data-types="Universitarios,Profesionales,Frontera,Summit,Senior">Ontinyent</div>
+                <div class="city-card" data-city="Valencia"
+                    data-types="Universitarios,Profesionales,Frontera,Summit,Senior">Valencia</div>
+                <div class="city-card" data-city="Vega Baja"
+                    data-types="Universitarios,Profesionales,Frontera,Summit,Senior">Vega Baja</div>
+                <div class="city-card" data-city="Castellón"
+                    data-types="Universitarios,Profesionales,Frontera,Summit,Senior">Castellón</div>
+            </div>
+        </div>
+
+        <!-- GALICIA -->
+        <div class="region">
+            <h2>Galicia</h2>
+            <div class="city-grid">
+                <div class="city-card" data-city="La Coruña"
+                    data-types="Universitarios,Profesionales,Frontera,Summit,Senior">La Coruña</div>
+                <div class="city-card" data-city="Santiago de Compostela"
+                    data-types="Universitarios,Profesionales,Frontera,Summit,Senior">Santiago de Compostela</div>
+                <div class="city-card" data-city="Vigo"
+                    data-types="Universitarios,Profesionales,Frontera,Summit,Senior">
+                    Vigo</div>
+            </div>
+        </div>
+
+        <!-- PAÍS VASCO -->
+        <div class="region">
+            <h2>País Vasco</h2>
+            <div class="city-grid">
+                <div class="city-card" data-city="Bilbao"
+                    data-types="Universitarios,Profesionales,Frontera,Summit,Senior">
+                    Bilbao</div>
+                <div class="city-card" data-city="San Sebastián"
+                    data-types="Universitarios,Profesionales,Frontera,Summit,Senior">San Sebastián</div>
+                <div class="city-card" data-city="Pamplona"
+                    data-types="Universitarios,Profesionales,Frontera,Summit,Senior">Pamplona</div>
+                <div class="city-card" data-city="Logroño"
+                    data-types="Universitarios,Profesionales,Frontera,Summit,Senior">
+                    Logroño</div>
+            </div>
+        </div>
+
+        <!-- ISLAS BALEARES -->
+        <div class="region">
+            <h2>Islas Baleares</h2>
+            <div class="city-grid">
+                <div class="city-card" data-city="Mallorca"
+                    data-types="Universitarios,Profesionales,Frontera,Summit,Senior">Mallorca</div>
+            </div>
+        </div>
+
+        <!-- ISLAS CANARIAS -->
+        <div class="region">
+            <h2>Islas Canarias</h2>
+            <div class="city-grid">
+                <div class="city-card" data-city="Gran Canaria"
+                    data-types="Universitarios,Profesionales,Frontera,Summit,Senior">Gran Canaria</div>
+                <div class="city-card" data-city="Tenerife"
+                    data-types="Universitarios,Profesionales,Frontera,Summit,Senior">Tenerife</div>
+            </div>
+        </div>
+
+        <!-- ARAGÓN -->
+        <div class="region">
+            <h2>Aragón</h2>
+            <div class="city-grid">
+                <div class="city-card" data-city="Zaragoza"
+                    data-types="Universitarios,Profesionales,Frontera,Summit,Senior">Zaragoza</div>
+            </div>
         </div>
     </div>
+
+    <!-- POPUP-->
+    <div class="popup" id="cityPopup">
+        <div class="popup-bg"></div>
+        <div class="popup-content">
+            <span class="close-btn" id="closePopup">&times;</span>
+            <h2 id="popupCityName">Ciudad</h2>
+            <div class="hour-section">
+                <h3>🎓 Universitarios</h3>
+                <p>Jóvenes estudiantes (grado o máster), entre 18 y 23 años.</p>
+            </div>
+            <div class="hour-section">
+                <h3>💼 Profesionales</h3>
+                <p>Jóvenes que ya están en el mundo laboral, hasta 35-40 años.</p>
+            </div>
+            <div class="hour-section">
+                <h3>💍 Frontera</h3>
+                <p>Parejas próximas a casarse o recién casados, en transición a vida familiar.</p>
+            </div>
+            <div class="hour-section">
+                <h3>🏔️ Summit</h3>
+                <p>Adultos maduros o matrimonios con hijos mayores, etapa de estabilidad personal y profesional.</p>
+            </div>
+            <div class="hour-section">
+                <h3>👥 Senior</h3>
+                <p>Adultos mayores de 50 años, incluyendo matrimonios con hijos fuera de casa.</p>
+            </div>
+        </div>
+    </div>
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <h2>Hakuna Links Groups</h2>
+            <p>
+                Proyecto web extraoficial para centralizar la información de las Horas Santas de Hakuna,
+                accesible por ciudad, incluyendo grupos de WhatsApp y medios de comunicación activos.
+            </p>
+            <p>
+                Este proyecto surge de la experiencia real: aunque la web oficial indique días y horas,
+                los cambios y avisos importantes suelen difundirse en WhatsApp o redes.
+            </p>
+            <p>📩 Contacto: <a href="mailto:fedestalgat@gmail.com">fedestalgat@gmail.com</a></p>
+            <p>© 2026 – Proyecto ideado y desarrollado por Federico Lora</p>
+        </div>
+    </footer>
+
 
     <script>
-        const cities = [
-            "ALBACETE", "ALICANTE", "ALCOY", "ALMERÍA", "BADAJOZ", "BILBAO", "CÁDIZ", "CASTELLÓN", "CIEZA", "CÓRDOBA",
-            "GRANADA", "LLEIDA", "LOGROÑO", "MÁLAGA", "MÉRIDA", "MURCIA", "ONTINYENT", "PAMPLONA", "SANTANDER",
-            "TOLEDO", "TALAVERA DE LA REINA", "VALLADOLID", "VIGO", "BARCELONA", "BURGOS", "CÁCERES", "CARTAGENA",
-            "CIUDAD REAL", "GIRONA", "GRAN CANARIA", "LA CORUÑA", "MADRID", "MALLORCA", "OVIEDO", "SALAMANCA",
-            "SEVILLA", "SANTIAGO DE COMPOSTELA", "SAN SEBASTIAN", "TENERIFE", "VALENCIA", "VEGA BAJA", "ZARAGOZA"
-        ];
+        // Abrir popup
+        const cityCards = document.querySelectorAll('.city-card');
+        const popup = document.getElementById('cityPopup');
+        const popupCityName = document.getElementById('popupCityName');
+        const closePopup = document.getElementById('closePopup');
+        const popupBg = document.querySelector('.popup-bg');
 
-        const container = document.getElementById("cities");
-
-        cities.forEach(city => {
-            const card = document.createElement("div");
-            card.className = "city-card";
-            card.innerHTML = `
-        <h3>${city}</h3>
-        <div class="city-tags">
-            <span class="tag">Universitarios</span>
-            <span class="tag">Profesionales</span>
-            <span class="tag">Frontera</span>
-            <span class="tag">Summit</span>
-            <span class="tag">Senior</span>
-        </div>
-    `;
-            card.onclick = () => openModal(city);
-            container.appendChild(card);
-        });
-
-        function openModal(city) {
-            document.getElementById("modalCity").innerText = city;
-            document.getElementById("modal").classList.add("active");
-        }
-
-        function closeModal() {
-            document.getElementById("modal").classList.remove("active");
-        }
-
-        document.getElementById("search").addEventListener("input", e => {
-            const value = e.target.value.toLowerCase();
-            document.querySelectorAll(".city-card").forEach(card => {
-                card.style.display = card.innerText.toLowerCase().includes(value) ? "block" : "none";
+        cityCards.forEach(card => {
+            card.addEventListener('click', () => {
+                popupCityName.textContent = card.dataset.city;
+                popup.classList.add('active');
             });
         });
-    </script>
 
+        closePopup.addEventListener('click', () => popup.classList.remove('active'));
+        popupBg.addEventListener('click', () => popup.classList.remove('active'));
+
+        // Buscador y filtros
+        const searchInput = document.getElementById('searchInput');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const cityList = document.querySelectorAll('.city-card');
+
+        searchInput.addEventListener('input', () => {
+            const value = searchInput.value.toLowerCase();
+            cityList.forEach(city => {
+                const name = city.dataset.city.toLowerCase();
+                const types = city.dataset.types.toLowerCase();
+                city.style.display = (name.includes(value) || types.includes(value)) ? 'block' : 'none';
+            });
+        });
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const type = btn.dataset.type;
+                cityList.forEach(city => {
+                    if (type === 'all') {
+                        city.style.display = 'block';
+                    } else {
+                        city.style.display = city.dataset.types.split(',').includes(type) ? 'block' : 'none';
+                    }
+                });
+            });
+        });
+
+        // Botón borrar
+        const clearBtn = document.getElementById('clearSearch');
+        clearBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            searchInput.dispatchEvent(new Event('input')); // reinicia el filtro
+        });
+
+    </script>
 </body>
 
 </html>
