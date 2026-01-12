@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hakuna Links – Horas Santas por Ciudad</title>
+
+    <style>
+        :root {
+            --bg-dark: #050b10;
+            --bg-card: #0c1a24;
+            --accent: #22c55e;
+            --accent-soft: #4ade80;
+            --text-main: #ecfdf5;
+            --text-soft: #b7e6d3;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            margin: 0;
+            background: radial-gradient(circle at top, #0b1f2a, #050b10);
+            color: var(--text-main);
+        }
+
+        /* HEADER */
+        header {
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin: 0;
+            font-weight: 900;
+        }
+
+        header p {
+            color: var(--text-soft);
+            max-width: 700px;
+            margin: 10px auto 0;
+        }
+
+        /* CONTROLES */
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .controls input {
+            padding: 14px 18px;
+            border-radius: 12px;
+            border: none;
+            min-width: 260px;
+            font-size: 1em;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            padding: 12px 18px;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--accent);
+            color: #022c22;
+        }
+
+        /* GRID */
+        .section {
+            padding: 30px 20px;
+        }
+
+        .section h2 {
+            margin-bottom: 15px;
+            color: var(--accent-soft);
+        }
+
+        .city-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .city-card {
+            background: linear-gradient(135deg, #0b2532, #07141c);
+            border: 1px solid rgba(34, 197, 94, 0.25);
+            border-radius: 16px;
+            padding: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .city-card:hover {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 0 35px rgba(34, 197, 94, 0.4);
+        }
+
+        .city-card h3 {
+            margin: 0;
+            font-size: 1.4em;
+        }
+
+        .city-tags {
+            margin-top: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .tag {
+            font-size: 0.75em;
+            padding: 5px 10px;
+            border-radius: 999px;
+            background: rgba(34, 197, 94, 0.15);
+            color: var(--accent-soft);
+        }
+
+        /* MODAL */
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.75);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            z-index: 100;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #071a24, #0c2430);
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 700px;
+            width: 100%;
+            animation: zoomIn 0.4s ease;
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .modal h3 {
+            margin-top: 0;
+            font-size: 2em;
+        }
+
+        .group {
+            margin-top: 15px;
+            padding: 14px;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .group h4 {
+            margin: 0 0 6px;
+            color: var(--accent);
+        }
+
+        .group p {
+            margin: 0;
+            font-size: 0.95em;
+            color: var(--text-soft);
+        }
+
+        .close {
+            text-align: right;
+            cursor: pointer;
+            color: var(--accent-soft);
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Hakuna Links</h1>
+        <p>Encuentra Horas Santas y grupos de Hakuna por ciudad. Una web no oficial para tener todos los enlaces
+            organizados y accesibles.</p>
+    </header>
+
+    <div class="controls">
+        <input type="text" id="search" placeholder="Buscar por ciudad o rama...">
+        <button class="filter-btn active" data-filter="all">Todas</button>
+        <button class="filter-btn" data-filter="Universitarios">Universitarios</button>
+        <button class="filter-btn" data-filter="Profesionales">Profesionales</button>
+        <button class="filter-btn" data-filter="Frontera">Frontera</button>
+        <button class="filter-btn" data-filter="Summit">Summit</button>
+        <button class="filter-btn" data-filter="Senior">Senior</button>
+    </div>
+
+    <div class="section">
+        <h2>Ciudades con Hakuna</h2>
+        <div class="city-grid" id="cities"></div>
+    </div>
+
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <div class="close" onclick="closeModal()">Cerrar ✕</div>
+            <h3 id="modalCity"></h3>
+
+            <div class="group">
+                <h4>Universitarios</h4>
+                <p>Jóvenes estudiantes de grado o máster (18–23 años aprox.).</p>
+            </div>
+            <div class="group">
+                <h4>Profesionales</h4>
+                <p>Jóvenes que ya trabajan, hasta 35–40 años.</p>
+            </div>
+            <div class="group">
+                <h4>Frontera</h4>
+                <p>Parejas próximas a casarse o matrimonios recientes.</p>
+            </div>
+            <div class="group">
+                <h4>Summit</h4>
+                <p>Adultos en madurez personal y profesional.</p>
+            </div>
+            <div class="group">
+                <h4>Senior</h4>
+                <p>Adultos mayores de 50 años.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        const cities = [
+            "ALBACETE", "ALICANTE", "ALCOY", "ALMERÍA", "BADAJOZ", "BILBAO", "CÁDIZ", "CASTELLÓN", "CIEZA", "CÓRDOBA",
+            "GRANADA", "LLEIDA", "LOGROÑO", "MÁLAGA", "MÉRIDA", "MURCIA", "ONTINYENT", "PAMPLONA", "SANTANDER",
+            "TOLEDO", "TALAVERA DE LA REINA", "VALLADOLID", "VIGO", "BARCELONA", "BURGOS", "CÁCERES", "CARTAGENA",
+            "CIUDAD REAL", "GIRONA", "GRAN CANARIA", "LA CORUÑA", "MADRID", "MALLORCA", "OVIEDO", "SALAMANCA",
+            "SEVILLA", "SANTIAGO DE COMPOSTELA", "SAN SEBASTIAN", "TENERIFE", "VALENCIA", "VEGA BAJA", "ZARAGOZA"
+        ];
+
+        const container = document.getElementById("cities");
+
+        cities.forEach(city => {
+            const card = document.createElement("div");
+            card.className = "city-card";
+            card.innerHTML = `
+        <h3>${city}</h3>
+        <div class="city-tags">
+            <span class="tag">Universitarios</span>
+            <span class="tag">Profesionales</span>
+            <span class="tag">Frontera</span>
+            <span class="tag">Summit</span>
+            <span class="tag">Senior</span>
+        </div>
+    `;
+            card.onclick = () => openModal(city);
+            container.appendChild(card);
+        });
+
+        function openModal(city) {
+            document.getElementById("modalCity").innerText = city;
+            document.getElementById("modal").classList.add("active");
+        }
+
+        function closeModal() {
+            document.getElementById("modal").classList.remove("active");
+        }
+
+        document.getElementById("search").addEventListener("input", e => {
+            const value = e.target.value.toLowerCase();
+            document.querySelectorAll(".city-card").forEach(card => {
+                card.style.display = card.innerText.toLowerCase().includes(value) ? "block" : "none";
+            });
+        });
+    </script>
+
+</body>
+
+</html>
