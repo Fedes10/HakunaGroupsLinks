@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soy Pringado | Hakuna Lifestyle</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #007bff;
+            /* Azul Hakuna Brillante */
+            --primary-light: #e0f0ff;
+            --accent: #00c6ff;
+            --text-dark: #2c3e50;
+            --text-light: #546e7a;
+            --white: #ffffff;
+            --glass-bg: rgba(255, 255, 255, 0.85);
+            --glass-border: rgba(255, 255, 255, 0.5);
+            --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--text-dark);
+            min-height: 100vh;
+            overflow-x: hidden;
+            padding-bottom: 50px;
+        }
+
+        /* Background Shapes */
+        .bg-shape {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
+            opacity: 0.6;
+        }
+
+        .shape-1 {
+            background: var(--accent);
+            width: 300px;
+            height: 300px;
+            top: -50px;
+            left: -50px;
+        }
+
+        .shape-2 {
+            background: var(--primary);
+            width: 400px;
+            height: 400px;
+            bottom: -100px;
+            right: -100px;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 40px 0;
+            animation: fadeInDown 1s ease;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            background: -webkit-linear-gradient(45deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Glass Cards */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+            padding: 30px;
+            margin-bottom: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.25);
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+            font-weight: 700;
+        }
+
+        /* Text Styles */
+        .prayer-content {
+            font-style: italic;
+            line-height: 1.8;
+            font-size: 1.05rem;
+            color: var(--text-dark);
+            text-align: center;
+        }
+
+        .prayer-line {
+            margin-bottom: 15px;
+        }
+
+        .prayer-highlight {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* Grids */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        /* Planificación Cards */
+        .plan-card {
+            border-left: 5px solid var(--accent);
+        }
+
+        .plan-days {
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        .plan-body {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--text-light);
+        }
+
+        /* Decalogo items */
+        .rule-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .rule-number {
+            position: absolute;
+            top: -15px;
+            right: -10px;
+            font-size: 5rem;
+            font-weight: 900;
+            /* CAMBIO: He aumentado la opacidad de 0.05 a 0.2 para que se vea más */
+            color: rgba(0, 123, 255, 0.2); 
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .rule-text {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Tracker */
+        .tracker-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 10px;
+            background: #eee;
+            border-radius: 10px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), var(--primary));
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        .check-list {
+            list-style: none;
+        }
+
+        .check-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            transition: background 0.2s;
+            border-radius: 10px;
+        }
+
+        .check-item:hover {
+            background: var(--primary-light);
+        }
+
+        .checkbox-circle {
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .check-item.completed .checkbox-circle {
+            background: var(--primary);
+            color: white;
+        }
+
+        .check-item.completed .check-text {
+            text-decoration: line-through;
+            color: #aaa;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="bg-shape shape-1"></div>
+    <div class="bg-shape shape-2"></div>
+
+    <div class="container">
+
+        <header>
+            <h1>Soy Pringado</h1>
+            <p class="subtitle">
+                "Vivir arrodillados ante el misterio y ante cada rostro."<br>
+                <strong>Hakuna:</strong> Familia Eucarística JMJ 2013 Papa Francisco.
+            </p>
+        </header>
+
+        <section id="oracion-inicio">
+            <div class="glass-card">
+                <h2><i class="fas fa-sun"></i> Amanecer: Consagración</h2>
+                <div class="prayer-content">
+                    <p class="prayer-line">
+                        Oh Señora mía y Madre mía, yo me ofrezco por completo a ti,
+                        y en prueba de mi amor de hijo te consagro en este día:
+                        mis ojos, mis oídos, mi lengua y mi corazón, en una palabra todo mi ser,
+                        ya que soy todo tuyo, Oh Madre de bondad, guárdame y defiéndeme
+                        como cosa y posesión tuya.
+                    </p>
+                    <p class="prayer-highlight">Así sea.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="oracion-pringado">
+            <div class="glass-card">
+                <h2><i class="fas fa-praying-hands"></i> Oración del Pringado</h2>
+                <div class="prayer-content">
+                    <p class="prayer-line">Yo me entrego a ti, mi buen Dios, porque quiero pringarme por tu Iglesia
+                        siguiendo, junto a los demás miembros, en comunión con ellos, el estilo de vida de Hakuna.</p>
+                    <hr style="border:0; border-top:1px solid rgba(0,0,0,0.05); margin: 15px 0;">
+
+                    <p class="prayer-line">Señor, me arrodillaré ante ti en la Hostia,<br>
+                        <span class="prayer-highlight">danos una vida de rodillas ante el misterio y ante cada
+                            rostro.</span>
+                    </p>
+
+                    <p class="prayer-line">Señor, me abriré a los alejados,<br>
+                        <span class="prayer-highlight">contágianos Tú la pasión por que no se pierda ninguno.</span>
+                    </p>
+
+                    <p class="prayer-line">Señor, te buscaré vivo en el Evangelio, liturgia y sacramentos,<br>
+                        <span class="prayer-highlight">muéstrate como nuestro pobre loco.</span>
+                    </p>
+
+                    <p class="prayer-line">Señor, sonreiré y miraré a los ojos,<br>
+                        <span class="prayer-highlight">recuérdanos que no hemos venido a criticar ni a juzgar sino a
+                            salvar.</span>
+                    </p>
+
+                    <p class="prayer-line">Señor, abrazaré cada realidad con la no-medida de la cruz,<br>
+                        <span class="prayer-highlight">devuélvenos la unidad, y transfigura ya nuestra carne.</span>
+                    </p>
+
+                    <p class="prayer-line">Señor, iré a las fiestas buscando que sean momentos de Vida,<br>
+                        <span class="prayer-highlight">haz que te encontremos sufriente en los sedientos de
+                            placer.</span>
+                    </p>
+
+                    <p class="prayer-line">Señor, agradeceré tu confianza cada nuevo día,<br>
+                        <span class="prayer-highlight">que un profundo sentido de tu presencia haga de cada día una
+                            fiesta.</span>
+                    </p>
+
+                    <p class="prayer-line"><strong>María, madre de Hakuna,</strong><br>
+                        que contigo solo sepamos decirle ‘Sí’, que vivamos de rodillas, abrazados y abrazando, con
+                        alegre cara de resucitados, y recuérdanos rezar todos los días, todos por todos.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="planificacion">
+            <h2><i class="fas fa-map-signs"></i> Ruta de Preparación (36 Días)</h2>
+            <div class="grid-container">
+        
+                <div class="glass-card plan-card">
+                    <div class="plan-days">Del 15 de enero al 23 de enero (9 días)</div>
+                    <h3>Sonrisa y Servicio</h3>
+                    <p class="plan-body">Enfócate en las <strong>reglas 1 y 2</strong>. Establece el hábito de sonreír y
+                        mirar a los ojos, y de identificar cada día a alguien que necesite tu ayuda.<br><br>
+                        <em>Propósito:</em> “Hoy ofreceré esta sonrisa y esta ayuda por X persona”. La oración final
+                        puede retomar: “Señor, sonreiré y miraré a los ojos…”.
+                    </p>
+                </div>
+        
+                <div class="glass-card plan-card">
+                    <div class="plan-days">Del 24 de enero al 31 de enero (8 días)</div>
+                    <h3>Adoración y Sagrario</h3>
+                    <p class="plan-body">Atiende las <strong>reglas 3, 4 y 5</strong>. Por la mañana, ofrece el día
+                        (regla 3). Imagina a Jesús en el sagrario que cuidas (ej. Casa de Betania en Córdoba),
+                        cuidándolo con amor.<br><br>
+                        <em>Propósito:</em> Agenda al menos una Hora Santa adicional: “ese rato para parar el mundo…”.
+                    </p>
+                </div>
+        
+                <div class="glass-card plan-card">
+                    <div class="plan-days">Del 1 de febrero al 7 de febrero (7 días)</div>
+                    <h3>Formación y Sed</h3>
+                    <p class="plan-body">Revisa las <strong>reglas 6 y 7</strong>. Lee formación y medita el Evangelio.
+                        Sé “manantial de agua pura” en el trabajo y fiestas.<br><br>
+                        <em>Propósito:</em> Disfrutar de seguir a Cristo en momentos de ocio. Oración: “Señor, iré a las
+                        fiestas buscando que sean momentos de Vida”.
+                    </p>
+                </div>
+        
+                <div class="glass-card plan-card">
+                    <div class="plan-days">Del 8 de febrero al 13 de febrero (6 días)</div>
+                    <h3>Sacramentos y Guía</h3>
+                    <p class="plan-body">Cubre las <strong>reglas 8 y 9</strong>. Busca guía espiritual o consejo de fe.
+                        Acude a la Confesión y Eucaristía.<br><br>
+                        <em>Propósito:</em> “Me prepararé para la Eucaristía con un examen de conciencia” para crecer en
+                        la vida de Cristo.
+                    </p>
+                </div>
+        
+                <div class="glass-card plan-card">
+                    <div class="plan-days">Del 14 de febrero al 19 de febrero (6 días)</div>
+                    <h3>Cariño Mariano y Cierre</h3>
+                    <p class="plan-body">Foco en la <strong>regla 10</strong>. Haz un acto concreto mariano diario
+                        (canción, flor, oración).<br><br>
+                        <em>Cierre:</em> El último día reza la Oración del pringado completa pidiendo la gracia de
+                        seguir enamorado de Cristo.
+                    </p>
+                </div>
+        
+            </div>
+        </section>
+
+        <section id="trayectoria">
+            <div class="glass-card">
+                <div class="tracker-header">
+                    <h2><i class="fas fa-chart-line"></i> Trayectoria Diaria</h2>
+                    <span id="date-display" style="font-weight: 600; color: var(--text-light);"></span>
+                </div>
+                <p style="margin-bottom: 10px;">Tu progreso hoy viviendo como un verdadero pringado:</p>
+
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="daily-progress"></div>
+                </div>
+
+                <ul class="check-list" id="checklist">
+                </ul>
+            </div>
+        </section>
+
+        <section id="decalogo">
+            <h2><i class="fas fa-list-ol"></i> El Decálogo del Pringado</h2>
+            <div class="grid-container">
+        
+                <div class="glass-card rule-card">
+                    <div class="rule-number">1</div>
+                    <h3 class="rule-text">Sonrisa y Mirada</h3>
+                    <p class="rule-description">Sonreír cada día a todas las personas con las que me cruce, mirar a los ojos a
+                        quién trate.</p>
+                </div>
+        
+                <div class="glass-card rule-card">
+                    <div class="rule-number">2</div>
+                    <h3 class="rule-text">Compasión</h3>
+                    <p class="rule-description">Dedicar con frecuencia, tiempo y corazón a los que sufren.</p>
+                </div>
+        
+                <div class="glass-card rule-card">
+                    <div class="rule-number">3</div>
+                    <h3 class="rule-text">Ofrecimiento</h3>
+                    <p class="rule-description">Comenzar cada día con un momento de oración en el que agradecer el don de la
+                        vida, y ofrecerme a Cristo para que viva y actúe entre los hombres ese día sirviéndose de mi persona. Y
+                        rezar todos los días todos por todos.</p>
+                </div>
+        
+                <div class="glass-card rule-card">
+                    <div class="rule-number">4</div>
+                    <h3 class="rule-text">Cuidar un Sagrario</h3>
+                    <p class="rule-description">Cuidar un sagrario: escoger uno, el que se quiera, y de alguna manera hacerme
+                        cargo de que ese sagrario reciba cuidados y cariño.</p>
+                </div>
+        
+                <div class="glass-card rule-card">
+                    <div class="rule-number">5</div>
+                    <h3 class="rule-text">Hora Santa</h3>
+                    <p class="rule-description">Participar de las Horas Santas, y fomentarlas allí donde me encuentre.</p>
+                </div>
+        
+                <div class="glass-card rule-card">
+                    <div class="rule-number">6</div>
+                    <h3 class="rule-text">Formación</h3>
+                    <p class="rule-description">Habitualmente estar leyendo un libro que me forme como cristiano. Si es posible,
+                        participar en un grupo de formación o Revolcadero, y leer cada día el evangelio del día, meditándolo.
+                    </p>
+                </div>
+        
+                <div class="glass-card rule-card">
+                    <div class="rule-number">7</div>
+                    <h3 class="rule-text">Sed de Amor</h3>
+                    <p class="rule-description">En el trabajo, fiestas y espacios de diversión, abrir los ojos a quiénes están
+                        sedientos de amor, y ofrecerme a Cristo para ser manantial de agua pura. Prohibido no disfrutar de
+                        seguir a Cristo, especialmente en las fiestas y espacios de diversión.</p>
+                </div>
+        
+                <div class="glass-card rule-card">
+                    <div class="rule-number">8</div>
+                    <h3 class="rule-text">Acompañamiento</h3>
+                    <p class="rule-description">Buscar una persona que me acompañe espiritualmente.</p>
+                </div>
+        
+                <div class="glass-card rule-card">
+                    <div class="rule-number">9</div>
+                    <h3 class="rule-text">Sacramentos</h3>
+                    <p class="rule-description">Disfrutar y crecer de la vida de Cristo participando de la vida de los
+                        Sacramentos de la Confesión y la Eucaristía de manera frecuente.</p>
+                </div>
+        
+                <div class="glass-card rule-card">
+                    <div class="rule-number">10</div>
+                    <h3 class="rule-text">Amor a María</h3>
+                    <p class="rule-description">Cuidar a María, madre de Hakuna, y acabar el día con un piropo, oración o
+                        canción a la Virgen María.</p>
+                </div>
+        
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        // Configuración de fecha
+        const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('date-display').innerText = new Date().toLocaleDateString('es-ES', dateOptions);
+
+        // Datos del checklist
+        const rulesShort = [
+            "Consagración Matutina a María",
+            "Sonreír y mirar a los ojos",
+            "Tiempo a los que sufren",
+            "Oración matutina y ofrecimiento",
+            "Cuidar mi Sagrario elegido",
+            "Fomentar/Ir a Hora Santa",
+            "Lectura espiritual / Evangelio",
+            "Ser manantial en trabajo/fiesta",
+            "Dirección Espiritual (si toca)",
+            "Sacramentos (Confesión/Eucaristía)",
+            "Piropo a la Virgen al dormir"
+        ];
+
+        const checklistContainer = document.getElementById('checklist');
+        const progressBar = document.getElementById('daily-progress');
+
+        // Generar checklist
+        rulesShort.forEach((rule, index) => {
+            const li = document.createElement('li');
+            li.className = 'check-item';
+            li.onclick = () => toggleCheck(index);
+
+            li.innerHTML = `
+                <div class="checkbox-circle" id="check-${index}">
+                    <i class="fas fa-check" style="display:none; font-size: 12px;"></i>
+                </div>
+                <span class="check-text">${rule}</span>
+            `;
+            checklistContainer.appendChild(li);
+        });
+
+        // Lógica de progreso
+        let completedCount = 0;
+
+        function toggleCheck(index) {
+            const item = document.querySelectorAll('.check-item')[index];
+            const checkIcon = item.querySelector('.fa-check');
+
+            item.classList.toggle('completed');
+
+            if (item.classList.contains('completed')) {
+                checkIcon.style.display = 'block';
+                completedCount++;
+            } else {
+                checkIcon.style.display = 'none';
+                completedCount--;
+            }
+
+            updateProgress();
+        }
+
+        function updateProgress() {
+            const total = rulesShort.length;
+            const percentage = (completedCount / total) * 100;
+            progressBar.style.width = percentage + '%';
+        }
+    </script>
+</body>
+
+</html>
