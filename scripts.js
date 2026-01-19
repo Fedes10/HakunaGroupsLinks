@@ -35,7 +35,18 @@ function showMapView() {
     document.getElementById('country-selection').style.display = 'none';
     document.getElementById('city-view').style.display = 'none';
     document.getElementById('map-view').style.display = 'flex';
-    initializeMap();
+
+    // Siempre mostrar el mapa, pero ajustar para móviles
+    const mapContainer = document.getElementById('map');
+    const mobileMessage = document.getElementById('mobile-map-message');
+
+    mapContainer.style.display = 'block';
+    mobileMessage.style.display = 'none';
+
+    // Forzar reflow antes de inicializar el mapa
+    setTimeout(() => {
+        initializeMap();
+    }, 100);
 }
 
 function hideMapView() {
@@ -60,6 +71,18 @@ function initializeMap() {
     window.mapInstance = map;
 
     map.on('load', () => {
+        // Forzar resize del mapa para móviles
+        setTimeout(() => {
+            map.resize();
+        }, 100);
+
+        // Listener para resize de ventana (útil para móviles)
+        window.addEventListener('resize', () => {
+            setTimeout(() => {
+                map.resize();
+            }, 100);
+        });
+
         // Traducción a Español
         const layers = map.getStyle().layers;
         layers.forEach(layer => {
