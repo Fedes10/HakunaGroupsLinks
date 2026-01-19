@@ -40,7 +40,7 @@ function selectCountry(countryKey) {
 
     if (!db[countryKey] || Object.keys(db[countryKey]).length === 0) {
         document.getElementById('cities-display-container').innerHTML = `
-            <div style="text-align:center; padding: 5rem; color: #90a4ae;">
+            <div style="text-align:center; padding: 5rem; color: #a8ae90;">
                 <span style="font-size: 4rem;">📍</span>
                 <h3 style="margin-top:20px;">En proceso de apertura</h3>
                 <p>Aún no hay ciudades registradas en esta región.</p>
@@ -50,6 +50,9 @@ function selectCountry(countryKey) {
     } else {
         document.getElementById('category-filters').style.display = 'flex';
         document.getElementById('city-search').style.display = 'inline-block';
+  
+        const mobileSelect = document.getElementById('mobile-filter-select');
+        if (mobileSelect) mobileSelect.value = 'todos';
         renderCities();
     }
 }
@@ -62,23 +65,45 @@ function goBack() {
 
 
 
+
 /* ============================================================
-    3. LÓGICA DE FILTROS Y RENDERIZADO (CORREGIDA)
+    3. LÓGICA DE FILTROS Y RENDERIZADO (ACTUALIZADA)
 ============================================================ */
+
+/**
+ * Gestiona el cambio de categoría de filtro y sincroniza la interfaz
+ */
 function filterCategory(category) {
     currentFilter = category;
-    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-    // Usamos event.currentTarget para asegurar que pillamos el botón
-    if (event) event.currentTarget.classList.add('active');
+
+    // 1. Sincronizar botones de Escritorio (Desktop)
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('active');
+        // Si el atributo onclick del botón contiene la categoría, lo marcamos como activo
+        if (btn.getAttribute('onclick').includes(`'${category}'`)) {
+            btn.classList.add('active');
+        }
+    });
+
+    // 2. Sincronizar el Selector de Móvil (Dropdown)
+    const mobileSelect = document.getElementById('mobile-filter-select');
+    if (mobileSelect) {
+        mobileSelect.value = category;
+    }
+
+    // 3. Renderizar resultados pasando el valor actual del buscador
     renderCities(document.getElementById('city-search').value);
 }
 
+/**
+ * Dibuja las ciudades en pantalla */
 function renderCities(searchTerm = "") {
     const container = document.getElementById('cities-display-container');
-    container.innerHTML = '';
+    container.innerHTML = ''; // Limpiar contenedor
     const countryData = db[currentCountry];
     searchTerm = searchTerm.toLowerCase();
 
+    // Iconos y etiquetas cortas para los indicadores de las tarjetas
     const categoryIcons = {
         universitarios: "🎓 Uni",
         profesionales: "💼 Prof",
@@ -89,6 +114,51 @@ function renderCities(searchTerm = "") {
 
     const categories = Object.keys(categoryIcons);
 
+    // --- CÁLCULO DE CONTADORES ---
+    // Inicializamos contadores en 0 para cada categoría
+    const counts = { todos: 0 };
+    categories.forEach(cat => counts[cat] = 0);
+
+    // Recorremos los datos para contar cuántas ciudades coinciden con la búsqueda
+    for (const [regionName, cities] of Object.entries(countryData)) {
+        for (const [cityKey, cityData] of Object.entries(cities)) {
+            const matchesSearch = cityData.name.toLowerCase().includes(searchTerm);
+
+            if (matchesSearch) {
+                let hasAnyAvailable = false;
+                categories.forEach(cat => {
+                    if (cityData.groups[cat] && cityData.groups[cat].available) {
+                        counts[cat]++;
+                        hasAnyAvailable = true;
+                    }
+                });
+                if (hasAnyAvailable) counts.todos++;
+            }
+        }
+    }
+
+    // --- ACTUALIZAR INTERFAZ DE FILTROS (BOTONES) ---
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        const category = btn.getAttribute('onclick').match(/filterCategory\('([^']+)'\)/)[1];
+        const count = counts[category] || 0;
+        const emoji = btn.innerHTML.split(' ')[0]; // Mantiene el emoji original
+        const text = category.charAt(0).toUpperCase() + category.slice(1);
+        btn.innerHTML = `${emoji} ${text} ${count}`;
+    });
+
+    // --- ACTUALIZAR INTERFAZ DE FILTROS (MÓVIL) ---
+    const mobileSelect = document.getElementById('mobile-filter-select');
+    if (mobileSelect) {
+        Array.from(mobileSelect.options).forEach(option => {
+            const category = option.value;
+            const count = counts[category] || 0;
+            const emoji = option.textContent.split(' ')[0];
+            const text = category.charAt(0).toUpperCase() + category.slice(1);
+            option.textContent = `${emoji} ${text} (${count})`;
+        });
+    }
+
+    // --- RENDERIZADO DE TARJETAS POR REGIÓN ---
     for (const [regionName, cities] of Object.entries(countryData)) {
         let regionHtml = `
             <div class="region-section">
@@ -101,34 +171,33 @@ function renderCities(searchTerm = "") {
             // 1. Filtro por nombre (Buscador)
             const matchesSearch = cityData.name.toLowerCase().includes(searchTerm);
 
-            // 2. Filtro por categoría (Botones de arriba)
+            // 2. Filtro por categoría (Botones o Selector)
             let matchesCategory = false;
             if (currentFilter === 'todos') {
                 // Si es "todos", mostramos la ciudad si tiene AL MENOS un grupo disponible
                 matchesCategory = Object.values(cityData.groups).some(g => g.available);
             } else {
-                // Si hay un filtro específico, solo mostramos si ESE grupo es available
+                // Si hay un filtro específico, solo mostramos si ESE grupo está disponible
                 matchesCategory = cityData.groups[currentFilter] && cityData.groups[currentFilter].available;
             }
 
             if (matchesSearch && matchesCategory) {
                 hasVisibleCitiesInRegion = true;
 
-                // Generar los indicadores con Emoji + Punto
+                // Generar los indicadores visuales (bolitas de colores) para cada tarjeta
                 let indicatorsHtml = '<div class="group-indicators">';
                 categories.forEach(cat => {
                     const isAvailable = cityData.groups[cat] && cityData.groups[cat].available;
-                    const colorClass = isAvailable ? 'dot-green' : 'dot-red';
+                    const bgClass = isAvailable ? 'available' : 'unavailable';
 
                     indicatorsHtml += `
-                        <div class="indicator-col" title="${cat}">
+                        <div class="indicator-col ${bgClass}" title="${cat}">
                             <span class="indicator-emoji">${categoryIcons[cat]}</span>
-                            <span class="dot ${colorClass}"></span>
                         </div>`;
                 });
                 indicatorsHtml += '</div>';
 
-                // Al abrir el modal, que vaya directo a la pestaña que tenemos filtrada
+                // Determinar qué pestaña abrir por defecto en el modal
                 const tabToOpen = currentFilter === 'todos' ? 'universitarios' : currentFilter;
 
                 regionHtml += `
@@ -141,17 +210,18 @@ function renderCities(searchTerm = "") {
         }
         regionHtml += `</div></div>`;
 
-        // Solo añadimos la región si tiene ciudades que mostrar
+        // Solo añadimos la sección de la región si contiene ciudades visibles
         if (hasVisibleCitiesInRegion) {
             container.innerHTML += regionHtml;
         }
     }
 
-    // Si no hay ninguna ciudad en todo el país tras filtrar
+    // Mensaje de estado vacío si no hay resultados
     if (container.innerHTML === '') {
         container.innerHTML = `<p style="text-align:center; padding: 2rem; color: #666;">No se han encontrado ciudades con esos criterios.</p>`;
     }
 }
+
 
 
 /* ============================================================
@@ -162,25 +232,119 @@ function openModal(regionName, cityKey, initialTab) {
     document.getElementById('modal-city-name').innerText = cityData.name;
 
     const tabsContainer = document.getElementById('modal-tabs');
+    const mobileSelect = document.getElementById('mobile-modal-select');
+
     tabsContainer.innerHTML = '';
+    mobileSelect.innerHTML = '';
 
-    ['universitarios', 'profesionales', 'frontera', 'summit', 'senior'].forEach(cat => {
+    // Iconos para las categorías del modal
+    const categoryEmojis = {
+        universitarios: "🎓",
+        profesionales: "💼",
+        frontera: "💍",
+        summit: "🏔️",
+        senior: "👥"
+    };
+
+    const categories = ['universitarios', 'profesionales', 'frontera', 'summit', 'senior'];
+
+    categories.forEach(cat => {
+        // --- 1. Crear Botones para Escritorio ---
         const btn = document.createElement('button');
-        btn.className = `modal-tab ${cat === initialTab ? 'active' : ''}`;
-        btn.innerText = cat.charAt(0).toUpperCase() + cat.slice(1);
+        btn.className = `modal-tab`;
+        if (cat === initialTab) {
+            btn.classList.add('active');
+        }
+        btn.innerText = `${categoryEmojis[cat]} ${cat.charAt(0).toUpperCase() + cat.slice(1)}`;
 
-        if (!cityData.groups[cat] || !cityData.groups[cat].available) btn.style.opacity = "0.4";
+        if (!cityData.groups[cat] || !cityData.groups[cat].available) {
+            btn.classList.add('disabled');
+            btn.style.opacity = "0.4";
+            // Only allow clicking on disabled tabs on desktop, not mobile
+            if (window.innerWidth > 768) {
+                btn.style.cursor = "pointer";
+            }
+        }
 
         btn.onclick = () => {
-            document.querySelectorAll('.modal-tab').forEach(t => t.classList.remove('active'));
-            btn.classList.add('active');
-            renderModalContent(cityData, cat);
+            syncModalFilters(cat, cityData);
         };
         tabsContainer.appendChild(btn);
+
+        // --- 2. Crear Opciones para el Selector Móvil ---
+        const option = document.createElement('option');
+        option.value = cat;
+        option.textContent = `${categoryEmojis[cat]} ${cat.charAt(0).toUpperCase() + cat.slice(1)}`;
+
+        // Si el grupo no está disponible, lo indicamos pero permitimos selección
+        if (!cityData.groups[cat] || !cityData.groups[cat].available) {
+            option.textContent += " (No disp.)";
+        }
+        mobileSelect.appendChild(option);
     });
+
+    // Sincronizar el valor inicial del select
+    mobileSelect.value = initialTab;
 
     renderModalContent(cityData, initialTab);
     document.getElementById('modal').style.display = 'flex';
+}
+
+/**
+ * Sincroniza el estado visual de botones y select dentro del modal
+ */
+function syncModalFilters(category, cityData) {
+    // Iconos para las categorías del modal
+    const categoryEmojis = {
+        universitarios: "🎓",
+        profesionales: "💼",
+        frontera: "💍",
+        summit: "🏔️",
+        senior: "👥"
+    };
+
+    // Actualizar botones (Desktop)
+    document.querySelectorAll('.modal-tab').forEach(btn => {
+        btn.classList.remove('active');
+        const expectedText = `${categoryEmojis[category]} ${category.charAt(0).toUpperCase() + category.slice(1)}`;
+        if (btn.innerText === expectedText) {
+            btn.classList.add('active');
+        }
+    });
+
+    // Actualizar Select (Mobile)
+    const mobileSelect = document.getElementById('mobile-modal-select');
+    if (mobileSelect) mobileSelect.value = category;
+
+    // Renderizar contenido
+    renderModalContent(cityData, category);
+}
+
+
+
+function switchModalTab(category) {
+    const cityData = db[currentCountry];
+    const modalName = document.getElementById('modal-city-name').innerText;
+    let currentCityData = null;
+    let currentRegion = null;
+
+    for (const [regionName, cities] of Object.entries(cityData)) {
+        for (const [cityKey, cityInfo] of Object.entries(cities)) {
+            if (cityInfo.name === modalName) {
+                currentCityData = cityInfo;
+                currentRegion = regionName;
+                break;
+            }
+        }
+        if (currentCityData) break;
+    }
+
+    if (currentCityData) {
+        document.querySelectorAll('.modal-tab').forEach(t => t.classList.remove('active'));
+        const activeTab = document.querySelector(`.modal-tab:nth-child(${['universitarios', 'profesionales', 'frontera', 'summit', 'senior'].indexOf(category) + 1})`);
+        if (activeTab) activeTab.classList.add('active');
+        renderModalContent(currentCityData, category);
+    }
 }
 
 function renderModalContent(cityData, category) {
@@ -194,7 +358,18 @@ function renderModalContent(cityData, category) {
     let html = ``;
 
     if (!group || !group.available) {
-        html += `<div class="no-data-box">Esta categoría no está activa todavía aquí.</div>`;
+        html += `
+            <div class="no-data-box">
+                <div class="coming-soon-container">
+                    <div class="coming-soon-icon">🚀</div>
+                    <h4>¡Próximamente en esta ciudad!</h4>
+                    <p>Esta categoría aún no está disponible aquí, pero ¡podemos cambiar eso!</p>
+                    <p class="encouragement-text">¿Te animas a ser el primero en organizar una Hora Santa de ${category.charAt(0).toUpperCase() + category.slice(1)} en tu ciudad?</p>
+                    <div class="contact-hint">
+                        <span>📧 Contacta el responsale para más información</span>
+                    </div>
+                </div>
+            </div>`;
         contentDiv.innerHTML = html;
         return;
     }
@@ -318,6 +493,21 @@ function closeModal() {
     document.getElementById('modal').style.display = 'none';
 }
 
+// Función para cerrar todos los acordeones abiertos
+function closeAllAccordions() {
+    document.querySelectorAll('.parroquia-content.active, .extra-content.active').forEach(content => {
+        content.classList.remove('active');
+        const header = content.previousElementSibling;
+        if (header) {
+            header.classList.remove('active');
+            const arrow = header.querySelector('.arrow-icon');
+            if (arrow) {
+                arrow.style.transform = 'rotate(0deg)';
+            }
+        }
+    });
+}
+
 
 
 
@@ -354,5 +544,49 @@ document.addEventListener('click', function (event) {
             footerDetails.style.display = 'none';
             toggleBtn.innerText = 'Ver información detallada';
         }
+    }
+});
+
+
+
+
+/* ============================================================
+    7. GESTIÓN DEL BOTÓN DE BORRAR EN EL BUSCADOR
+============================================================ */
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('city-search');
+    const clearBtn = document.getElementById('clear-search');
+
+    function toggleClearButton() {
+        // Si el valor tiene longitud mayor a 0, mostramos (block), si no, ocultamos (none)
+        clearBtn.style.display = searchInput.value.length > 0 ? 'block' : 'none';
+    }
+
+    // Escuchar cuando el usuario escribe o pega texto
+    searchInput.addEventListener('input', () => {
+        toggleClearButton();
+        renderCities(searchInput.value); // Aprovechamos para filtrar mientras escribe
+    });
+
+    // Modificar tu función clearSearch existente o definirla aquí
+    window.clearSearch = function() {
+        searchInput.value = '';
+        toggleClearButton();
+        searchInput.focus(); // Devuelve el foco al buscador
+        renderCities('');    // Resetea la lista de ciudades
+    };
+
+    // Ejecutar al cargar por si el navegador recuerda el texto
+    toggleClearButton();
+
+    // Event listener para cerrar acordeones al hacer clic fuera
+    const modalBody = document.getElementById('modal-body-content');
+    if (modalBody) {
+        modalBody.addEventListener('click', function(event) {
+            // Si el clic no es en un header de acordeón, cerrar todos
+            if (!event.target.closest('.parroquia-header, .extra-header')) {
+                closeAllAccordions();
+            }
+        });
     }
 });
