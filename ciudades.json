@@ -3,6 +3,7 @@
         "Andalucía": {
             "sevilla": {
                 "name": "Sevilla",
+                "coordinates": [-5.9845, 37.3891],
                 "groups": {
                     "universitarios": {
                         "available": true,
@@ -35,6 +36,7 @@
             },
             "cordoba": {
                 "name": "Córdoba",
+                "coordinates": [-4.7794, 37.8882],
                 "groups": {
                     "universitarios": {
                         "available": true,
@@ -61,6 +63,7 @@
             },
             "jaen": {
                 "name": "Jaén",
+                "coordinates": [-3.7903, 37.7796],
                 "groups": {
                     "universitarios": {
                         "available": true,
@@ -84,9 +87,10 @@
             },
             "cadiz": {
                 "name": "Cádiz",
+                "coordinates": [-6.2886, 36.5271],
                 "groups": {
                     "universitarios": {
-                        "available": false
+                        "available": true
                     },
                     "profesionales": {
                         "available": false
@@ -104,6 +108,7 @@
             },
             "granada": {
                 "name": "Granada",
+                "coordinates": [-3.5986, 37.1773],
                 "groups": {
                     "universitarios": {
                         "available": true,
@@ -132,6 +137,7 @@
         "Madrid": {
             "madrid_centro": {
                 "name": "Madrid Centro",
+                "coordinates": [-3.7038, 40.4168],
                 "groups": {
                     "universitarios": {
                         "available": true,
