@@ -52,11 +52,13 @@
         </div>
     </section>
 
+    <!-----------------Selector Filtros----------------->
     <section id="city-view">
         <button class="back-btn" onclick="goBack()">← Volver a regiones</button>
 
         <div class="search-container">
-            <input type="text" id="city-search" placeholder="Escribe tu ciudad (ej: Córdoba)..." onkeyup="searchCity()">
+            <input type="text" id="city-search" placeholder="Escribe tu ciudad..." onkeyup="renderCities(this.value)">
+            <button id="clear-search" class="clear-btn" onclick="clearSearch()">✕</button>
         </div>
 
         <div class="filters" id="category-filters">
@@ -68,21 +70,36 @@
             <button class="filter-btn" onclick="filterCategory('senior')">👥 Senior</button>
         </div>
 
+        <div class="mobile-filter-container">
+            <select id="mobile-filter-select" class="mobile-select-pro" onchange="filterCategory(this.value)">
+                <option value="todos">🌟 Todos los sectores</option>
+                <option value="universitarios">🎓 Universitarios</option>
+                <option value="profesionales">💼 Profesionales</option>
+                <option value="frontera">💍 Frontera</option>
+                <option value="summit">🏔️ Summit</option>
+                <option value="senior">👥 Senior</option>
+            </select>
+        </div>
+
         <div id="cities-display-container"></div>
     </section>
 
-
      <!-----------------Ventanas Ciudades----------------->
+     
     <div class="modal-overlay" id="modal">
         <div class="modal-content">
             <div class="modal-header">
                 <h2 id="modal-city-name">Ciudad</h2>
                 <button class="close-modal" onclick="closeModal()">✕</button>
             </div>
-            <div class="modal-tabs" id="modal-tabs"></div>
+            <div class="modal-tabs desktop-modal-tabs" id="modal-tabs"></div>
+            <div class="mobile-modal-dropdown">
+                <select id="mobile-modal-select" class="mobile-modal-select-pro" onchange="switchModalTab(this.value)"></select>
+            </div>
             <div class="modal-body" id="modal-body-content"></div>
         </div>
     </div>
+    
 
 
     <!-----------------Pie de Pagina----------------->
