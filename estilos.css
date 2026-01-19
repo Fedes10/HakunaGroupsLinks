@@ -1139,7 +1139,11 @@ footer ul li {
         order: -1;
         /* Filtros arriba en móvil */
     }
+    #map {
+        height: 400px; /* Altura más pequeña para móviles */
+    }
 }
+
 
 /* ================= VISTA MAPA ================= */
 #map-view {
