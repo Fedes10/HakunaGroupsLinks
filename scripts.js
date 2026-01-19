@@ -28,6 +28,151 @@ async function cargarBaseDeDatos() {
 // Ejecutar carga al iniciar
 cargarBaseDeDatos();
 
+/* ============================================================
+   MAPA INTERACTIVO
+   ============================================================ */
+function showMapView() {
+    document.getElementById('country-selection').style.display = 'none';
+    document.getElementById('city-view').style.display = 'none';
+    document.getElementById('map-view').style.display = 'flex';
+    initializeMap();
+}
+
+function hideMapView() {
+    document.getElementById('map-view').style.display = 'none';
+    document.getElementById('country-selection').style.display = 'flex';
+}
+
+function initializeMap() {
+    if (window.mapInstance) return; // Evitar reinicializar
+
+    const map = new maplibregl.Map({
+        container: 'map',
+        style: 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json',
+        center: [0, 20],
+        zoom: 1.2,
+        minZoom: 0.5,
+        renderWorldCopies: true,
+        dragRotate: false,
+        attributionControl: false
+    });
+
+    window.mapInstance = map;
+
+    map.on('load', () => {
+        // Traducción a Español
+        const layers = map.getStyle().layers;
+        layers.forEach(layer => {
+            if (layer.layout && layer.layout['text-field']) {
+                map.setLayoutProperty(layer.id, 'text-field', [
+                    'coalesce', ['get', 'name:es'], ['get', 'name'], ['get', 'name_en']
+                ]);
+            }
+        });
+
+        // Cargar capa de España
+        fetch('https://raw.githubusercontent.com/johan/world.geo.json/master/countries/ESP.geo.json')
+            .then(response => response.json())
+            .then(data => {
+                map.addSource('espana-boundary', {
+                    'type': 'geojson',
+                    'data': data
+                });
+
+                // Relleno
+                map.addLayer({
+                    'id': 'relleno-espana',
+                    'type': 'fill',
+                    'source': 'espana-boundary',
+                    'layout': { 'visibility': 'visible' },
+                    'paint': {
+                        'fill-color': '#a3c9e2',
+                        'fill-opacity': 0.5
+                    }
+                });
+
+                // Borde
+                map.addLayer({
+                    'id': 'borde-espana',
+                    'type': 'line',
+                    'source': 'espana-boundary',
+                    'layout': { 'visibility': 'visible' },
+                    'paint': {
+                        'line-color': '#5a96bd',
+                        'line-width': 1.5
+                    }
+                });
+
+                // Eventos de clic
+                map.on('mouseenter', 'relleno-espana', () => map.getCanvas().style.cursor = 'pointer');
+                map.on('mouseleave', 'relleno-espana', () => map.getCanvas().style.cursor = '');
+                map.on('click', 'relleno-espana', () => {
+                    map.flyTo({ center: [-3.7, 40.41], zoom: 5.5, speed: 1.2 });
+                });
+            });
+
+        // Agregar marcadores para ciudades de Hakuna
+        addCityMarkers(map);
+    });
+}
+
+function addCityMarkers(map) {
+    // Iterar a través de todos los países y regiones para agregar marcadores dinámicamente
+    for (const countryKey in db) {
+        const country = db[countryKey];
+        for (const regionKey in country) {
+            const region = country[regionKey];
+            for (const cityKey in region) {
+                const city = region[cityKey];
+
+                // Solo agregar si tiene coordenadas
+                if (city.coordinates && Array.isArray(city.coordinates) && city.coordinates.length === 2) {
+                    const [lng, lat] = city.coordinates;
+
+                    // Determinar color basado en disponibilidad de grupos
+                    let markerColor = '#e74c3c'; // Rojo por defecto (sin grupos disponibles)
+                    let hasAvailableGroups = false;
+
+                    for (const groupKey in city.groups) {
+                        if (city.groups[groupKey].available) {
+                            hasAvailableGroups = true;
+                            break;
+                        }
+                    }
+
+                    if (hasAvailableGroups) {
+                        markerColor = '#2ecc71'; // Verde si tiene grupos disponibles
+                    }
+
+                    // Crear marcador
+                    const marker = new maplibregl.Marker({
+                        color: markerColor
+                    })
+                    .setLngLat([lng, lat])
+                    .setPopup(new maplibregl.Popup().setHTML(`
+                        <div style="text-align: center;">
+                            <h3 style="margin: 0 0 8px 0; color: #2c3e50;">${city.name}</h3>
+                            <p style="margin: 0; font-size: 0.9em; color: #546e7a;">
+                                ${hasAvailableGroups ? 'Grupos disponibles' : 'Sin grupos activos'}
+                            </p>
+                        </div>
+                    `))
+                    .addTo(map);
+                }
+            }
+        }
+    }
+}
+
+function toggleEspana(visible) {
+    if (!window.mapInstance) return;
+    const status = visible ? 'visible' : 'none';
+    if (window.mapInstance.getLayer('relleno-espana')) {
+        window.mapInstance.setLayoutProperty('relleno-espana', 'visibility', status);
+        window.mapInstance.setLayoutProperty('borde-espana', 'visibility', status);
+    }
+}
+
 
 
 /* ============================================================
@@ -40,7 +185,7 @@ function selectCountry(countryKey) {
 
     if (!db[countryKey] || Object.keys(db[countryKey]).length === 0) {
         document.getElementById('cities-display-container').innerHTML = `
-            <div style="text-align:center; padding: 5rem; color: #a8ae90;">
+            <div style="text-align:center; padding: 5rem; color: #173f5acc;">
                 <span style="font-size: 4rem;">📍</span>
                 <h3 style="margin-top:20px;">En proceso de apertura</h3>
                 <p>Aún no hay ciudades registradas en esta región.</p>
@@ -366,7 +511,7 @@ function renderModalContent(cityData, category) {
                     <p>Esta categoría aún no está disponible aquí, pero ¡podemos cambiar eso!</p>
                     <p class="encouragement-text">¿Te animas a ser el primero en organizar una Hora Santa de ${category.charAt(0).toUpperCase() + category.slice(1)} en tu ciudad?</p>
                     <div class="contact-hint">
-                        <span>📧 Contacta el responsale para más información</span>
+                        <span>📧 Contacta el responsable para más información</span>
                     </div>
                 </div>
             </div>`;
