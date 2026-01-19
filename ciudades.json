@@ -3,7 +3,10 @@
         "Andalucía": {
             "sevilla": {
                 "name": "Sevilla",
-                "coordinates": [-5.9845, 37.3891],
+                "coordinates": [
+                    -5.9845,
+                    37.3891
+                ],
                 "groups": {
                     "universitarios": {
                         "available": true,
@@ -18,16 +21,10 @@
                         "whatsapp": "#"
                     },
                     "frontera": {
-                        "available": true,
-                        "schedule": "Consultar",
-                        "location": "Consultar",
-                        "whatsapp": "#"
+                        "available": true
                     },
                     "summit": {
-                        "available": true,
-                        "schedule": "Consultar",
-                        "location": "Consultar",
-                        "whatsapp": "#"
+                        "available": true
                     },
                     "senior": {
                         "available": false
@@ -36,7 +33,10 @@
             },
             "cordoba": {
                 "name": "Córdoba",
-                "coordinates": [-4.7794, 37.8882],
+                "coordinates": [
+                    -4.7794,
+                    37.8882
+                ],
                 "groups": {
                     "universitarios": {
                         "available": true,
@@ -61,18 +61,21 @@
                     }
                 }
             },
-            "jaen": {
-                "name": "Jaén",
-                "coordinates": [-3.7903, 37.7796],
+            "granada": {
+                "name": "Granada",
+                "coordinates": [
+                    -3.5986,
+                    37.1773
+                ],
                 "groups": {
                     "universitarios": {
                         "available": true,
-                        "schedule": "Miércoles 20:30",
-                        "location": "San Roque",
+                        "schedule": "Jueves 21:00",
+                        "location": "Santuario del Perpetuo Socorro",
                         "whatsapp": "#"
                     },
                     "profesionales": {
-                        "available": false
+                        "available": true
                     },
                     "frontera": {
                         "available": false
@@ -85,9 +88,12 @@
                     }
                 }
             },
-            "cadiz": {
-                "name": "Cádiz",
-                "coordinates": [-6.2886, 36.5271],
+            "almeria": {
+                "name": "Almería",
+                "coordinates": [
+                    -2.4637,
+                    36.8340
+                ],
                 "groups": {
                     "universitarios": {
                         "available": true
@@ -106,21 +112,90 @@
                     }
                 }
             },
-            "granada": {
-                "name": "Granada",
-                "coordinates": [-3.5986, 37.1773],
+            "malaga": {
+                "name": "Málaga",
+                "coordinates": [
+                    -4.4214,
+                    36.7213
+                ],
                 "groups": {
                     "universitarios": {
-                        "available": true,
-                        "schedule": "Jueves 21:00",
-                        "location": "Santuario del Perpetuo Socorro",
-                        "whatsapp": "#"
+                        "available": true
                     },
                     "profesionales": {
-                        "available": true,
-                        "schedule": "Martes 20:30",
-                        "location": "Consultar",
-                        "whatsapp": "#"
+                        "available": true
+                    },
+                    "frontera": {
+                        "available": false
+                    },
+                    "summit": {
+                        "available": false
+                    },
+                    "senior": {
+                        "available": false
+                    }
+                }
+            },
+            "cadiz": {
+                "name": "Cádiz",
+                "coordinates": [
+                    -6.2886,
+                    36.5271
+                ],
+                "groups": {
+                    "universitarios": {
+                        "available": true
+                    },
+                    "profesionales": {
+                        "available": false
+                    },
+                    "frontera": {
+                        "available": false
+                    },
+                    "summit": {
+                        "available": false
+                    },
+                    "senior": {
+                        "available": false
+                    }
+                }
+            },
+            "huelva": {
+                "name": "Huelva",
+                "coordinates": [
+                    -6.9447,
+                    37.2614
+                ],
+                "groups": {
+                    "universitarios": {
+                        "available": false
+                    },
+                    "profesionales": {
+                        "available": false
+                    },
+                    "frontera": {
+                        "available": false
+                    },
+                    "summit": {
+                        "available": false
+                    },
+                    "senior": {
+                        "available": false
+                    }
+                }
+            },
+            "jaen": {
+                "name": "Jaén",
+                "coordinates": [
+                    -3.7903,
+                    37.7796
+                ],
+                "groups": {
+                    "universitarios": {
+                        "available": false
+                    },
+                    "profesionales": {
+                        "available": false
                     },
                     "frontera": {
                         "available": false
@@ -137,7 +212,10 @@
         "Madrid": {
             "madrid_centro": {
                 "name": "Madrid Centro",
-                "coordinates": [-3.7038, 40.4168],
+                "coordinates": [
+                    -3.7038,
+                    40.4168
+                ],
                 "groups": {
                     "universitarios": {
                         "available": true,
@@ -147,53 +225,1355 @@
                                 "dia": "Lunes",
                                 "hora": "21:00h",
                                 "direccion": "Calle Mártires Concepcionistas, 12, Las Rozas",
-                                "mapa": "https://www.google.com/maps/search/?api=1&query=Calle+Mártires+Concepcionistas+12+Las+Rozas",
-                                "contacto_nombre": "Arancha Abad",
-                                "telefono": "645623692",
                                 "whatsapp": "https://chat.whatsapp.com/IzXy3VVABObBFasPcqvmLl"
-                            },
-                            {
-                                "lugar": "Parroquia San Vicente de Paul",
-                                "dia": "Lunes",
-                                "hora": "21:00h",
-                                "direccion": "Plaza de San Vicente de Paúl, 1, Carabanchel",
-                                "mapa": "https://www.google.com/maps/search/?api=1&query=Plaza+de+San+Vicente+de+Paúl+1+Madrid",
-                                "contacto_nombre": "Gemma López",
-                                "telefono": "663536812",
-                                "whatsapp": "https://chat.whatsapp.com/BvsbHjDeDvAA8ocjXJAleb"
                             },
                             {
                                 "lugar": "Monasterio de San José",
                                 "dia": "Jueves",
                                 "hora": "21:00h",
                                 "direccion": "Calle Blasco Garay, 51, Madrid",
-                                "mapa": "https://www.google.com/maps/search/?api=1&query=Calle+Blasco+Garay+51+Madrid",
-                                "contacto_nombre": "Blanca Palma",
-                                "telefono": "648455542",
                                 "whatsapp": "https://chat.whatsapp.com/EQhTGCOoa9tAWXJzFWSi2"
                             }
-                        ],
-                        "revolcaderos": {
-                            "info": "Inscripciones: 1-15 Sept / 1-10 Feb",
-                            "contacto": "Ramón Enciso",
-                            "link": "https://bit.ly/RevolcaderosMadrid"
-                        },
-                        "compartiriados": "https://hakuna.org"
+                        ]
                     },
                     "profesionales": {
-                        "available": true,
-                        "centros": [
-                            {
-                                "lugar": "Consultar Sede Central",
-                                "dia": "Martes",
-                                "hora": "20:30h",
-                                "direccion": "Sede Hakuna Madrid",
-                                "mapa": "#",
-                                "contacto_nombre": "Info Hakuna",
-                                "telefono": "000000000",
-                                "whatsapp": "#"
-                            }
-                        ]
+                        "available": true
+                    },
+                    "frontera": {
+                        "available": true
+                    },
+                    "summit": {
+                        "available": true
+                    },
+                    "senior": {
+                        "available": true
+                    }
+                }
+            }
+        },
+        "Comunidad Valenciana": {
+            "valencia": {
+                "name": "Valencia",
+                "coordinates": [
+                    -0.3763,
+                    39.4699
+                ],
+                "groups": {
+                    "universitarios": {
+                        "available": true
+                    },
+                    "profesionales": {
+                        "available": true
+                    },
+                    "frontera": {
+                        "available": false
+                    },
+                    "summit": {
+                        "available": false
+                    },
+                    "senior": {
+                        "available": false
+                    }
+                }
+            },
+            "alicante": {
+                "name": "Alicante",
+                "coordinates": [
+                    -0.4815,
+                    38.3452
+                ],
+                "groups": {
+                    "universitarios": {
+                        "available": true
+                    },
+                    "profesionales": {
+                        "available": false
+                    },
+                    "frontera": {
+                        "available": false
+                    },
+                    "summit": {
+                        "available": false
+                    },
+                    "senior": {
+                        "available": false
+                    }
+                }
+            },
+            "alcoy": {
+                "name": "Alcoy",
+                "coordinates": [
+                    -0.4735,
+                    38.6983
+                ],
+                "groups": {
+                    "universitarios": {
+                        "available": true
+                    },
+                    "profesionales": {
+                        "available": false
+                    },
+                    "frontera": {
+                        "available": false
+                    },
+                    "summit": {
+                        "available": false
+                    },
+                    "senior": {
+                        "available": false
+                    }
+                }
+            },
+            "castellon": {
+                "name": "Castellón",
+                "coordinates": [
+                    -0.0377,
+                    39.9864
+                ],
+                "groups": {
+                    "universitarios": {
+                        "available": true
+                    },
+                    "profesionales": {
+                        "available": false
+                    },
+                    "frontera": {
+                        "available": false
+                    },
+                    "summit": {
+                        "available": false
+                    },
+                    "senior": {
+                        "available": false
+                    }
+                }
+            },
+            "ontinyent": {
+                "name": "Ontinyent",
+                "coordinates": [
+                    -0.6071,
+                    38.8221
+                ],
+                "groups": {
+                    "universitarios": {
+                        "available": true
+                    },
+                    "profesionales": {
+                        "available": false
+                    },
+                    "frontera": {
+                        "available": false
+                    },
+                    "summit": {
+                        "available": false
+                    },
+                    "senior": {
+                        "available": false
+                    }
+                }
+            },
+            "vega_baja": {
+                "name": "Vega Baja",
+                "coordinates": [
+                    -0.8500,
+                    38.0833
+                ],
+                "groups": {
+                    "universitarios": {
+                        "available": true
+                    },
+                    "profesionales": {
+                        "available": false
+                    },
+                    "frontera": {
+                        "available": false
+                    },
+                    "summit": {
+                        "available": false
+                    },
+                    "senior": {
+                        "available": false
+                    }
+                }
+            }
+        },
+        "Cataluña": {
+            "barcelona": {
+                "name": "Barcelona",
+                "coordinates": [
+                    2.1734,
+                    41.3851
+                ],
+                "groups": {
+                    "universitarios": {
+                        "available": true
+                    },
+                    "profesionales": {
+                        "available": true
+                    },
+                    "frontera": {
+                        "available": true
+                    },
+                    "summit": {
+                        "available": true
+                    },
+                    "senior": {
+                        "available": false
+                    }
+                }
+            },
+            "girona": {
+                "name": "Girona",
+                "coordinates": [
+                    2.8214,
+                    41.9794
+                ],
+                "groups": {
+                    "universitarios": {
+                        "available": true
+                    },
+                    "profesionales": {
+                        "available": false
+                    },
+                    "frontera": {
+                        "available": false
+                    },
+                    "summit": {
+                        "available": false
+                    },
+                    "senior": {
+                        "available": false
+                    }
+                }
+            },
+            "lleida": {
+                "name": "Lleida",
+                "coordinates": [
+                    0.6244,
+                    41.6176
+                ],
+                "groups": {
+                    "universitarios": {
+                        "available": true
+                    },
+                    "profesionales": {
+                        "available": false
+                    },
+                    "frontera": {
+                        "available": false
+                    },
+                    "summit": {
+                        "available": false
+                    },
+                    "senior": {
+                        "available": false
+                    }
+                }
+            },
+            "tarragona": {
+                "name": "Tarragona",
+                "coordinates": [
+                    1.2445,
+                    41.1189
+                ],
+                "groups": {
+                    "universitarios": {
+                        "available": false
+                    },
+                    "profesionales": {
+                        "available": false
+                    },
+                    "frontera": {
+                        "available": false
+                    },
+                    "summit": {
+                        "available": false
+                    },
+                    "senior": {
+                        "available": false
+                    }
+                }
+            }
+        },
+        "Galicia": {
+            "vigo": {
+                "name": "Vigo",
+                "coordinates": [
+                    -8.7226,
+                    42.2328
+                ],
+                "groups": {
+                    "universitarios": {
+                        "available": true
+                    },
+                    "profesionales": {
+                        "available": false
+                    },
+                    "frontera": {
+                        "available": false
+                    },
+                    "summit": {
+                        "available": false
+                    },
+                    "senior": {
+                        "available": false
+                    }
+                }
+            },
+            "la_coruna": {
+                "name": "La Coruña",
+                "coordinates": [
+                    -8.4117,
+                    43.3623
+                ],
+                "groups": {
+                    "universitarios": {
+                        "available": true
+                    },
+                    "profesionales": {
+                        "available": false
+                    },
+                    "frontera": {
+                        "available": false
+                    },
+                    "summit": {
+                        "available": false
+                    },
+                    "senior": {
+                        "available": false
+                    }
+                }
+            },
+            "santiago": {
+                "name": "Santiago de Compostela",
+                "coordinates": [
+                    -8.5448,
+                    42.8782
+                ],
+                "groups": {
+                    "universitarios": {
+                        "available": true
+                    },
+                    "profesionales": {
+                        "available": false
+                    },
+                    "frontera": {
+                        "available": false
+                    },
+                    "summit": {
+                        "available": false
+                    },
+                    "senior": {
+                        "available": false
+                    }
+                }
+            },
+            "lugo": {
+                "name": "Lugo",
+                "coordinates": [
+                    -7.5577,
+                    43.0121
+                ],
+                "groups": {
+                    "universitarios": {
+                        "available": false
+                    },
+                    "profesionales": {
+                        "available": false
+                    },
+                    "frontera": {
+                        "available": false
+                    },
+                    "summit": {
+                        "available": false
+                    },
+                    "senior": {
+                        "available": false
+                    }
+                }
+            },
+            "orense": {
+                "name": "Orense",
+                "coordinates": [
+                    -7.8639,
+                    42.3358
+                ],
+                "groups": {
+                    "universitarios": {
+                        "available": false
+                    },
+                    "profesionales": {
+                        "available": false
+                    },
+                    "frontera": {
+                        "available": false
+                    },
+                    "summit": {
+                        "available": false
+                    },
+                    "senior": {
+                        "available": false
+                    }
+                }
+            },
+            "pontevedra": {
+                "name": "Pontevedra",
+                "coordinates": [
+                    -8.6444,
+                    42.4336
+                ],
+                "groups": {
+                    "universitarios": {
+                        "available": false
+                    },
+                    "profesionales": {
+                        "available": false
+                    },
+                    "frontera": {
+                        "available": false
+                    },
+                    "summit": {
+                        "available": false
+                    },
+                    "senior": {
+                        "available": false
+                    }
+                }
+            }
+        },
+        "País Vasco / Navarra": {
+            "bilbao": {
+                "name": "Bilbao",
+                "coordinates": [
+                    -2.9350,
+                    43.2630
+                ],
+                "groups": {
+                    "universitarios": {
+                        "available": true
+                    },
+                    "profesionales": {
+                        "available": true
+                    },
+                    "frontera": {
+                        "available": false
+                    },
+                    "summit": {
+                        "available": false
+                    },
+                    "senior": {
+                        "available": false
+                    }
+                }
+            },
+            "san_sebastian": {
+                "name": "San Sebastián",
+                "coordinates": [
+                    -1.9812,
+                    43.3183
+                ],
+                "groups": {
+                    "universitarios": {
+                        "available": true
+                    },
+                    "profesionales": {
+                        "available": false
+                    },
+                    "frontera": {
+                        "available": false
+                    },
+                    "summit": {
+                        "available": false
+                    },
+                    "senior": {
+                        "available": false
+                    }
+                }
+            },
+            "vitoria": {
+                "name": "Vitoria",
+                "coordinates": [
+                    -2.6727,
+                    42.8467
+                ],
+                "groups": {
+                    "universitarios": {
+                        "available": false
+                    },
+                    "profesionales": {
+                        "available": false
+                    },
+                    "frontera": {
+                        "available": false
+                    },
+                    "summit": {
+                        "available": false
+                    },
+                    "senior": {
+                        "available": false
+                    }
+                }
+            },
+            "pamplona": {
+                "name": "Pamplona",
+                "coordinates": [
+                    -1.6432,
+                    42.8125
+                ],
+                "groups": {
+                    "universitarios": {
+                        "available": true
+                    },
+                    "profesionales": {
+                        "available": true
+                    },
+                    "frontera": {
+                        "available": false
+                    },
+                    "summit": {
+                        "available": false
+                    },
+                    "senior": {
+                        "available": false
+                    }
+                }
+            }
+        },
+        "Castilla y León": {
+            "valladolid": {
+                "name": "Valladolid",
+                "coordinates": [
+                    -4.7245,
+                    41.6523
+                ],
+                "groups": {
+                    "universitarios": {
+                        "available": true
+                    },
+                    "profesionales": {
+                        "available": false
+                    },
+                    "frontera": {
+                        "available": false
+                    },
+                    "summit": {
+                        "available": false
+                    },
+                    "senior": {
+                        "available": false
+                    }
+                }
+            },
+            "burgos": {
+                "name": "Burgos",
+                "coordinates": [
+                    -3.6969,
+                    42.3440
+                ],
+                "groups": {
+                    "universitarios": {
+                        "available": true
+                    },
+                    "profesionales": {
+                        "available": false
+                    },
+                    "frontera": {
+                        "available": false
+                    },
+                    "summit": {
+                        "available": false
+                    },
+                    "senior": {
+                        "available": false
+                    }
+                }
+            },
+            "salamanca": {
+                "name": "Salamanca",
+                "coordinates": [
+                    -5.6635,
+                    40.9701
+                ],
+                "groups": {
+                    "universitarios": {
+                        "available": true
+                    },
+                    "profesionales": {
+                        "available": false
+                    },
+                    "frontera": {
+                        "available": false
+                    },
+                    "summit": {
+                        "available": false
+                    },
+                    "senior": {
+                        "available": false
+                    }
+                }
+            },
+            "leon": {
+                "name": "León",
+                "coordinates": [
+                    -5.5703,
+                    42.5987
+                ],
+                "groups": {
+                    "universitarios": {
+                        "available": false
+                    },
+                    "profesionales": {
+                        "available": false
+                    },
+                    "frontera": {
+                        "available": false
+                    },
+                    "summit": {
+                        "available": false
+                    },
+                    "senior": {
+                        "available": false
+                    }
+                }
+            },
+            "zamora": {
+                "name": "Zamora",
+                "coordinates": [
+                    -5.7445,
+                    41.5032
+                ],
+                "groups": {
+                    "universitarios": {
+                        "available": false
+                    },
+                    "profesionales": {
+                        "available": false
+                    },
+                    "frontera": {
+                        "available": false
+                    },
+                    "summit": {
+                        "available": false
+                    },
+                    "senior": {
+                        "available": false
+                    }
+                }
+            },
+            "palencia": {
+                "name": "Palencia",
+                "coordinates": [
+                    -4.5247,
+                    42.0095
+                ],
+                "groups": {
+                    "universitarios": {
+                        "available": false
+                    },
+                    "profesionales": {
+                        "available": false
+                    },
+                    "frontera": {
+                        "available": false
+                    },
+                    "summit": {
+                        "available": false
+                    },
+                    "senior": {
+                        "available": false
+                    }
+                }
+            },
+            "avila": {
+                "name": "Ávila",
+                "coordinates": [
+                    -4.6977,
+                    40.6567
+                ],
+                "groups": {
+                    "universitarios": {
+                        "available": false
+                    },
+                    "profesionales": {
+                        "available": false
+                    },
+                    "frontera": {
+                        "available": false
+                    },
+                    "summit": {
+                        "available": false
+                    },
+                    "senior": {
+                        "available": false
+                    }
+                }
+            },
+            "segovia": {
+                "name": "Segovia",
+                "coordinates": [
+                    -4.1184,
+                    40.9429
+                ],
+                "groups": {
+                    "universitarios": {
+                        "available": false
+                    },
+                    "profesionales": {
+                        "available": false
+                    },
+                    "frontera": {
+                        "available": false
+                    },
+                    "summit": {
+                        "available": false
+                    },
+                    "senior": {
+                        "available": false
+                    }
+                }
+            },
+            "soria": {
+                "name": "Soria",
+                "coordinates": [
+                    -2.4633,
+                    41.7640
+                ],
+                "groups": {
+                    "universitarios": {
+                        "available": false
+                    },
+                    "profesionales": {
+                        "available": false
+                    },
+                    "frontera": {
+                        "available": false
+                    },
+                    "summit": {
+                        "available": false
+                    },
+                    "senior": {
+                        "available": false
+                    }
+                }
+            }
+        },
+        "Castilla-La Mancha": {
+            "toledo": {
+                "name": "Toledo",
+                "coordinates": [
+                    -4.0273,
+                    39.8628
+                ],
+                "groups": {
+                    "universitarios": {
+                        "available": true
+                    },
+                    "profesionales": {
+                        "available": false
+                    },
+                    "frontera": {
+                        "available": false
+                    },
+                    "summit": {
+                        "available": false
+                    },
+                    "senior": {
+                        "available": false
+                    }
+                }
+            },
+            "talavera": {
+                "name": "Talavera de la Reina",
+                "coordinates": [
+                    -4.8320,
+                    39.9585
+                ],
+                "groups": {
+                    "universitarios": {
+                        "available": true
+                    },
+                    "profesionales": {
+                        "available": false
+                    },
+                    "frontera": {
+                        "available": false
+                    },
+                    "summit": {
+                        "available": false
+                    },
+                    "senior": {
+                        "available": false
+                    }
+                }
+            },
+            "ciudad_real": {
+                "name": "Ciudad Real",
+                "coordinates": [
+                    -3.9291,
+                    38.9848
+                ],
+                "groups": {
+                    "universitarios": {
+                        "available": true
+                    },
+                    "profesionales": {
+                        "available": false
+                    },
+                    "frontera": {
+                        "available": false
+                    },
+                    "summit": {
+                        "available": false
+                    },
+                    "senior": {
+                        "available": false
+                    }
+                }
+            },
+            "albacete": {
+                "name": "Albacete",
+                "coordinates": [
+                    -1.8585,
+                    38.9943
+                ],
+                "groups": {
+                    "universitarios": {
+                        "available": false
+                    },
+                    "profesionales": {
+                        "available": false
+                    },
+                    "frontera": {
+                        "available": false
+                    },
+                    "summit": {
+                        "available": false
+                    },
+                    "senior": {
+                        "available": false
+                    }
+                }
+            },
+            "cuenca": {
+                "name": "Cuenca",
+                "coordinates": [
+                    -2.1315,
+                    40.0704
+                ],
+                "groups": {
+                    "universitarios": {
+                        "available": false
+                    },
+                    "profesionales": {
+                        "available": false
+                    },
+                    "frontera": {
+                        "available": false
+                    },
+                    "summit": {
+                        "available": false
+                    },
+                    "senior": {
+                        "available": false
+                    }
+                }
+            },
+            "guadalajara": {
+                "name": "Guadalajara",
+                "coordinates": [
+                    -3.1613,
+                    40.6327
+                ],
+                "groups": {
+                    "universitarios": {
+                        "available": false
+                    },
+                    "profesionales": {
+                        "available": false
+                    },
+                    "frontera": {
+                        "available": false
+                    },
+                    "summit": {
+                        "available": false
+                    },
+                    "senior": {
+                        "available": false
+                    }
+                }
+            }
+        },
+        "Extremadura": {
+            "badajoz": {
+                "name": "Badajoz",
+                "coordinates": [
+                    -6.9706,
+                    38.8794
+                ],
+                "groups": {
+                    "universitarios": {
+                        "available": true
+                    },
+                    "profesionales": {
+                        "available": false
+                    },
+                    "frontera": {
+                        "available": false
+                    },
+                    "summit": {
+                        "available": false
+                    },
+                    "senior": {
+                        "available": false
+                    }
+                }
+            },
+            "merida": {
+                "name": "Mérida",
+                "coordinates": [
+                    -6.3437,
+                    38.9161
+                ],
+                "groups": {
+                    "universitarios": {
+                        "available": true
+                    },
+                    "profesionales": {
+                        "available": false
+                    },
+                    "frontera": {
+                        "available": false
+                    },
+                    "summit": {
+                        "available": false
+                    },
+                    "senior": {
+                        "available": false
+                    }
+                }
+            },
+            "caceres": {
+                "name": "Cáceres",
+                "coordinates": [
+                    -6.3722,
+                    39.4753
+                ],
+                "groups": {
+                    "universitarios": {
+                        "available": true
+                    },
+                    "profesionales": {
+                        "available": false
+                    },
+                    "frontera": {
+                        "available": false
+                    },
+                    "summit": {
+                        "available": false
+                    },
+                    "senior": {
+                        "available": false
+                    }
+                }
+            }
+        },
+        "Otras Regiones": {
+            "zaragoza": {
+                "name": "Zaragoza",
+                "coordinates": [
+                    -0.8891,
+                    41.6488
+                ],
+                "groups": {
+                    "universitarios": {
+                        "available": true
+                    },
+                    "profesionales": {
+                        "available": true
+                    },
+                    "frontera": {
+                        "available": false
+                    },
+                    "summit": {
+                        "available": false
+                    },
+                    "senior": {
+                        "available": false
+                    }
+                }
+            },
+            "huesca": {
+                "name": "Huesca",
+                "coordinates": [
+                    -0.4085,
+                    42.1362
+                ],
+                "groups": {
+                    "universitarios": {
+                        "available": false
+                    },
+                    "profesionales": {
+                        "available": false
+                    },
+                    "frontera": {
+                        "available": false
+                    },
+                    "summit": {
+                        "available": false
+                    },
+                    "senior": {
+                        "available": false
+                    }
+                }
+            },
+            "teruel": {
+                "name": "Teruel",
+                "coordinates": [
+                    -1.1065,
+                    40.3457
+                ],
+                "groups": {
+                    "universitarios": {
+                        "available": false
+                    },
+                    "profesionales": {
+                        "available": false
+                    },
+                    "frontera": {
+                        "available": false
+                    },
+                    "summit": {
+                        "available": false
+                    },
+                    "senior": {
+                        "available": false
+                    }
+                }
+            },
+            "murcia": {
+                "name": "Murcia",
+                "coordinates": [
+                    -1.1307,
+                    37.9922
+                ],
+                "groups": {
+                    "universitarios": {
+                        "available": true
+                    },
+                    "profesionales": {
+                        "available": true
+                    },
+                    "frontera": {
+                        "available": false
+                    },
+                    "summit": {
+                        "available": false
+                    },
+                    "senior": {
+                        "available": false
+                    }
+                }
+            },
+            "cartagena": {
+                "name": "Cartagena",
+                "coordinates": [
+                    -0.9859,
+                    37.6051
+                ],
+                "groups": {
+                    "universitarios": {
+                        "available": true
+                    },
+                    "profesionales": {
+                        "available": false
+                    },
+                    "frontera": {
+                        "available": false
+                    },
+                    "summit": {
+                        "available": false
+                    },
+                    "senior": {
+                        "available": false
+                    }
+                }
+            },
+            "cieza": {
+                "name": "Cieza",
+                "coordinates": [
+                    -1.4184,
+                    38.2393
+                ],
+                "groups": {
+                    "universitarios": {
+                        "available": true
+                    },
+                    "profesionales": {
+                        "available": false
+                    },
+                    "frontera": {
+                        "available": false
+                    },
+                    "summit": {
+                        "available": false
+                    },
+                    "senior": {
+                        "available": false
+                    }
+                }
+            },
+            "santander": {
+                "name": "Santander",
+                "coordinates": [
+                    -3.8094,
+                    43.4623
+                ],
+                "groups": {
+                    "universitarios": {
+                        "available": true
+                    },
+                    "profesionales": {
+                        "available": false
+                    },
+                    "frontera": {
+                        "available": false
+                    },
+                    "summit": {
+                        "available": false
+                    },
+                    "senior": {
+                        "available": false
+                    }
+                }
+            },
+            "oviedo": {
+                "name": "Oviedo",
+                "coordinates": [
+                    -5.8448,
+                    43.3603
+                ],
+                "groups": {
+                    "universitarios": {
+                        "available": true
+                    },
+                    "profesionales": {
+                        "available": false
+                    },
+                    "frontera": {
+                        "available": false
+                    },
+                    "summit": {
+                        "available": false
+                    },
+                    "senior": {
+                        "available": false
+                    }
+                }
+            },
+            "gijon": {
+                "name": "Gijón",
+                "coordinates": [
+                    -5.6615,
+                    43.5357
+                ],
+                "groups": {
+                    "universitarios": {
+                        "available": false
+                    },
+                    "profesionales": {
+                        "available": false
+                    },
+                    "frontera": {
+                        "available": false
+                    },
+                    "summit": {
+                        "available": false
+                    },
+                    "senior": {
+                        "available": false
+                    }
+                }
+            },
+            "logrono": {
+                "name": "Logroño",
+                "coordinates": [
+                    -2.4450,
+                    42.4627
+                ],
+                "groups": {
+                    "universitarios": {
+                        "available": true
+                    },
+                    "profesionales": {
+                        "available": false
+                    },
+                    "frontera": {
+                        "available": false
+                    },
+                    "summit": {
+                        "available": false
+                    },
+                    "senior": {
+                        "available": false
+                    }
+                }
+            },
+            "mallorca": {
+                "name": "Mallorca",
+                "coordinates": [
+                    2.6502,
+                    39.5696
+                ],
+                "groups": {
+                    "universitarios": {
+                        "available": true
+                    },
+                    "profesionales": {
+                        "available": false
+                    },
+                    "frontera": {
+                        "available": false
+                    },
+                    "summit": {
+                        "available": false
+                    },
+                    "senior": {
+                        "available": false
+                    }
+                }
+            },
+            "menorca": {
+                "name": "Menorca",
+                "coordinates": [
+                    4.1130,
+                    39.8896
+                ],
+                "groups": {
+                    "universitarios": {
+                        "available": false
+                    },
+                    "profesionales": {
+                        "available": false
+                    },
+                    "frontera": {
+                        "available": false
+                    },
+                    "summit": {
+                        "available": false
+                    },
+                    "senior": {
+                        "available": false
+                    }
+                }
+            },
+            "ibiza": {
+                "name": "Ibiza",
+                "coordinates": [
+                    1.4330,
+                    38.9089
+                ],
+                "groups": {
+                    "universitarios": {
+                        "available": false
+                    },
+                    "profesionales": {
+                        "available": false
+                    },
+                    "frontera": {
+                        "available": false
+                    },
+                    "summit": {
+                        "available": false
+                    },
+                    "senior": {
+                        "available": false
+                    }
+                }
+            },
+            "gran_canaria": {
+                "name": "Gran Canaria",
+                "coordinates": [
+                    -15.4134,
+                    28.1248
+                ],
+                "groups": {
+                    "universitarios": {
+                        "available": true
+                    },
+                    "profesionales": {
+                        "available": false
+                    },
+                    "frontera": {
+                        "available": false
+                    },
+                    "summit": {
+                        "available": false
+                    },
+                    "senior": {
+                        "available": false
+                    }
+                }
+            },
+            "tenerife": {
+                "name": "Tenerife",
+                "coordinates": [
+                    -16.2472,
+                    28.4636
+                ],
+                "groups": {
+                    "universitarios": {
+                        "available": true
+                    },
+                    "profesionales": {
+                        "available": false
+                    },
+                    "frontera": {
+                        "available": false
+                    },
+                    "summit": {
+                        "available": false
+                    },
+                    "senior": {
+                        "available": false
+                    }
+                }
+            },
+            "ceuta": {
+                "name": "Ceuta",
+                "coordinates": [
+                    -5.3213,
+                    35.8894
+                ],
+                "groups": {
+                    "universitarios": {
+                        "available": false
+                    },
+                    "profesionales": {
+                        "available": false
+                    },
+                    "frontera": {
+                        "available": false
+                    },
+                    "summit": {
+                        "available": false
+                    },
+                    "senior": {
+                        "available": false
+                    }
+                }
+            },
+            "melilla": {
+                "name": "Melilla",
+                "coordinates": [
+                    -2.9384,
+                    35.2923
+                ],
+                "groups": {
+                    "universitarios": {
+                        "available": false
+                    },
+                    "profesionales": {
+                        "available": false
                     },
                     "frontera": {
                         "available": false
