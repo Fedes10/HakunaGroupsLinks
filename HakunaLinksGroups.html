@@ -7,6 +7,7 @@
     <title>Hakuna Links Groups - Horas Santas</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="Imágenes/hkn.jpg">
+    <link href='https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.css' rel='stylesheet' />
 
     <!-----Ref Estilos CSS--->
     <link rel="stylesheet" href="estilos.css">
@@ -23,6 +24,7 @@
             <h2>Encuentra tu comunidad</h2>
             <p>Selecciona tu región para acceder a los grupos oficiales y horarios de Horas Santas.</p>
         </div>
+        <button class="map-btn" onclick="showMapView()">🗺️ Mapa</button>
 
         <div class="country-grid">
             <div class="country-card" onclick="selectCountry('espana')">
@@ -52,6 +54,39 @@
         </div>
     </section>
 
+    <!-----------------Vista Mapa----------------->
+    <section id="map-view">
+        <button class="back-btn" onclick="hideMapView()">← Volver</button>
+
+        <div class="map-container">
+            <div class="map-header">
+                <h2>Mapa Interactivo</h2>
+                <span class="map-status">Vista Global</span>
+            </div>
+
+            <div class="map-wrapper">
+                <div id="map"></div>
+
+                <aside class="map-sidebar">
+                    <h3 class="sidebar-title">Capas del Mapa</h3>
+
+                    <label class="filter-option">
+                        <input type="checkbox" id="layer-espana" checked onchange="toggleEspana(this.checked)">
+                        <span>Ver España (Azul)</span>
+                    </label>
+
+                    <div style="margin-top: auto; font-size: 0.75rem; color: var(--text-gray);">
+                        <p>💡 Usa los filtros para limpiar la vista del mapa.</p>
+                    </div>
+                </aside>
+            </div>
+
+            <p class="instruction-text">
+                🌍 Haz clic en los países destacados para ver dónde hay Hakuna
+            </p>
+        </div>
+    </section>
+
     <!-----------------Selector Filtros----------------->
     <section id="city-view">
         <button class="back-btn" onclick="goBack()">← Volver a regiones</button>
@@ -59,6 +94,7 @@
         <div class="search-container">
             <input type="text" id="city-search" placeholder="Escribe tu ciudad..." onkeyup="renderCities(this.value)">
             <button id="clear-search" class="clear-btn" onclick="clearSearch()">✕</button>
+            <button class="map-btn" onclick="showMapView()">🗺️ Mapa</button>
         </div>
 
         <div class="filters" id="category-filters">
@@ -158,8 +194,6 @@
                         Aunque la web oficial indica horarios y lugares, los cambios, carteles y avisos importantes suelen
                         publicarse en los grupos de WhatsApp.
                         Tener acceso directo aporta seguridad, certeza y comodidad a quienes quieren asistir.
-                        <em>“Donde dos o tres se reúnen en mi nombre, allí estoy yo en medio de ellos.”</em> – Inspiración
-                        cristiana para transmitir buena fe y comunidad.<br>
                     </p>
                 </div>
                 <div class="footer-section">
@@ -222,6 +256,7 @@
 
     <!-----------------Scripts---------------->
     <script src="scripts.js"></script>
-    
+    <script src='https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.js'></script>
+
 </body>
 </html>
