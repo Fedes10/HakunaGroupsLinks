@@ -9,7 +9,7 @@
 
 ## ❓ ¿Por qué nace este proyecto?
 
-En muchas ocasiones, cuando una persona quiere asistir a una Hora Santa de Hakuna —especialmente en una ciudad distinta a la suya— se encuentra con dificultades prácticas:
+En muchas ocasiones, cuando una persona quiere asistir a una Hora Santa de Hakuna, especialmente en una ciudad distinta a la suya, se encuentra con dificultades prácticas:
 
 - La información puede estar dispersa o desactualizada.
 - No siempre existen enlaces públicos o visibles.
