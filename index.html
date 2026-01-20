@@ -149,119 +149,117 @@
 
     <!-----------------Pie de Pagina----------------->
     <footer>
-        <div class="footer-intro">
-            <h3>Sobre el Proyecto</h3>
-            <p style="margin-bottom: 20px;">
-                Una iniciativa creada de buena fe para centralizar y facilitar la información de las Horas Santas en cada ciudad.
-            </p>
-            <button class="toggle-footer-btn" onclick="toggleFooter()">Ver información detallada</button>
+    <div class="footer-intro">
+        <h3>Sobre el Proyecto</h3>
+        <p style="margin-bottom: 20px;">
+            Una iniciativa personal, nacida de buena fe, para facilitar el acceso a la información básica de las Horas Santas en cada ciudad.
+        </p>
+        <button class="toggle-footer-btn" onclick="toggleFooter()">Ver información detallada</button>
 
-            <div id="footer-details" style="display: none;">
-                <div class="footer-section">
-                    <!------1------->
-                    <h4>❓ Propósito</h4>
-                    <div class="separator"></div>
+        <div id="footer-details" style="display: none;">
+            <div class="footer-section">
+                <!------1------->
+                <h4>❓ Propósito</h4>
+                <div class="separator"></div>
 
-                    <p>
-                        Hakuna Links Groups nace con el propósito de <strong>ayudar a difundir y facilitar el
-                            acceso</strong> a las Horas Santas.
-                        Muchas veces la información de los grupos de WhatsApp y de los coordinadores está dispersa o
-                        desactualizada.
-                        Este proyecto centraliza los enlaces y ubicaciones, permitiendo que cualquier persona pueda
-                        encontrar fácilmente dónde y cuándo se celebran las Horas Santas, sin necesidad de preguntar a
-                        terceros.
-                        Su intención es digitalizar Hakuna y acercar a más personas a participar y a conocerse.
-                    </p>
+                <p>
+                    Hakuna Links Groups nace con el deseo de <strong>servir como punto de orientación</strong> para quienes quieren asistir a una Hora Santa y no saben por dónde empezar.
+                    En muchas ocasiones, la información práctica (horarios, lugares o contactos) se encuentra dispersa o cambia con el tiempo.
+                    Este proyecto pretende reunir esa información esencial para que cualquier persona pueda saber <strong>dónde y cuándo acudir</strong>, reduciendo barreras y facilitando el primer paso.
+                    No sustituye el encuentro personal ni la vida comunitaria, sino que busca ser un puente sencillo hacia ellos.
+                </p>
+            </div>
+
+            <div class="footer-section">
+                <br>
+                <!------2------->
+                <h4>🌍 Qué ofrece</h4>
+                <div class="separator"></div>
+                <ul style="margin-left: 20px;">
+                    <li>Listado de ciudades donde se celebran Horas Santas vinculadas a Hakuna.</li>
+                    <li>Información organizada por sectores:
+                        <ul>
+                            <li style="margin-left: 2em;">🎓 Universitarios</li>
+                            <li style="margin-left: 2em;">💼 Profesionales</li>
+                            <li style="margin-left: 2em;">💍 Frontera</li>
+                            <li style="margin-left: 2em;">🏔️ Summit</li>
+                            <li style="margin-left: 2em;">👥 Senior</li>
+                        </ul>
+                    </li>
+                    <li>Referencias a los canales habituales de comunicación para poder confirmar información actualizada.</li>
+                    <li>Ubicaciones orientativas donde se celebran las Horas Santas, teniendo en cuenta que pueden variar.</li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <!------3------->
+                <br>
+                <h4>❤️ Motivación</h4>
+                <div class="separator"></div>
+                <p>
+                    Muchas personas desean acudir a una Hora Santa, especialmente cuando están en una ciudad distinta a la suya, pero no saben si se sigue celebrando o si el horario es correcto.
+                    Este proyecto nace de esa experiencia concreta: <strong>facilitar la información mínima necesaria para poder ir</strong>, sin depender constantemente de terceros ni generar confusión.
+                </p>
+            </div>
+
+            <div class="footer-section">
+                <br>
+                <!------4------>
+                <h4>⚠️ Importante</h4>
+                <div class="separator"></div>
+                <p>
+                    Este sitio es <strong style="color: rgb(214, 154, 42);">extraoficial</strong> y no sustituye ni representa a la web oficial de Hakuna.
+                    Su único objetivo es facilitar el acceso a información orientativa y ayudar a quienes desean asistir a una Hora Santa.
+                    <br><br>
+                    Si eres coordinador, deseas aportar correcciones o mejoras, o si se considera que este proyecto no debe continuar, estaré totalmente abierto a escucharlo.
+                </p>
+
+                <div class="social-links-container">
+                    <a href="mailto:fedestalgat@gmail.com" class="social-link-item" title="Email">
+                        <svg class="social-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                        <span class="social-text">Email</span>
+                    </a>
+
+                    <a href="https://www.instagram.com/hakuna_links_groups/" target="_blank" class="social-link-item"
+                        title="Instagram">
+                        <svg class="social-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                        <span class="social-text">Instagram</span>
+                    </a>
+
+                    <a href="https://github.com/Fedes10/HakunaGroupsLinks" target="_blank" class="social-link-item" title="GitHub">
+                        <svg class="social-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                            </path>
+                        </svg>
+                        <span class="social-text">GitHub</span>
+                    </a>
                 </div>
-                <div class="footer-section">
-                    <br>
-                    <!------2------->
-                    <h4>🌍 Qué ofrece</h4>
-                    <div class="separator"></div>
-                    <ul style="margin-left: 20px;">
-                        <li>Listado completo de ciudades donde hay Hakuna.</li>
-                        <li>Información organizada por sectores:
-                            <ul>
-                                <li style="margin-left: 2em;">🎓 Universitarios</li>
-                                <li style="margin-left: 2em;">💼 Profesionales</li>
-                                <li style="margin-left: 2em;">💍 Frontera</li>
-                                <li style="margin-left: 2em;">🏔️ Summit</li>
-                                <li style="margin-left: 2em;">👥 Senior</li>
-                            </ul>
-                        </li>
-                        <li>Acceso directo a grupos de WhatsApp y canales de comunicación.</li>
-                        <li>Ubicaciones donde se celebran las Horas Santas (aunque pueden cambiar, esta información ayuda a
-                            orientar).</li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <!------3------->
-                    <br>
-                    <h4>❤️ Motivación</h4>
-                    <div class="separator"></div>
-                    <p>
-                        Aunque la web oficial indica horarios y lugares, los cambios, carteles y avisos importantes suelen
-                        publicarse en los grupos de WhatsApp.
-                        Tener acceso directo aporta seguridad, certeza y comodidad a quienes quieren asistir.
-                    </p>
-                </div>
-                <div class="footer-section">
-                    <br>
-                    <!------4------>
-                    <h4>⚠️ Importante</h4>
-                    <div class="separator"></div>
-                    <p>
-                        Este sitio es <strong style="color: rgb(214, 154, 42);">extraoficial</strong> y no sustituye a la web oficial de
-                        Hakuna.
-                        Su único objetivo es facilitar el acceso a la información y ayudar a quienes quieren asistir.
-                        <br><br>
-                        Si eres coordinador o quieres aportar mejoras, o si se considera que el proyecto debe cerrarse, estoy abierto a
-                        sugerencias.
-                    </p>
-                
-                    <div class="social-links-container">
-                        <a href="mailto:fedestalgat@gmail.com" class="social-link-item" title="Email">
-                            <svg class="social-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                                <polyline points="22,6 12,13 2,6"></polyline>
-                            </svg>
-                            <span class="social-text">Email</span>
-                        </a>
-                
-                        <a href="https://www.instagram.com/hakuna_links_groups/" target="_blank" class="social-link-item"
-                            title="Instagram">
-                            <svg class="social-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                            </svg>
-                            <span class="social-text">Instagram</span>
-                        </a>
-                
-                        <a href="https://github.com/Fedes10/HakunaGroupsLinks" target="_blank" class="social-link-item" title="GitHub">
-                            <svg class="social-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <path
-                                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
-                                </path>
-                            </svg>
-                            <span class="social-text">GitHub</span>
-                        </a>
-                    </div>
-                </div>
+            </div>
+
             <!------Extra-->
             <div class="footer-section" style="border-top: 1px solid #333; padding-top: 15px;">
-                <p class="desarrollado-por">Desarrollado con ❤️ por <strong>Federico Lora</strong> y para Él ✝️ (2026).</p>
-            </div>
+                <p class="desarrollado-por">
+                    Desarrollado con ❤️ por <strong>Federico Lora</strong>, como servicio y para Él ✝️ (2026).
+                </p>
             </div>
         </div>
-        <div class="copyright">
-            © 2026 Hakuna Links Groups – Facilitando el encuentro.
-        </div>
-    </footer>
+    </div>
 
+    <div class="copyright">
+        © 2026 Hakuna Links Groups – Un puente sencillo hacia el encuentro.
+    </div>
+</footer>
 
     <!-----------------Scripts---------------->
     <script src="scripts.js"></script>
