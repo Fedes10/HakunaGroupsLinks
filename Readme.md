@@ -83,7 +83,7 @@ Abierto a mejoras, correcciones y colaboración.
 
 ## 👤 Sobre el autor
 
-**Federico Lora** – Técnico Superior en Administración de Sistemas Informáticos en Red, actualmente cursando el Grado Superior en Desarrollo de Aplicaciones Multiplataforma (DAM).  
+**Federico Lora**, Técnico Superior en Administración de Sistemas Informáticos en Red, actualmente cursando el Grado Superior en Desarrollo de Aplicaciones Multiplataforma (DAM).  
 
 Desde pequeño me apasiona la informática, y me encanta **crear páginas web y herramientas que optimicen tareas o faciliten el acceso a información**, especialmente si ayudan a que la experiencia sea más agradable y cómoda para los usuarios.  
 
