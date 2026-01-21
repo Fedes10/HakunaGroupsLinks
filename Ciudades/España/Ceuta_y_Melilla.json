@@ -1,0 +1,232 @@
+{
+    "Ceuta_Y_Melilla": {
+        "ceuta": {
+            "name": "Ceuta",
+            "coordinates": [
+                -5.3167,
+                35.8894
+            ],
+            "groups": {
+                "universitarios": {
+                    "available": false,
+                    "centros": [
+                        {
+                            "lugar": "",
+                            "dia": "",
+                            "hora": "",
+                            "direccion": "",
+                            "mapa": "",
+                            "contacto_nombre": "",
+                            "telefono": "",
+                            "whatsapp": ""
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "",
+                        "contacto": "",
+                        "link": ""
+                    },
+                    "compartiriados": ""
+                },
+                "profesionales": {
+                    "available": false,
+                    "centros": [
+                        {
+                            "lugar": "",
+                            "dia": "",
+                            "hora": "",
+                            "direccion": "",
+                            "mapa": "",
+                            "contacto_nombre": "",
+                            "telefono": "",
+                            "whatsapp": ""
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "",
+                        "contacto": "",
+                        "link": ""
+                    },
+                    "compartiriados": ""
+                },
+                "frontera": {
+                    "available": false,
+                    "centros": [
+                        {
+                            "lugar": "",
+                            "dia": "",
+                            "hora": "",
+                            "direccion": "",
+                            "mapa": "",
+                            "contacto_nombre": "",
+                            "telefono": "",
+                            "whatsapp": ""
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "",
+                        "contacto": "",
+                        "link": ""
+                    },
+                    "compartiriados": ""
+                },
+                "summit": {
+                    "available": false,
+                    "centros": [
+                        {
+                            "lugar": "",
+                            "dia": "",
+                            "hora": "",
+                            "direccion": "",
+                            "mapa": "",
+                            "contacto_nombre": "",
+                            "telefono": "",
+                            "whatsapp": ""
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "",
+                        "contacto": "",
+                        "link": ""
+                    },
+                    "compartiriados": ""
+                },
+                "senior": {
+                    "available": false,
+                    "centros": [
+                        {
+                            "lugar": "",
+                            "dia": "",
+                            "hora": "",
+                            "direccion": "",
+                            "mapa": "",
+                            "contacto_nombre": "",
+                            "telefono": "",
+                            "whatsapp": ""
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "",
+                        "contacto": "",
+                        "link": ""
+                    },
+                    "compartiriados": ""
+                }
+            }
+        },
+        "melilla": {
+            "name": "Melilla",
+            "coordinates": [
+                -2.9384,
+                35.2923
+            ],
+            "groups": {
+                "universitarios": {
+                    "available": false,
+                    "centros": [
+                        {
+                            "lugar": "",
+                            "dia": "",
+                            "hora": "",
+                            "direccion": "",
+                            "mapa": "",
+                            "contacto_nombre": "",
+                            "telefono": "",
+                            "whatsapp": ""
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "",
+                        "contacto": "",
+                        "link": ""
+                    },
+                    "compartiriados": ""
+                },
+                "profesionales": {
+                    "available": false,
+                    "centros": [
+                        {
+                            "lugar": "",
+                            "dia": "",
+                            "hora": "",
+                            "direccion": "",
+                            "mapa": "",
+                            "contacto_nombre": "",
+                            "telefono": "",
+                            "whatsapp": ""
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "",
+                        "contacto": "",
+                        "link": ""
+                    },
+                    "compartiriados": ""
+                },
+                "frontera": {
+                    "available": false,
+                    "centros": [
+                        {
+                            "lugar": "",
+                            "dia": "",
+                            "hora": "",
+                            "direccion": "",
+                            "mapa": "",
+                            "contacto_nombre": "",
+                            "telefono": "",
+                            "whatsapp": ""
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "",
+                        "contacto": "",
+                        "link": ""
+                    },
+                    "compartiriados": ""
+                },
+                "summit": {
+                    "available": false,
+                    "centros": [
+                        {
+                            "lugar": "",
+                            "dia": "",
+                            "hora": "",
+                            "direccion": "",
+                            "mapa": "",
+                            "contacto_nombre": "",
+                            "telefono": "",
+                            "whatsapp": ""
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "",
+                        "contacto": "",
+                        "link": ""
+                    },
+                    "compartiriados": ""
+                },
+                "senior": {
+                    "available": false,
+                    "centros": [
+                        {
+                            "lugar": "",
+                            "dia": "",
+                            "hora": "",
+                            "direccion": "",
+                            "mapa": "",
+                            "contacto_nombre": "",
+                            "telefono": "",
+                            "whatsapp": ""
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "",
+                        "contacto": "",
+                        "link": ""
+                    },
+                    "compartiriados": ""
+                }
+            }
+        }
+    }
+}

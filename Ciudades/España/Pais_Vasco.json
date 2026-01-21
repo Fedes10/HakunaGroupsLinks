@@ -1,0 +1,346 @@
+{
+    "Pais_Vasco": {
+        "bilbao": {
+            "name": "Bilbao",
+            "coordinates": [
+                -2.9350,	
+                43.2630
+            ],
+            "groups": {
+                "universitarios": {
+                    "available": true,
+                    "centros": [
+                        {
+                            "lugar": "",
+                            "dia": "",
+                            "hora": "",
+                            "direccion": "",
+                            "mapa": "",
+                            "contacto_nombre": "",
+                            "telefono": "",
+                            "whatsapp": ""
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "",
+                        "contacto": "",
+                        "link": ""
+                    },
+                    "compartiriados": ""
+                },
+                "profesionales": {
+                    "available": false,
+                    "centros": [
+                        {
+                            "lugar": "",
+                            "dia": "",
+                            "hora": "",
+                            "direccion": "",
+                            "mapa": "",
+                            "contacto_nombre": "",
+                            "telefono": "",
+                            "whatsapp": ""
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "",
+                        "contacto": "",
+                        "link": ""
+                    },
+                    "compartiriados": ""
+                },
+                "frontera": {
+                    "available": false,
+                    "centros": [
+                        {
+                            "lugar": "",
+                            "dia": "",
+                            "hora": "",
+                            "direccion": "",
+                            "mapa": "",
+                            "contacto_nombre": "",
+                            "telefono": "",
+                            "whatsapp": ""
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "",
+                        "contacto": "",
+                        "link": ""
+                    },
+                    "compartiriados": ""
+                },
+                "summit": {
+                    "available": false,
+                    "centros": [
+                        {
+                            "lugar": "",
+                            "dia": "",
+                            "hora": "",
+                            "direccion": "",
+                            "mapa": "",
+                            "contacto_nombre": "",
+                            "telefono": "",
+                            "whatsapp": ""
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "",
+                        "contacto": "",
+                        "link": ""
+                    },
+                    "compartiriados": ""
+                },
+                "senior": {
+                    "available": false,
+                    "centros": [
+                        {
+                            "lugar": "",
+                            "dia": "",
+                            "hora": "",
+                            "direccion": "",
+                            "mapa": "",
+                            "contacto_nombre": "",
+                            "telefono": "",
+                            "whatsapp": ""
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "",
+                        "contacto": "",
+                        "link": ""
+                    },
+                    "compartiriados": ""
+                }
+            }
+        },
+        "san_sebastian": {
+            "name": "San Sebastián",
+            "coordinates": [
+                -1.9812,	
+                43.3183
+            ],
+            "groups": {
+                "universitarios": {
+                    "available": true,
+                    "centros": [
+                        {
+                            "lugar": "",
+                            "dia": "",
+                            "hora": "",
+                            "direccion": "",
+                            "mapa": "",
+                            "contacto_nombre": "",
+                            "telefono": "",
+                            "whatsapp": ""
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "",
+                        "contacto": "",
+                        "link": ""
+                    },
+                    "compartiriados": ""
+                },
+                "profesionales": {
+                    "available": false,
+                    "centros": [
+                        {
+                            "lugar": "",
+                            "dia": "",
+                            "hora": "",
+                            "direccion": "",
+                            "mapa": "",
+                            "contacto_nombre": "",
+                            "telefono": "",
+                            "whatsapp": ""
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "",
+                        "contacto": "",
+                        "link": ""
+                    },
+                    "compartiriados": ""
+                },
+                "frontera": {
+                    "available": false,
+                    "centros": [
+                        {
+                            "lugar": "",
+                            "dia": "",
+                            "hora": "",
+                            "direccion": "",
+                            "mapa": "",
+                            "contacto_nombre": "",
+                            "telefono": "",
+                            "whatsapp": ""
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "",
+                        "contacto": "",
+                        "link": ""
+                    },
+                    "compartiriados": ""
+                },
+                "summit": {
+                    "available": false,
+                    "centros": [
+                        {
+                            "lugar": "",
+                            "dia": "",
+                            "hora": "",
+                            "direccion": "",
+                            "mapa": "",
+                            "contacto_nombre": "",
+                            "telefono": "",
+                            "whatsapp": ""
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "",
+                        "contacto": "",
+                        "link": ""
+                    },
+                    "compartiriados": ""
+                },
+                "senior": {
+                    "available": false,
+                    "centros": [
+                        {
+                            "lugar": "",
+                            "dia": "",
+                            "hora": "",
+                            "direccion": "",
+                            "mapa": "",
+                            "contacto_nombre": "",
+                            "telefono": "",
+                            "whatsapp": ""
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "",
+                        "contacto": "",
+                        "link": ""
+                    },
+                    "compartiriados": ""
+                }
+            }
+        },
+        "vitoria_gasteiz": {
+            "name": "Vitoria-Gasteiz",
+            "coordinates": [
+                -2.6727,
+                42.8467
+            ],
+            "groups": {
+                "universitarios": {
+                    "available": false,
+                    "centros": [
+                        {
+                            "lugar": "",
+                            "dia": "",
+                            "hora": "",
+                            "direccion": "",
+                            "mapa": "",
+                            "contacto_nombre": "",
+                            "telefono": "",
+                            "whatsapp": ""
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "",
+                        "contacto": "",
+                        "link": ""
+                    },
+                    "compartiriados": ""
+                },
+                "profesionales": {
+                    "available": false,
+                    "centros": [
+                        {
+                            "lugar": "",
+                            "dia": "",
+                            "hora": "",
+                            "direccion": "",
+                            "mapa": "",
+                            "contacto_nombre": "",
+                            "telefono": "",
+                            "whatsapp": ""
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "",
+                        "contacto": "",
+                        "link": ""
+                    },
+                    "compartiriados": ""
+                },
+                "frontera": {
+                    "available": false,
+                    "centros": [
+                        {
+                            "lugar": "",
+                            "dia": "",
+                            "hora": "",
+                            "direccion": "",
+                            "mapa": "",
+                            "contacto_nombre": "",
+                            "telefono": "",
+                            "whatsapp": ""
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "",
+                        "contacto": "",
+                        "link": ""
+                    },
+                    "compartiriados": ""
+                },
+                "summit": {
+                    "available": false,
+                    "centros": [
+                        {
+                            "lugar": "",
+                            "dia": "",
+                            "hora": "",
+                            "direccion": "",
+                            "mapa": "",
+                            "contacto_nombre": "",
+                            "telefono": "",
+                            "whatsapp": ""
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "",
+                        "contacto": "",
+                        "link": ""
+                    },
+                    "compartiriados": ""
+                },
+                "senior": {
+                    "available": false,
+                    "centros": [
+                        {
+                            "lugar": "",
+                            "dia": "",
+                            "hora": "",
+                            "direccion": "",
+                            "mapa": "",
+                            "contacto_nombre": "",
+                            "telefono": "",
+                            "whatsapp": ""
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "",
+                        "contacto": "",
+                        "link": ""
+                    },
+                    "compartiriados": ""
+                }
+            }
+        }
+    }
+}

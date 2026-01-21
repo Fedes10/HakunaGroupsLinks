@@ -1,0 +1,688 @@
+{
+    "Galicia": {
+        "a_coruña": {
+            "name": "A Coruña",
+            "coordinates": [
+                -8.4115,
+                43.3623
+            ],
+            "groups": {
+                "universitarios": {
+                    "available": true,
+                    "centros": [
+                        {
+                            "lugar": "",
+                            "dia": "",
+                            "hora": "",
+                            "direccion": "",
+                            "mapa": "",
+                            "contacto_nombre": "",
+                            "telefono": "",
+                            "whatsapp": ""
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "",
+                        "contacto": "",
+                        "link": ""
+                    },
+                    "compartiriados": ""
+                },
+                "profesionales": {
+                    "available": false,
+                    "centros": [
+                        {
+                            "lugar": "",
+                            "dia": "",
+                            "hora": "",
+                            "direccion": "",
+                            "mapa": "",
+                            "contacto_nombre": "",
+                            "telefono": "",
+                            "whatsapp": ""
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "",
+                        "contacto": "",
+                        "link": ""
+                    },
+                    "compartiriados": ""
+                },
+                "frontera": {
+                    "available": false,
+                    "centros": [
+                        {
+                            "lugar": "",
+                            "dia": "",
+                            "hora": "",
+                            "direccion": "",
+                            "mapa": "",
+                            "contacto_nombre": "",
+                            "telefono": "",
+                            "whatsapp": ""
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "",
+                        "contacto": "",
+                        "link": ""
+                    },
+                    "compartiriados": ""
+                },
+                "summit": {
+                    "available": false,
+                    "centros": [
+                        {
+                            "lugar": "",
+                            "dia": "",
+                            "hora": "",
+                            "direccion": "",
+                            "mapa": "",
+                            "contacto_nombre": "",
+                            "telefono": "",
+                            "whatsapp": ""
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "",
+                        "contacto": "",
+                        "link": ""
+                    },
+                    "compartiriados": ""
+                },
+                "senior": {
+                    "available": false,
+                    "centros": [
+                        {
+                            "lugar": "",
+                            "dia": "",
+                            "hora": "",
+                            "direccion": "",
+                            "mapa": "",
+                            "contacto_nombre": "",
+                            "telefono": "",
+                            "whatsapp": ""
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "",
+                        "contacto": "",
+                        "link": ""
+                    },
+                    "compartiriados": ""
+                }
+            }
+        },
+        "lugo": {
+            "name": "Lugo",
+            "coordinates": [
+                -7.5560,	
+                43.0121
+            ],
+            "groups": {
+                "universitarios": {
+                    "available": false,
+                    "centros": [
+                        {
+                            "lugar": "",
+                            "dia": "",
+                            "hora": "",
+                            "direccion": "",
+                            "mapa": "",
+                            "contacto_nombre": "",
+                            "telefono": "",
+                            "whatsapp": ""
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "",
+                        "contacto": "",
+                        "link": ""
+                    },
+                    "compartiriados": ""
+                },
+                "profesionales": {
+                    "available": false,
+                    "centros": [
+                        {
+                            "lugar": "",
+                            "dia": "",
+                            "hora": "",
+                            "direccion": "",
+                            "mapa": "",
+                            "contacto_nombre": "",
+                            "telefono": "",
+                            "whatsapp": ""
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "",
+                        "contacto": "",
+                        "link": ""
+                    },
+                    "compartiriados": ""
+                },
+                "frontera": {
+                    "available": false,
+                    "centros": [
+                        {
+                            "lugar": "",
+                            "dia": "",
+                            "hora": "",
+                            "direccion": "",
+                            "mapa": "",
+                            "contacto_nombre": "",
+                            "telefono": "",
+                            "whatsapp": ""
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "",
+                        "contacto": "",
+                        "link": ""
+                    },
+                    "compartiriados": ""
+                },
+                "summit": {
+                    "available": false,
+                    "centros": [
+                        {
+                            "lugar": "",
+                            "dia": "",
+                            "hora": "",
+                            "direccion": "",
+                            "mapa": "",
+                            "contacto_nombre": "",
+                            "telefono": "",
+                            "whatsapp": ""
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "",
+                        "contacto": "",
+                        "link": ""
+                    },
+                    "compartiriados": ""
+                },
+                "senior": {
+                    "available": false,
+                    "centros": [
+                        {
+                            "lugar": "",
+                            "dia": "",
+                            "hora": "",
+                            "direccion": "",
+                            "mapa": "",
+                            "contacto_nombre": "",
+                            "telefono": "",
+                            "whatsapp": ""
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "",
+                        "contacto": "",
+                        "link": ""
+                    },
+                    "compartiriados": ""
+                }
+            }
+        },
+        "ourense": {
+            "name": "Ourense",
+            "coordinates": [
+                -7.8633,
+                42.3358
+            ],
+            "groups": {
+                "universitarios": {
+                    "available": false,
+                    "centros": [
+                        {
+                            "lugar": "",
+                            "dia": "",
+                            "hora": "",
+                            "direccion": "",
+                            "mapa": "",
+                            "contacto_nombre": "",
+                            "telefono": "",
+                            "whatsapp": ""
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "",
+                        "contacto": "",
+                        "link": ""
+                    },
+                    "compartiriados": ""
+                },
+                "profesionales": {
+                    "available": false,
+                    "centros": [
+                        {
+                            "lugar": "",
+                            "dia": "",
+                            "hora": "",
+                            "direccion": "",
+                            "mapa": "",
+                            "contacto_nombre": "",
+                            "telefono": "",
+                            "whatsapp": ""
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "",
+                        "contacto": "",
+                        "link": ""
+                    },
+                    "compartiriados": ""
+                },
+                "frontera": {
+                    "available": false,
+                    "centros": [
+                        {
+                            "lugar": "",
+                            "dia": "",
+                            "hora": "",
+                            "direccion": "",
+                            "mapa": "",
+                            "contacto_nombre": "",
+                            "telefono": "",
+                            "whatsapp": ""
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "",
+                        "contacto": "",
+                        "link": ""
+                    },
+                    "compartiriados": ""
+                },
+                "summit": {
+                    "available": false,
+                    "centros": [
+                        {
+                            "lugar": "",
+                            "dia": "",
+                            "hora": "",
+                            "direccion": "",
+                            "mapa": "",
+                            "contacto_nombre": "",
+                            "telefono": "",
+                            "whatsapp": ""
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "",
+                        "contacto": "",
+                        "link": ""
+                    },
+                    "compartiriados": ""
+                },
+                "senior": {
+                    "available": false,
+                    "centros": [
+                        {
+                            "lugar": "",
+                            "dia": "",
+                            "hora": "",
+                            "direccion": "",
+                            "mapa": "",
+                            "contacto_nombre": "",
+                            "telefono": "",
+                            "whatsapp": ""
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "",
+                        "contacto": "",
+                        "link": ""
+                    },
+                    "compartiriados": ""
+                }
+            }
+        },
+        "pontevedra": {
+            "name": "Pontevedra",
+            "coordinates": [
+                -8.6444,
+                42.4310
+            ],
+            "groups": {
+                "universitarios": {
+                    "available": false,
+                    "centros": [
+                        {
+                            "lugar": "",
+                            "dia": "",
+                            "hora": "",
+                            "direccion": "",
+                            "mapa": "",
+                            "contacto_nombre": "",
+                            "telefono": "",
+                            "whatsapp": ""
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "",
+                        "contacto": "",
+                        "link": ""
+                    },
+                    "compartiriados": ""
+                },
+                "profesionales": {
+                    "available": false,
+                    "centros": [
+                        {
+                            "lugar": "",
+                            "dia": "",
+                            "hora": "",
+                            "direccion": "",
+                            "mapa": "",
+                            "contacto_nombre": "",
+                            "telefono": "",
+                            "whatsapp": ""
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "",
+                        "contacto": "",
+                        "link": ""
+                    },
+                    "compartiriados": ""
+                },
+                "frontera": {
+                    "available": false,
+                    "centros": [
+                        {
+                            "lugar": "",
+                            "dia": "",
+                            "hora": "",
+                            "direccion": "",
+                            "mapa": "",
+                            "contacto_nombre": "",
+                            "telefono": "",
+                            "whatsapp": ""
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "",
+                        "contacto": "",
+                        "link": ""
+                    },
+                    "compartiriados": ""
+                },
+                "summit": {
+                    "available": false,
+                    "centros": [
+                        {
+                            "lugar": "",
+                            "dia": "",
+                            "hora": "",
+                            "direccion": "",
+                            "mapa": "",
+                            "contacto_nombre": "",
+                            "telefono": "",
+                            "whatsapp": ""
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "",
+                        "contacto": "",
+                        "link": ""
+                    },
+                    "compartiriados": ""
+                },
+                "senior": {
+                    "available": false,
+                    "centros": [
+                        {
+                            "lugar": "",
+                            "dia": "",
+                            "hora": "",
+                            "direccion": "",
+                            "mapa": "",
+                            "contacto_nombre": "",
+                            "telefono": "",
+                            "whatsapp": ""
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "",
+                        "contacto": "",
+                        "link": ""
+                    },
+                    "compartiriados": ""
+                }
+            }
+        },
+        "vigo": {
+            "name": "Vigo",
+            "coordinates": [
+                -8.7226,
+                42.2328
+            ],
+            "groups": {
+                "universitarios": {
+                    "available": true,
+                    "centros": [
+                        {
+                            "lugar": "",
+                            "dia": "",
+                            "hora": "",
+                            "direccion": "",
+                            "mapa": "",
+                            "contacto_nombre": "",
+                            "telefono": "",
+                            "whatsapp": ""
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "",
+                        "contacto": "",
+                        "link": ""
+                    },
+                    "compartiriados": ""
+                },
+                "profesionales": {
+                    "available": false,
+                    "centros": [
+                        {
+                            "lugar": "",
+                            "dia": "",
+                            "hora": "",
+                            "direccion": "",
+                            "mapa": "",
+                            "contacto_nombre": "",
+                            "telefono": "",
+                            "whatsapp": ""
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "",
+                        "contacto": "",
+                        "link": ""
+                    },
+                    "compartiriados": ""
+                },
+                "frontera": {
+                    "available": false,
+                    "centros": [
+                        {
+                            "lugar": "",
+                            "dia": "",
+                            "hora": "",
+                            "direccion": "",
+                            "mapa": "",
+                            "contacto_nombre": "",
+                            "telefono": "",
+                            "whatsapp": ""
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "",
+                        "contacto": "",
+                        "link": ""
+                    },
+                    "compartiriados": ""
+                },
+                "summit": {
+                    "available": false,
+                    "centros": [
+                        {
+                            "lugar": "",
+                            "dia": "",
+                            "hora": "",
+                            "direccion": "",
+                            "mapa": "",
+                            "contacto_nombre": "",
+                            "telefono": "",
+                            "whatsapp": ""
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "",
+                        "contacto": "",
+                        "link": ""
+                    },
+                    "compartiriados": ""
+                },
+                "senior": {
+                    "available": false,
+                    "centros": [
+                        {
+                            "lugar": "",
+                            "dia": "",
+                            "hora": "",
+                            "direccion": "",
+                            "mapa": "",
+                            "contacto_nombre": "",
+                            "telefono": "",
+                            "whatsapp": ""
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "",
+                        "contacto": "",
+                        "link": ""
+                    },
+                    "compartiriados": ""
+                }
+            }
+        },
+        "santiago_de_compostela": {
+            "name": "Santiago de Compostela",
+            "coordinates": [
+                -8.5448,
+                42.8782
+            ],
+            "groups": {
+                "universitarios": {
+                    "available": true,
+                    "centros": [
+                        {
+                            "lugar": "",
+                            "dia": "",
+                            "hora": "",
+                            "direccion": "",
+                            "mapa": "",
+                            "contacto_nombre": "",
+                            "telefono": "",
+                            "whatsapp": ""
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "",
+                        "contacto": "",
+                        "link": ""
+                    },
+                    "compartiriados": ""
+                },
+                "profesionales": {
+                    "available": false,
+                    "centros": [
+                        {
+                            "lugar": "",
+                            "dia": "",
+                            "hora": "",
+                            "direccion": "",
+                            "mapa": "",
+                            "contacto_nombre": "",
+                            "telefono": "",
+                            "whatsapp": ""
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "",
+                        "contacto": "",
+                        "link": ""
+                    },
+                    "compartiriados": ""
+                },
+                "frontera": {
+                    "available": false,
+                    "centros": [
+                        {
+                            "lugar": "",
+                            "dia": "",
+                            "hora": "",
+                            "direccion": "",
+                            "mapa": "",
+                            "contacto_nombre": "",
+                            "telefono": "",
+                            "whatsapp": ""
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "",
+                        "contacto": "",
+                        "link": ""
+                    },
+                    "compartiriados": ""
+                },
+                "summit": {
+                    "available": false,
+                    "centros": [
+                        {
+                            "lugar": "",
+                            "dia": "",
+                            "hora": "",
+                            "direccion": "",
+                            "mapa": "",
+                            "contacto_nombre": "",
+                            "telefono": "",
+                            "whatsapp": ""
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "",
+                        "contacto": "",
+                        "link": ""
+                    },
+                    "compartiriados": ""
+                },
+                "senior": {
+                    "available": false,
+                    "centros": [
+                        {
+                            "lugar": "",
+                            "dia": "",
+                            "hora": "",
+                            "direccion": "",
+                            "mapa": "",
+                            "contacto_nombre": "",
+                            "telefono": "",
+                            "whatsapp": ""
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "",
+                        "contacto": "",
+                        "link": ""
+                    },
+                    "compartiriados": ""
+                }
+            }
+        }
+    }
+}

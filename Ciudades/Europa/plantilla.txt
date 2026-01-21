@@ -1,10 +1,10 @@
 {
-    "Asturias": {
-        "oviedo": {
-            "name": "Oviedo",
+    "Cantabria⚠️": {
+        "santander⚠️": {
+            "name": "Santander⚠️",
             "coordinates": [
-                -5.8494,
-                43.3619
+                -3.8099,
+                43.4623
             ],
             "groups": {
                 "universitarios": {

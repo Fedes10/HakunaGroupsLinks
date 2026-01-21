@@ -1,0 +1,118 @@
+{
+    "Navarra": {
+        "pamplona": {
+            "name": "Pamplona",
+            "coordinates": [
+                -1.6432,
+                42.8125
+            ],
+            "groups": {
+                "universitarios": {
+                    "available": true,
+                    "centros": [
+                        {
+                            "lugar": "",
+                            "dia": "",
+                            "hora": "",
+                            "direccion": "",
+                            "mapa": "",
+                            "contacto_nombre": "",
+                            "telefono": "",
+                            "whatsapp": ""
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "",
+                        "contacto": "",
+                        "link": ""
+                    },
+                    "compartiriados": ""
+                },
+                "profesionales": {
+                    "available": false,
+                    "centros": [
+                        {
+                            "lugar": "",
+                            "dia": "",
+                            "hora": "",
+                            "direccion": "",
+                            "mapa": "",
+                            "contacto_nombre": "",
+                            "telefono": "",
+                            "whatsapp": ""
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "",
+                        "contacto": "",
+                        "link": ""
+                    },
+                    "compartiriados": ""
+                },
+                "frontera": {
+                    "available": false,
+                    "centros": [
+                        {
+                            "lugar": "",
+                            "dia": "",
+                            "hora": "",
+                            "direccion": "",
+                            "mapa": "",
+                            "contacto_nombre": "",
+                            "telefono": "",
+                            "whatsapp": ""
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "",
+                        "contacto": "",
+                        "link": ""
+                    },
+                    "compartiriados": ""
+                },
+                "summit": {
+                    "available": false,
+                    "centros": [
+                        {
+                            "lugar": "",
+                            "dia": "",
+                            "hora": "",
+                            "direccion": "",
+                            "mapa": "",
+                            "contacto_nombre": "",
+                            "telefono": "",
+                            "whatsapp": ""
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "",
+                        "contacto": "",
+                        "link": ""
+                    },
+                    "compartiriados": ""
+                },
+                "senior": {
+                    "available": false,
+                    "centros": [
+                        {
+                            "lugar": "",
+                            "dia": "",
+                            "hora": "",
+                            "direccion": "",
+                            "mapa": "",
+                            "contacto_nombre": "",
+                            "telefono": "",
+                            "whatsapp": ""
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "",
+                        "contacto": "",
+                        "link": ""
+                    },
+                    "compartiriados": ""
+                }
+            }
+        }
+    }
+}
