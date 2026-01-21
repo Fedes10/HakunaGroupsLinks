@@ -209,7 +209,7 @@
                 }
             }
         },
-        "Madrid": {
+       "Madrid": {
             "madrid_centro": {
                 "name": "Madrid Centro",
                 "coordinates": [
@@ -225,28 +225,62 @@
                                 "dia": "Lunes",
                                 "hora": "21:00h",
                                 "direccion": "Calle Mártires Concepcionistas, 12, Las Rozas",
+                                "mapa": "https://www.google.com/maps/search/?api=1&query=Calle+Mártires+Concepcionistas+12+Las+Rozas",
+                                "contacto_nombre": "Arancha Abad",
+                                "telefono": "645623692",
                                 "whatsapp": "https://chat.whatsapp.com/IzXy3VVABObBFasPcqvmLl"
+                            },
+                            {
+                                "lugar": "Parroquia San Vicente de Paul",
+                                "dia": "Lunes",
+                                "hora": "21:00h",
+                                "direccion": "Plaza de San Vicente de Paúl, 1, Carabanchel",
+                                "mapa": "https://www.google.com/maps/search/?api=1&query=Plaza+de+San+Vicente+de+Paúl+1+Madrid",
+                                "contacto_nombre": "Gemma López",
+                                "telefono": "663536812",
+                                "whatsapp": "https://chat.whatsapp.com/BvsbHjDeDvAA8ocjXJAleb"
                             },
                             {
                                 "lugar": "Monasterio de San José",
                                 "dia": "Jueves",
                                 "hora": "21:00h",
                                 "direccion": "Calle Blasco Garay, 51, Madrid",
+                                "mapa": "https://www.google.com/maps/search/?api=1&query=Calle+Blasco+Garay+51+Madrid",
+                                "contacto_nombre": "Blanca Palma",
+                                "telefono": "648455542",
                                 "whatsapp": "https://chat.whatsapp.com/EQhTGCOoa9tAWXJzFWSi2"
+                            }
+                        ],
+                        "revolcaderos": {
+                            "info": "Inscripciones: 1-15 Sept / 1-10 Feb",
+                            "contacto": "Ramón Enciso",
+                            "link": "https://bit.ly/RevolcaderosMadrid"
+                        },
+                        "compartiriados": "https://hakuna.org"
+                    },
+                    "profesionales": {
+                        "available": true,
+                        "centros": [
+                            {
+                                "lugar": "Consultar Sede Central",
+                                "dia": "Martes",
+                                "hora": "20:30h",
+                                "direccion": "Sede Hakuna Madrid",
+                                "mapa": "#",
+                                "contacto_nombre": "Info Hakuna",
+                                "telefono": "000000000",
+                                "whatsapp": "#"
                             }
                         ]
                     },
-                    "profesionales": {
-                        "available": true
-                    },
                     "frontera": {
-                        "available": true
+                        "available": false
                     },
                     "summit": {
-                        "available": true
+                        "available": false
                     },
                     "senior": {
-                        "available": true
+                        "available": false
                     }
                 }
             }
@@ -1177,6 +1211,63 @@
                 }
             }
         },
+        "País Vasco": {
+            "alava": {
+                "name": "Álava",
+                "coordinates": [-2.67, 42.85],
+                "groups": {
+                    "universitarios": {
+                        "available": false
+                    },
+                    "profesionales": {
+                        "available": false
+                    },
+                    "frontera": {
+                        "available": false
+                    },
+                    "summit": {
+                        "available": false
+                    },
+                    "senior": {
+                        "available": false
+                    }
+                }
+            }
+        },
+        "Asturias": {
+            "asturias": {
+                "name": "Asturias",
+                "coordinates": [
+                    0,
+                    0
+                ],
+                "groups": {
+                    "universitarios": {
+                        "available": false
+                    },
+                    "profesionales": {
+                        "available": false
+                    },
+                    "frontera": {
+                        "available": false
+                    },
+                    "summit": {
+                        "available": false
+                    },
+                    "senior": {
+                        "available": false
+                    }
+                }
+            }
+        },
+
+
+
+
+
+
+
+
         "Otras Regiones": {
             "zaragoza": {
                 "name": "Zaragoza",
