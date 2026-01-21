@@ -94,6 +94,7 @@ La **música** es otro de los pilares de mi vida que amo y que me inspira, y com
 
 Mi dedicación es total, mi objetivo es aprender y crecer continuamente, y siempre busco maneras de **ayudar y servir a los demás**, especialmente a través de proyectos como este.
 
+[![Instagram](https://img.shields.io/badge/Instagram-@fedes10_oficial-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/fedes10_oficial?igsh=MWdtNmN5ZzNiamcxdw==)
 ---
 
 © 2026 – Proyecto ideado y desarrollado por **Federico Lora**
