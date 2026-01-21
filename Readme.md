@@ -87,16 +87,9 @@ Abierto a mejoras, correcciones y colaboración.
 
 Desde pequeño me apasiona la informática, y me encanta **crear páginas web y herramientas que optimicen tareas o faciliten el acceso a información**, especialmente si ayudan a que la experiencia sea más agradable y cómoda para los usuarios.  
 
-Soy de **Córdoba, España**, y comencé con Hakuna Córdoba hace 4 años, cuando apenas sabía qué era Hakuna. Poco a poco, mi implicación y compromiso han ido creciendo, aprendiendo, participando y “pringándome” cada vez más. Hoy estoy en un proceso de **discernimiento profundo**, buscando entregarme completamente, ayudar a evangelizar y llevar Hakuna a más personas, porque **Hakuna me ha ayudado muchísimo en mi vida**.  
+Actualmente resido en **Córdoba, España**, y comencé con Hakuna Córdoba hace 4 años, cuando apenas sabía qué era Hakuna. Poco a poco, mi implicación y compromiso han ido creciendo; aprendiendo, participando y “pringándome” cada vez más. A día de hoy estoy en pleno proceso de **discernimiento a pringado**, buscando entregarme completamente ayudando a evangelizar y a llevar Hakuna a más personas, porque en lo personal, **Hakuna me ha ayudado muchísimo en mi vida**.  
 
-La **música** es otro de los pilares de mi vida que amo y que me inspira, y combinada con Hakuna, siento que forma un combo perfecto que guía mi camino y mi servicio.
-
-Mi experiencia profesional y académica incluye:
-- Administración de servidores y redes locales
-- Seguridad informática y soporte técnico
-- Desarrollo de páginas web y conocimientos básicos de IA
-- Experiencia internacional con Erasmus Plus en Lituania
-- Habilidades en hardware, reparación y configuración de sistemas
+La **música** es otro de los pilares de mi vida que amo y que me inspira, y combinada con Hakuna, siento que forma el combo perfecto que guía mi camino y mi servicio hacia Él ✝️.
 
 Mi dedicación es total, mi objetivo es aprender y crecer continuamente, y siempre busco maneras de **ayudar y servir a los demás**, especialmente a través de proyectos como este.
 
