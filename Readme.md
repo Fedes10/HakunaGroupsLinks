@@ -5,6 +5,8 @@
 [![WEB Pringado](https://img.shields.io/badge/Web%20Pringado-Ver%20Web-blue)](https://htmlpreview.github.io/?https://github.com/Fedes10/HakunaGroupsLinks/blob/main/Pringado.html)
 [![WEB Hakuna Groups Links](https://img.shields.io/badge/Hakuna%20Links-Ver%20Web-red)](https://fedes10.github.io/HakunaGroupsLinks/)
 
+[![WEB Personal](https://img.shields.io/badge/WebPersonal-Ver%20CV-yellow)](https://htmlpreview.github.io/?https://github.com/Fedes10/Fedes10/blob/main/Federico.html)
+
 ---
 
 ## ❓ ¿Por qué nace este proyecto?
