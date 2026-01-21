@@ -4,72 +4,80 @@
             "name": "Almería",
             "coordinates": [
                 -2.4637,
-                36.8340
+                36.834
             ],
             "groups": {
                 "universitarios": {
                     "available": true,
                     "centros": [
                         {
-                            "lugar": "dd",
-                            "dia": "3",
-                            "hora": "",
-                            "direccion": "",
-                            "mapa": "",
-                            "contacto_nombre": "",
-                            "telefono": "",
+                            "lugar": "Iglesia del Espíritu Santo",
+                            "dia": "Jueves",
+                            "hora": "20:30h",
+                            "direccion": "C. Tirso de Molina, 38, 04005 Almería",
+                            "mapa": "https://maps.app.goo.gl/6DCxz2Re16wpmEzYA",
+                            "contacto_nombre": "Marimar",
+                            "telefono": "+34 601207934",
                             "whatsapp": "",
                             "coordinates": [
-                                -3.8741,
-                                40.5141
+                                -2.4563823046450945,
+                                36.84002484021231
                             ]
                         }
                     ],
                     "revolcaderos": {
-                        "info": "",
-                        "contacto": "",
+                        "info": "Preguntar a la Coordinadora",
+                        "contacto": "Arantxa (+34 634 45 62 11)",
                         "link": ""
                     },
-                    "compartiriados": "d"
+                    "compartiriados": ""
                 },
                 "profesionales": {
-                    "available": false,
+                    "available": true,
                     "centros": [
                         {
-                            "lugar": "",
-                            "dia": "",
-                            "hora": "",
-                            "direccion": "",
-                            "mapa": "",
-                            "contacto_nombre": "",
-                            "telefono": "",
-                            "whatsapp": ""
+                            "lugar": "Iglesia del Espíritu Santo",
+                            "dia": "Jueves",
+                            "hora": "20:30h",
+                            "direccion": "C. Tirso de Molina, 38, 04005 Almería",
+                            "mapa": "https://maps.app.goo.gl/6DCxz2Re16wpmEzYA",
+                            "contacto_nombre": "Marimar",
+                            "telefono": "+34 634 456 211",
+                            "whatsapp": "",
+                            "coordinates": [
+                                -2.4563823046450945,
+                                36.84002484021231
+                            ]
                         }
                     ],
                     "revolcaderos": {
-                        "info": "",
-                        "contacto": "",
+                        "info": "Preguntar a la Coordinadora",
+                        "contacto": "Arantxa (+34 634 45 62 11)",
                         "link": ""
                     },
                     "compartiriados": ""
                 },
                 "frontera": {
-                    "available": false,
+                    "available": true,
                     "centros": [
                         {
-                            "lugar": "",
-                            "dia": "",
-                            "hora": "",
-                            "direccion": "",
-                            "mapa": "",
-                            "contacto_nombre": "",
-                            "telefono": "",
-                            "whatsapp": ""
+                            "lugar": "Iglesia del Espíritu Santo",
+                            "dia": "Jueves",
+                            "hora": "20:30h",
+                            "direccion": "C. Tirso de Molina, 38, 04005 Almería",
+                            "mapa": "https://maps.app.goo.gl/6DCxz2Re16wpmEzYA",
+                            "contacto_nombre": "Marimar",
+                            "telefono": "+34 634 456 211",
+                            "whatsapp": "",
+                            "coordinates": [
+                                -2.4563823046450945,
+                                36.84002484021231
+                            ]
                         }
                     ],
                     "revolcaderos": {
-                        "info": "",
-                        "contacto": "",
+                        "info": "Preguntar a la Coordinadora",
+                        "contacto": "Arantxa (+34 634 45 62 11)",
                         "link": ""
                     },
                     "compartiriados": ""
@@ -254,7 +262,6 @@
                             "coordinates": [
                                 -4.786842448133176,
                                 37.88072934447826
-      
                             ]
                         }
                     ],
@@ -582,7 +589,7 @@
         "jaen": {
             "name": "Jaén",
             "coordinates": [
-                -3.7900,
+                -3.79,
                 37.7667
             ],
             "groups": {
