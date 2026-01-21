@@ -95,7 +95,6 @@ La **música** es otro de los pilares de mi vida que amo y que me inspira, y com
 Mi dedicación es total, mi objetivo es aprender y crecer continuamente, y siempre busco maneras de **ayudar y servir a los demás**, especialmente a través de proyectos como este.
 
 [![Instagram](https://img.shields.io/badge/Instagram-@fedes10_oficial-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/fedes10_oficial?igsh=MWdtNmN5ZzNiamcxdw==)
-
 [![Email](https://img.shields.io/badge/Email-fedestalgat@gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:fedestalgat@gmail.com)
 ---
 
