@@ -2,7 +2,7 @@
 
 **Hakuna Links Groups** es un proyecto web **extraoficial** creado como servicio para **orientar y facilitar el acceso a la información básica de las Horas Santas vinculadas a Hakuna en cada ciudad**, así como a los **canales habituales de comunicación** donde se comparte la información actualizada.
 
-[![WEB Hakuna Links Groups](https://img.shields.io/badge/Web%20Pringado-Ver%20Web-blue)](https://fedes10.github.io/HakunaGroupsLinks/)
+[![WEB Hakuna Links Groups](https://img.shields.io/badge/Web%20Hakuna Groups Links-Ver%20Web-blue)](https://fedes10.github.io/HakunaGroupsLinks/)
 
 [![WEB Personal](https://img.shields.io/badge/WebPersonal-Ver%20CV-yellow)](https://htmlpreview.github.io/?https://github.com/Fedes10/Fedes10/blob/main/Federico.html)
 
