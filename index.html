@@ -11,6 +11,7 @@
     <!-----Ref Estilos CSS--->
     <link rel="stylesheet" href="estilos.css">
 </head>
+
 <body>
 
     <header>
@@ -53,7 +54,8 @@
         </div>
     </section>
 
-    <!-----------------Vista Mapa----------------->
+    <!-----------------MAPA----------------->
+
     <section id="map-view">
         <button class="back-btn" onclick="hideMapView()">← Volver</button>
 
@@ -70,8 +72,25 @@
                     <h3 class="sidebar-title">Capas del Mapa</h3>
 
                     <label class="filter-option">
-                        <input type="checkbox" id="layer-espana" checked onchange="toggleEspana(this.checked)">
-                        <span>Ver España (Azul)</span>
+                        <input type="checkbox" id="layer-europa" checked
+                            onchange="toggleCategoria('europa', this.checked)">
+                        <span>Europa</span>
+                    </label>
+
+                    <label class="filter-option">
+                        <input type="checkbox" id="layer-latam" checked
+                            onchange="toggleCategoria('latam', this.checked)">
+                        <span>Latinoamérica</span>
+                    </label>
+
+                    <label class="filter-option">
+                        <input type="checkbox" id="layer-usa" checked onchange="toggleCategoria('usa', this.checked)">
+                        <span>EEUU</span>
+                    </label>
+
+                    <label class="filter-option">
+                        <input type="checkbox" id="layer-asia" checked onchange="toggleCategoria('asia', this.checked)">
+                        <span>Asia (Corea del Sur)</span>
                     </label>
 
                     <div style="margin-top: auto; font-size: 0.75rem; color: var(--text-gray);">
@@ -129,8 +148,8 @@
         <div id="cities-display-container"></div>
     </section>
 
-     <!-----------------Ventanas Ciudades----------------->
-     
+    <!-----------------Ventanas Ciudades----------------->
+
     <div class="modal-overlay" id="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -139,12 +158,13 @@
             </div>
             <div class="modal-tabs desktop-modal-tabs" id="modal-tabs"></div>
             <div class="mobile-modal-dropdown">
-                <select id="mobile-modal-select" class="mobile-modal-select-pro" onchange="switchModalTab(this.value)"></select>
+                <select id="mobile-modal-select" class="mobile-modal-select-pro"
+                    onchange="switchModalTab(this.value)"></select>
             </div>
             <div class="modal-body" id="modal-body-content"></div>
         </div>
     </div>
-    
+
 
 
     <!-----------------Pie de Pagina----------------->
@@ -152,21 +172,23 @@
         <div class="footer-intro">
             <h3>Sobre el Proyecto</h3>
             <p style="margin-bottom: 20px;">
-                Una iniciativa personal, nacida de buena fe, para facilitar el acceso a la información básica de las Horas
+                Una iniciativa personal, nacida de buena fe, para facilitar el acceso a la información básica de las
+                Horas
                 Santas en cada ciudad.
             </p>
             <button class="toggle-footer-btn" onclick="toggleFooter()">Ver información detallada</button>
-    
+
             <div id="footer-details" style="display: none;">
                 <div class="footer-section">
                     <!------1------->
                     <h4>❓ Propósito</h4>
                     <div class="separator"></div>
-    
+
                     <p>
                         Hakuna Links Groups nace con el deseo de <strong>servir como punto de orientación</strong> para
                         quienes quieren asistir a una Hora Santa y no saben por dónde empezar.
-                        En muchas ocasiones, la información práctica (horarios, lugares o contactos) se encuentra dispersa o
+                        En muchas ocasiones, la información práctica (horarios, lugares o contactos) se encuentra
+                        dispersa o
                         cambia con el tiempo.
                         Este proyecto pretende reunir esa información esencial para que cualquier persona pueda saber
                         <strong>dónde y cuándo acudir</strong>, reduciendo barreras y facilitando el primer paso.
@@ -174,7 +196,7 @@
                         hacia ellos.
                     </p>
                 </div>
-    
+
                 <div class="footer-section">
                     <br>
                     <!------2------->
@@ -197,20 +219,22 @@
                             variar.</li>
                     </ul>
                 </div>
-    
+
                 <div class="footer-section">
                     <!------3------->
                     <br>
                     <h4>❤️ Motivación</h4>
                     <div class="separator"></div>
                     <p>
-                        Muchas personas desean acudir a una Hora Santa, especialmente cuando están en una ciudad distinta a
+                        Muchas personas desean acudir a una Hora Santa, especialmente cuando están en una ciudad
+                        distinta a
                         la suya, pero no saben si se sigue celebrando o si el horario es correcto.
-                        Este proyecto nace de esa experiencia concreta: <strong>facilitar la información mínima necesaria
+                        Este proyecto nace de esa experiencia concreta: <strong>facilitar la información mínima
+                            necesaria
                             para poder ir</strong>, sin depender constantemente de terceros ni generar confusión.
                     </p>
                 </div>
-    
+
                 <div class="footer-section">
                     <br>
                     <!------4------>
@@ -219,19 +243,21 @@
                     <p>
                         Este sitio es <strong style="color: rgb(214, 154, 42);">extraoficial</strong> y no sustituye ni
                         representa a la web oficial de Hakuna.
-                        Su único objetivo es facilitar el acceso a información orientativa y ayudar a quienes desean asistir
+                        Su único objetivo es facilitar el acceso a información orientativa y ayudar a quienes desean
+                        asistir
                         a una Hora Santa.
                         <br><br>
-                        Si eres coordinador, deseas aportar correcciones o mejoras, o si se considera que este proyecto no
+                        Si eres coordinador, deseas aportar correcciones o mejoras, o si se considera que este proyecto
+                        no
                         debe continuar,
                         estaré totalmente abierto a escucharlo.
                     </p>
-    
+
                     <p style="margin-top: 12px; font-size: 0.9em; opacity: 0.85; font-style: italic;">
                         Más información sobre la finalidad, la motivación o el propio proyecto está disponible en el
                         repositorio de GitHub.
                     </p>
-    
+
                     <div class="social-links-container">
                         <a href="mailto:fedestalgat@gmail.com" class="social-link-item" title="Email">
                             <svg class="social-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -242,9 +268,9 @@
                             </svg>
                             <span class="social-text">Email</span>
                         </a>
-    
-                        <a href="https://www.instagram.com/hakuna_links_groups/" target="_blank" class="social-link-item"
-                            title="Instagram">
+
+                        <a href="https://www.instagram.com/hakuna_links_groups/" target="_blank"
+                            class="social-link-item" title="Instagram">
                             <svg class="social-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
@@ -253,7 +279,7 @@
                             </svg>
                             <span class="social-text">Instagram</span>
                         </a>
-    
+
                         <a href="https://github.com/Fedes10/HakunaGroupsLinks" target="_blank" class="social-link-item"
                             title="GitHub">
                             <svg class="social-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -266,7 +292,7 @@
                         </a>
                     </div>
                 </div>
-    
+
                 <!------Extra-->
                 <div class="footer-section" style="border-top: 1px solid #333; padding-top: 15px;">
                     <p class="desarrollado-por">
@@ -275,7 +301,7 @@
                 </div>
             </div>
         </div>
-    
+
         <div class="copyright">
             © 2026 Hakuna Links Groups – Un puente sencillo hacia el encuentro.
         </div>
@@ -287,4 +313,5 @@
     <script src='https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.js'></script>
 
 </body>
+
 </html>

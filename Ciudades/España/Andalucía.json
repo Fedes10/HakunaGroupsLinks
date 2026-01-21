@@ -18,7 +18,11 @@
                             "mapa": "",
                             "contacto_nombre": "",
                             "telefono": "",
-                            "whatsapp": ""
+                            "whatsapp": "",
+                            "coordinates": [
+                                -3.8741,
+                                40.5141
+                            ]
                         }
                     ],
                     "revolcaderos": {
@@ -239,14 +243,19 @@
                     "available": true,
                     "centros": [
                         {
-                            "lugar": "",
-                            "dia": "",
-                            "hora": "",
-                            "direccion": "",
-                            "mapa": "",
+                            "lugar": "Parroquia Santa Cecilia",
+                            "dia": "Lunes",
+                            "hora": "20:45",
+                            "direccion": "Parroquia Santa Cecilia, Camino de los Sastres, 1, 14004 Córdoba",
+                            "mapa": "https://maps.app.goo.gl/65zEjpDttn9PukEk9",
                             "contacto_nombre": "",
                             "telefono": "",
-                            "whatsapp": ""
+                            "whatsapp": "",
+                            "coordinates": [
+                                -4.786842448133176,
+                                37.88072934447826
+      
+                            ]
                         }
                     ],
                     "revolcaderos": {

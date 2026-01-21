@@ -442,13 +442,11 @@ header h1 {
 
 /* Estado Deshabilitado */
 .modal-tab.disabled {
-    background: repeating-linear-gradient(
-        45deg,
-        rgba(128, 128, 128, 0.1),
-        rgba(128, 128, 128, 0.1) 4px,
-        rgba(128, 128, 128, 0.2) 4px,
-        rgba(128, 128, 128, 0.2) 8px
-    );
+    background: repeating-linear-gradient(45deg,
+            rgba(128, 128, 128, 0.1),
+            rgba(128, 128, 128, 0.1) 4px,
+            rgba(128, 128, 128, 0.2) 4px,
+            rgba(128, 128, 128, 0.2) 8px);
     color: #b0bec5;
     border: 2px solid rgba(128, 128, 128, 0.3);
     cursor: not-allowed;
@@ -537,6 +535,41 @@ header h1 {
     .mobile-modal-dropdown,
     .mobile-filter-container {
         display: block !important;
+    }
+}
+
+@media (max-width: 850px) {
+    #map-view {
+        padding: 1rem !important;
+        /* Menos espacio alrededor en móvil */
+    }
+
+    .map-container {
+        padding: 1rem !important;
+        height: auto !important;
+        /* Deja que crezca según el contenido */
+    }
+
+    .map-wrapper {
+        flex-direction: column !important;
+        display: flex !important;
+    }
+
+    #map {
+        width: 100% !important;
+        height: 400px !important;
+        /* Altura fija para que no salga con 0px */
+        min-height: 400px !important;
+        display: block !important;
+        /* Asegura que no esté oculto */
+    }
+
+    .map-sidebar {
+        order: -1;
+        /* Filtros arriba */
+        width: 100% !important;
+        max-height: 300px;
+        overflow-y: auto;
     }
 }
 
@@ -646,12 +679,19 @@ header h1 {
 }
 
 @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
         transform: translateY(0);
     }
+
     40% {
         transform: translateY(-10px);
     }
+
     60% {
         transform: translateY(-5px);
     }
@@ -690,6 +730,7 @@ header h1 {
     margin-bottom: 20px;
     line-height: 1.4;
 }
+
 .btn-whatsapp {
     background-color: #23be5c;
     color: #444444;
@@ -1048,6 +1089,7 @@ footer ul li {
     padding-bottom: 15px;
     border-bottom: 2px solid #f1f5f9;
 }
+
 .map-status {
     font-size: 0.75rem;
     background: #fff1f0;
@@ -1057,12 +1099,14 @@ footer ul li {
     font-weight: bold;
     text-transform: uppercase;
 }
+
 /* Estructura de Dos Columnas para el Mapa y Filtros */
 .map-wrapper {
     display: flex;
     gap: 20px;
     width: 100%;
 }
+
 #map {
     flex: 3;
     /* El mapa ocupa más espacio */
@@ -1071,6 +1115,7 @@ footer ul li {
     border: 1px solid #edf2f7;
     background-color: #e5e9ec;
 }
+
 /* Estilos del Menú Lateral de Filtros */
 .map-sidebar {
     flex: 1;
@@ -1083,6 +1128,7 @@ footer ul li {
     flex-direction: column;
     gap: 15px;
 }
+
 .sidebar-title {
     font-size: 0.9rem;
     font-weight: 700;
@@ -1093,6 +1139,7 @@ footer ul li {
     border-bottom: 2px solid var(--border-color);
     padding-bottom: 5px;
 }
+
 .filter-option {
     display: flex;
     align-items: center;
@@ -1106,16 +1153,19 @@ footer ul li {
     font-weight: 600;
     font-size: 0.85rem;
 }
+
 .filter-option:hover {
     border-color: #5a96bd;
     background: #f0f7ff;
 }
+
 .filter-option input {
     width: 18px;
     height: 18px;
     cursor: pointer;
     accent-color: #5a96bd;
 }
+
 .instruction-text {
     font-size: 0.9rem;
     color: var(--text-gray);
@@ -1125,22 +1175,27 @@ footer ul li {
     border-radius: 12px;
     font-weight: 600;
 }
+
 /* Limpieza de logos de mapa */
 .maplibregl-ctrl-attrib,
 .maplibregl-ctrl-logo {
     display: none !important;
 }
+
 /* Responsive: En móviles se pone uno debajo de otro */
 @media (max-width: 850px) {
     .map-wrapper {
         flex-direction: column;
     }
+
     .map-sidebar {
         order: -1;
         /* Filtros arriba en móvil */
     }
+
     #map {
-        height: 400px; /* Altura más pequeña para móviles */
+        height: 400px;
+        /* Altura más pequeña para móviles */
     }
 }
 

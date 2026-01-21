@@ -1,78 +1,94 @@
 {
-"Madrid": {
-    "madrid_centro": {
-        "name": "Madrid Centro",
-        "coordinates": [
-            -3.7038,
-            40.4168
-        ],
-        "groups": {
-            "universitarios": {
-                "available": true,
-                "centros": [
-                    {
-                        "lugar": "Estudio Hakuna",
-                        "dia": "Lunes",
-                        "hora": "21:00h",
-                        "direccion": "Calle Mártires Concepcionistas, 12, Las Rozas",
-                        "mapa": "https://www.google.com/maps/search/?api=1&query=Calle+Mártires+Concepcionistas+12+Las+Rozas",
-                        "contacto_nombre": "Arancha Abad",
-                        "telefono": "645623692",
-                        "whatsapp": "https://chat.whatsapp.com/IzXy3VVABObBFasPcqvmLl"
+    "Madrid": {
+        "madrid_centro": {
+            "name": "Madrid Centro",
+            "coordinates": [
+                -3.7038,
+                40.4168
+            ],
+            "groups": {
+                "universitarios": {
+                    "available": true,
+                    "centros": [
+                        {
+                            "lugar": "Estudio Hakuna",
+                            "dia": "Lunes",
+                            "hora": "21:00h",
+                            "direccion": "Calle Mártires Concepcionistas, 12, Las Rozas",
+                            "coordinates": [
+                                -3.8741,
+                                40.5141
+                            ],
+                            "mapa": "https://www.google.com/maps/search/?api=1&query=Calle+Mártires+Concepcionistas+12+Las+Rozas",
+                            "contacto_nombre": "Arancha Abad",
+                            "telefono": "645623692",
+                            "whatsapp": "https://chat.whatsapp.com/IzXy3VVABObBFasPcqvmLl"
+                        },
+                        {
+                            "lugar": "Parroquia San Vicente de Paul",
+                            "dia": "Lunes",
+                            "hora": "21:00h",
+                            "direccion": "Plaza de San Vicente de Paúl, 1, Carabanchel",
+                            "coordinates": [
+                                -3.7188,
+                                40.3881
+                            ],
+                            "mapa": "https://www.google.com/maps/search/?api=1&query=Plaza+de+San+Vicente+de+Paúl+1+Madrid",
+                            "contacto_nombre": "Gemma López",
+                            "telefono": "663536812",
+                            "whatsapp": "https://chat.whatsapp.com/BvsbHjDeDvAA8ocjXJAleb"
+                        },
+                        {
+                            "lugar": "Monasterio de San José",
+                            "dia": "Jueves",
+                            "hora": "21:00h",
+                            "direccion": "Calle Blasco Garay, 51, Madrid",
+                            "coordinates": [
+                                -3.7105,
+                                40.4345
+                            ],
+                            "mapa": "https://www.google.com/maps/search/?api=1&query=Calle+Blasco+Garay+51+Madrid",
+                            "contacto_nombre": "Blanca Palma",
+                            "telefono": "648455542",
+                            "whatsapp": "https://chat.whatsapp.com/EQhTGCOoa9tAWXJzFWSi2"
+                        }
+                    ],
+                    "revolcaderos": {
+                        "info": "Inscripciones: 1-15 Sept / 1-10 Feb",
+                        "contacto": "Ramón Enciso",
+                        "link": "https://bit.ly/RevolcaderosMadrid"
                     },
-                    {
-                        "lugar": "Parroquia San Vicente de Paul",
-                        "dia": "Lunes",
-                        "hora": "21:00h",
-                        "direccion": "Plaza de San Vicente de Paúl, 1, Carabanchel",
-                        "mapa": "https://www.google.com/maps/search/?api=1&query=Plaza+de+San+Vicente+de+Paúl+1+Madrid",
-                        "contacto_nombre": "Gemma López",
-                        "telefono": "663536812",
-                        "whatsapp": "https://chat.whatsapp.com/BvsbHjDeDvAA8ocjXJAleb"
-                    },
-                    {
-                        "lugar": "Monasterio de San José",
-                        "dia": "Jueves",
-                        "hora": "21:00h",
-                        "direccion": "Calle Blasco Garay, 51, Madrid",
-                        "mapa": "https://www.google.com/maps/search/?api=1&query=Calle+Blasco+Garay+51+Madrid",
-                        "contacto_nombre": "Blanca Palma",
-                        "telefono": "648455542",
-                        "whatsapp": "https://chat.whatsapp.com/EQhTGCOoa9tAWXJzFWSi2"
-                    }
-                ],
-                "revolcaderos": {
-                    "info": "Inscripciones: 1-15 Sept / 1-10 Feb",
-                    "contacto": "Ramón Enciso",
-                    "link": "https://bit.ly/RevolcaderosMadrid"
+                    "compartiriados": "https://hakuna.org"
                 },
-                "compartiriados": "https://hakuna.org"
-            },
-            "profesionales": {
-                "available": true,
-                "centros": [
-                    {
-                        "lugar": "Consultar Sede Central",
-                        "dia": "Martes",
-                        "hora": "20:30h",
-                        "direccion": "Sede Hakuna Madrid",
-                        "mapa": "#",
-                        "contacto_nombre": "Info Hakuna",
-                        "telefono": "000000000",
-                        "whatsapp": "#"
-                    }
-                ]
-            },
-            "frontera": {
-                "available": false
-            },
-            "summit": {
-                "available": false
-            },
-            "senior": {
-                "available": false
+                "profesionales": {
+                    "available": true,
+                    "centros": [
+                        {
+                            "lugar": "Parroquia Santa María del Monte Carmelo",
+                            "dia": "Lunes",
+                            "hora": "21:00h",
+                            "direccion": "Cl. de Ayala, 37, Salamanca, 28001 Madrid",
+                            "coordinates": [
+                                -3.6830204029774665,
+                                40.42783756921509
+                            ],
+                            "mapa": "https://maps.app.goo.gl/QbQKSg563jw6mn3i7",
+                            "contacto_nombre": "Ro Baldasano",
+                            "telefono": "+34 616 52 01 12",
+                            "whatsapp": "https://chat.whatsapp.com/Hy8VaNlMFnj14ZVLmF2hAL"
+                        }
+                    ]
+                },
+                "frontera": {
+                    "available": false
+                },
+                "summit": {
+                    "available": false
+                },
+                "senior": {
+                    "available": false
+                }
             }
         }
     }
-}
 }

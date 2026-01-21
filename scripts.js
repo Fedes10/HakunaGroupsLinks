@@ -66,16 +66,21 @@ async function cargarBaseDeDatos() {
 // Ejecutar carga al iniciar
 cargarBaseDeDatos();
 
-/* ============================================================
-   MAPA INTERACTIVO GLOBAL (Europa, Latam, Asia y USA)
+/* ============================================================ 
+    MAPA INTERACTIVO (Versión Final con Zoom Inteligente)
    ============================================================ */
+let churchMarkers = [];
+
 function showMapView() {
     document.getElementById('country-selection').style.display = 'none';
     document.getElementById('city-view').style.display = 'none';
     document.getElementById('map-view').style.display = 'flex';
 
     const mapContainer = document.getElementById('map');
+    const mobileMessage = document.getElementById('mobile-map-message');
+
     mapContainer.style.display = 'block';
+    if (mobileMessage) mobileMessage.style.display = 'none';
 
     setTimeout(() => {
         initializeMap();
@@ -93,9 +98,9 @@ function initializeMap() {
     const map = new maplibregl.Map({
         container: 'map',
         style: 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json',
-        center: [-20, 30], // Vista equilibrada entre América y Europa
-        zoom: 2,
-        minZoom: 1.5,
+        center: [0, 20],
+        zoom: 1.2,
+        minZoom: 0.5,
         renderWorldCopies: true,
         dragRotate: false,
         attributionControl: false
@@ -104,69 +109,57 @@ function initializeMap() {
     window.mapInstance = map;
 
     map.on('load', () => {
-        map.resize();
+        setTimeout(() => { map.resize(); }, 100);
 
+        // Traducción a Español 
+        const layers = map.getStyle().layers;
+        layers.forEach(layer => {
+            if (layer.layout && layer.layout['text-field']) {
+                map.setLayoutProperty(layer.id, 'text-field', [
+                    'coalesce', ['get', 'name:es'], ['get', 'name'], ['get', 'name_en']
+                ]);
+            }
+        });
+
+        // CARGA DE PAÍSES
         fetch('https://raw.githubusercontent.com/datasets/geo-boundaries-world-110m/master/countries.geojson')
-            .then(res => res.json())
+            .then(response => response.json())
             .then(data => {
-                map.addSource('world-source', {
-                    'type': 'geojson',
-                    'data': data
-                });
+                map.addSource('world-boundaries', { 'type': 'geojson', 'data': data });
 
-                // --- DICCIONARIO DE PAÍSES Y COLORES ---
-                const countriesToColor = [
-                    // España y Portugal
-                    { iso: 'ESP', color: '#a3c9e2' }, // Azul
-                    { iso: 'PRT', color: '#c2e5b9' }, // Verdoso claro
+                const categorias = {
+                    'europa': { color: '#a3c9e2', isos: ['ESP', 'PRT', 'FRA', 'GBR', 'DEU', 'ITA', 'CHE', 'BEL', 'NLD', 'LUX', 'POL', 'IRL'] },
+                    'latam': { color: '#fbc7d4', isos: ['MEX', 'COL', 'VEN', 'ECU', 'ARG', 'URY', 'HND', 'GTM', 'CRI', 'CHL', 'PER'] },
+                    'usa': { color: '#f3d5ae', isos: ['USA'] },
+                    'asia': { color: '#fff9c4', isos: ['KOR'] }
+                };
 
-                    // Europa nueva
-                    { iso: 'FRA', color: '#ffecb3' }, // Francia (Ámbar claro)
-                    { iso: 'GBR', color: '#d1c4e9' }, // Reino Unido (Violeta)
-                    { iso: 'DEU', color: '#f0f4c3' }, // Alemania (Lima)
-                    { iso: 'ITA', color: '#ffccbc' }, // Italia (Naranja)
-                    { iso: 'CHE', color: '#e1f5fe' }, // Suiza (Cian)
-                    { iso: 'BEL', color: '#f8bbd0' }, // Bélgica (Rosa)
-                    { iso: 'NLD', color: '#ffe0b2' }, // Países Bajos (Naranja suave)
-                    { iso: 'LUX', color: '#cfd8dc' }, // Luxemburgo (Gris azulado)
-                    { iso: 'POL', color: '#e8f5e9' }, // Polonia (Verde menta)
-                    { iso: 'IRL', color: '#c8e6c9' }, // Irlanda (Verde)
-
-                    // Latam
-                    { iso: 'MEX', color: '#f9ebae' }, { iso: 'COL', color: '#fbc7d4' },
-                    { iso: 'VEN', color: '#e1bee7' }, { iso: 'ECU', color: '#ffccbc' },
-                    { iso: 'ARG', color: '#b2ebf2' }, { iso: 'URY', color: '#d1c4e9' },
-                    { iso: 'HND', color: '#c8e6c9' }, { iso: 'GTM', color: '#dcedc8' },
-                    { iso: 'CRI', color: '#fff9c4' }, { iso: 'CHL', color: '#cfd8dc' },
-                    { iso: 'PER', color: '#f8bbd0' },
-
-                    // Asia
-                    { iso: 'KOR', color: '#fff9c4' }, // Corea del Sur
-
-                    // USA (Para resaltar las ciudades que pediste)
-                    { iso: 'USA', color: '#eeeeee' }  // Gris muy claro para fondo
-                ];
-
-                countriesToColor.forEach(c => {
+                Object.keys(categorias).forEach(cat => {
+                    const info = categorias[cat];
                     map.addLayer({
-                        'id': `pais-${c.iso}`,
+                        'id': `relleno-${cat}`,
                         'type': 'fill',
-                        'source': 'world-source',
-                        'filter': ['==', ['get', 'iso_a3'], c.iso],
-                        'paint': {
-                            'fill-color': c.color,
-                            'fill-opacity': 0.6
-                        }
+                        'source': 'world-boundaries',
+                        'filter': ['in', ['get', 'iso_a3'], ['literal', info.isos]],
+                        'paint': { 'fill-color': info.color, 'fill-opacity': 0.5 }
+                    });
+                    map.addLayer({
+                        'id': `borde-${cat}`,
+                        'type': 'line',
+                        'source': 'world-boundaries',
+                        'filter': ['in', ['get', 'iso_a3'], ['literal', info.isos]],
+                        'paint': { 'line-color': '#5a96bd', 'line-width': 1 }
                     });
                 });
 
-                // Bordes para todos los países activos
-                map.addLayer({
-                    'id': 'bordes-activos',
-                    'type': 'line',
-                    'source': 'world-source',
-                    'filter': ['in', ['get', 'iso_a3'], ['literal', countriesToColor.map(c => c.iso)]],
-                    'paint': { 'line-color': '#90a4ae', 'line-width': 1 }
+                // Clic en país (solo si el zoom es bajo)
+                const todasLasCapas = Object.keys(categorias).map(c => `relleno-${c}`);
+                todasLasCapas.forEach(layerId => {
+                    map.on('click', layerId, (e) => {
+                        if (map.getZoom() < 5) {
+                            map.flyTo({ center: e.lngLat, zoom: 4.5, speed: 1.2 });
+                        }
+                    });
                 });
             });
 
@@ -176,32 +169,72 @@ function initializeMap() {
 
 function addCityMarkers(map) {
     if (typeof cityMarkers === 'undefined') cityMarkers = [];
-    let markersAdded = false;
+    churchMarkers = [];
 
-    // Limpiamos marcadores previos si existen
-    cityMarkers.forEach(m => m.remove());
-    cityMarkers = [];
+    for (const countryKey in db) {
+        for (const regionKey in db[countryKey]) {
+            for (const cityKey in db[countryKey][regionKey]) {
+                const city = db[countryKey][regionKey][cityKey];
 
-    for (const cKey in db) {
-        for (const rKey in db[cKey]) {
-            for (const cityKey in db[cKey][rKey]) {
-                const city = db[cKey][rKey][cityKey];
-
-                if (city.coordinates && city.coordinates.length === 2) {
+                if (city.coordinates) {
+                    const [lng, lat] = city.coordinates;
                     let hasGroups = false;
-                    if (city.groups) {
-                        hasGroups = Object.values(city.groups).some(g => g.available);
+
+                    // Procesar Iglesias (Centros)
+                    for (const gKey in city.groups) {
+                        const group = city.groups[gKey];
+                        if (group.available && group.centros) {
+                            hasGroups = true;
+                            group.centros.forEach(centro => {
+                                if (centro.coordinates) {
+                                    const cMarker = new maplibregl.Marker({ color: '#3498db', scale: 0.7 })
+                                        .setLngLat(centro.coordinates)
+                                        .setPopup(new maplibregl.Popup().setHTML(`
+                                            <div style="text-align: center; font-family: sans-serif; min-width: 150px;">
+                                                <h3 style="margin: 0; color: #2c3e50; font-size: 14px;">${centro.lugar}</h3>
+                                                <p style="margin: 5px 0; font-size: 12px; color: #7f8c8d;">Hora Santa</p>
+                                                <a href="${centro.mapa}" target="_blank" style="display: inline-block; background: #3498db; color: white; text-decoration: none; padding: 5px 10px; border-radius: 4px; font-size: 11px; margin-top: 5px;">📍 Ver Mapa</a>
+                                            </div>
+                                        `));
+
+                                    // AÑADIR TEXTO ENCIMA (SIN CAMBIAR DISEÑO)
+                                    const el = cMarker.getElement();
+                                    const text = document.createElement('span');
+                                    text.className = 'marker-text-label';
+                                    text.innerText = centro.lugar;
+                                    el.appendChild(text);
+
+                                    cMarker.getElement().addEventListener('click', () => {
+                                        map.flyTo({ center: centro.coordinates, zoom: 16, speed: 1.2 });
+                                    });
+                                    churchMarkers.push(cMarker);
+                                }
+                            });
+                        }
                     }
 
+                    // Marcador de Ciudad
                     const marker = new maplibregl.Marker({ color: hasGroups ? '#2ecc71' : '#e74c3c' })
-                        .setLngLat(city.coordinates)
-                        .setPopup(new maplibregl.Popup({ offset: 25 }).setHTML(`
-                            <div style="text-align:center;">
-                                <strong>${city.name}</strong><br>
-                                <button onclick="openModal('${cKey}', '${rKey}', '${cityKey}', 'universitarios')" 
-                                        style="margin-top:5px; cursor:pointer; border:none; background:#eee; padding:4px 8px; border-radius:4px;">Ver</button>
+                        .setLngLat([lng, lat])
+                        .setPopup(new maplibregl.Popup().setHTML(`
+                            <div style="text-align: center;">
+                                <h3 style="margin: 0 0 8px 0;">${city.name}</h3>
+                                ${hasGroups ? `<button onclick="openModal('${countryKey}', '${regionKey}', '${cityKey}', 'universitarios')" style="background: #2ecc71; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">Ver Info</button>` : '<p>¡Próximamente en esta ciudad!</p>'}
                             </div>
                         `));
+
+                    // AÑADIR TEXTO "INFO" (SIN CAMBIAR DISEÑO)
+                    if (hasGroups) {
+                        const elCity = marker.getElement();
+                        const textCity = document.createElement('span');
+                        textCity.className = 'marker-text-label';
+                        textCity.innerText = 'Info';
+                        elCity.appendChild(textCity);
+                    }
+
+                    marker.getElement().addEventListener('click', () => {
+                        map.flyTo({ center: [lng, lat], zoom: 12, speed: 1.2 });
+                    });
 
                     cityMarkers.push(marker);
                 }
@@ -209,25 +242,64 @@ function addCityMarkers(map) {
         }
     }
 
-    // Control de visibilidad por zoom
+    // ESTILO PARA EL TEXTO (Se oculta por defecto y se ve en zoom 9+)
+    const style = document.createElement('style');
+    style.innerHTML = `
+        .marker-text-label {
+            display: none;
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.85);
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-size: 10px;
+            font-weight: bold;
+            color: #333;
+            white-space: nowrap;
+            border: 1px solid #ccc;
+            pointer-events: none;
+        }
+        .show-labels .marker-text-label { display: block; }
+    `;
+    document.head.appendChild(style);
+
+    // CONTROL DE VISIBILIDAD POR ZOOM
     map.on('zoom', () => {
         const z = map.getZoom();
-        if (z > 2 && !markersAdded) {
-            cityMarkers.forEach(m => m.addTo(map));
-            markersAdded = true;
-        } else if (z <= 2 && markersAdded) {
+        const container = map.getContainer();
+
+        // Activar/Desactivar etiquetas según zoom 9
+        if (z >= 9) container.classList.add('show-labels');
+        else container.classList.remove('show-labels');
+
+        // Mostrar ciudades
+        if (z > 2 && z <= 22) {
+            cityMarkers.forEach(m => { if (!m.getElement().parentElement) m.addTo(map); });
+        } else {
             cityMarkers.forEach(m => m.remove());
-            markersAdded = false;
+        }
+
+        // Mostrar iglesias
+        if (z > 9) {
+            churchMarkers.forEach(m => { if (!m.getElement().parentElement) m.addTo(map); });
+        } else {
+            churchMarkers.forEach(m => m.remove());
         }
     });
 
-    // Carga inicial si el zoom ya es suficiente
-    if (map.getZoom() > 2) {
-        cityMarkers.forEach(m => m.addTo(map));
-        markersAdded = true;
-    }
+    map.fire('zoom');
 }
 
+function toggleCategoria(categoria, visible) {
+    if (!window.mapInstance) return;
+    const status = visible ? 'visible' : 'none';
+    if (window.mapInstance.getLayer(`relleno-${categoria}`)) {
+        window.mapInstance.setLayoutProperty(`relleno-${categoria}`, 'visibility', status);
+        window.mapInstance.setLayoutProperty(`borde-${categoria}`, 'visibility', status);
+    }
+}
 
 
 /* ============================================================
@@ -250,7 +322,7 @@ function selectCountry(countryKey) {
     } else {
         document.getElementById('category-filters').style.display = 'flex';
         document.getElementById('city-search').style.display = 'inline-block';
-  
+
         const mobileSelect = document.getElementById('mobile-filter-select');
         if (mobileSelect) mobileSelect.value = 'todos';
         renderCities();
@@ -754,7 +826,7 @@ document.addEventListener('click', function (event) {
 /* ============================================================
     7. GESTIÓN DEL BOTÓN DE BORRAR EN EL BUSCADOR
 ============================================================ */
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const searchInput = document.getElementById('city-search');
     const clearBtn = document.getElementById('clear-search');
 
@@ -770,7 +842,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Modificar tu función clearSearch existente o definirla aquí
-    window.clearSearch = function() {
+    window.clearSearch = function () {
         searchInput.value = '';
         toggleClearButton();
         searchInput.focus(); // Devuelve el foco al buscador
@@ -783,7 +855,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Event listener para cerrar acordeones al hacer clic fuera
     const modalBody = document.getElementById('modal-body-content');
     if (modalBody) {
-        modalBody.addEventListener('click', function(event) {
+        modalBody.addEventListener('click', function (event) {
             // Si el clic no es en un header de acordeón, cerrar todos
             if (!event.target.closest('.parroquia-header, .extra-header')) {
                 closeAllAccordions();
