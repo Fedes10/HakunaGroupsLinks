@@ -1,0 +1,112 @@
+| Comunidad Autónoma   | Provincia / Ciudad     | Hakuna? |
+| -------------------- | ---------------------- | ------- |
+| Andalucía            | Almería                | ✅       |
+|                      | Cádiz                  | ✅       |
+|                      | Córdoba                | ✅       |
+|                      | Granada                | ✅       |
+|                      | Huelva                 | X       |
+|                      | Jaén                   | X       |
+|                      | Málaga                 | ✅       |
+|                      | Sevilla                | ✅       |
+
+
+| Aragón               | Huesca                 | X       |
+|                      | Teruel                 | X       |
+|                      | Zaragoza               | ✅       |
+
+
+| Asturias             | Asturias               | ✅       |
+|                      | Oviedo                 | ✅       |
+
+
+| Islas Baleares       | Mallorca               | ✅       |
+|                      | Palma                  | ✅       |
+|                      | Menorca                | X       |
+|                      | Ibiza                  | X       |
+|                      | Formentera             | X       |
+
+
+| Canarias             | Gran Canaria           | ✅       |
+|                      | Fuerteventura          | X       |
+|                      | Lanzarote              | X       |
+|                      | Santa Cruz de Tenerife | ✅      |
+|                      | La Palma               | X       |
+|                      | La Gomera              | X       |
+|                      | El Hierro              | X       |
+
+
+| Cantabria            | Cantabria              | ✅       |
+|                      | Santander              | ✅       |
+
+
+| Castilla-La Mancha   | Albacete               | ✅       |
+|                      | Ciudad Real            | ✅       |
+|                      | Cuenca                 | X       |
+|                      | Guadalajara            | X       |
+|                      | Toledo                 | ✅       |
+|                      | Talavera de la Reina   | ✅       |
+
+
+| Castilla y León      | Ávila                  | X       |
+|                      | Burgos                 | ✅       |
+|                      | León                   | X       |
+|                      | Palencia               | X       |
+|                      | Salamanca              | ✅       |
+|                      | Segovia                | X       |
+|                      | Soria                  | X       |
+|                      | Valladolid             | ✅       |
+|                      | Zamora                 | X       |
+
+
+| Cataluña             | Barcelona              | ✅       |
+|                      | Girona                 | ✅       |
+|                      | Lleida                 | ✅       |
+|                      | Tarragona              | X       |
+|                      | Alcoy                  | ✅       |
+
+
+| Extremadura          | Badajoz                | ✅       |
+|                      | Cáceres                | ✅       |
+|                      | Mérida                 | ✅       |
+
+
+| Galicia              | A Coruña               | ✅       |
+|                      | Lugo                   | X       |
+|                      | Ourense                | X       |
+|                      | Pontevedra             | X       |
+|                      | Vigo                   | ✅       |
+|                      | Santiago de Compostela | ✅       |
+
+
+| La Rioja             | La Rioja               | ✅       |
+|                      | Logroño                | ✅       |
+
+
+| Madrid               | Madrid                 | ✅       |
+
+
+| Murcia               | Murcia                 | ✅       |
+|                      | Cieza                  | ✅       |
+|                      | Cartagena              | ✅       |
+
+
+| Navarra              | Navarra                | ✅       |
+|                      | Pamplona               | ✅       |
+
+
+| País Vasco           | Álava                  | X       |
+|                      | Bizkaia                | X       |
+|                      | Gipuzkoa               | X       |
+|                      | Bilbao                 | ✅       |
+|                      | San Sebastián          | ✅       |
+
+
+| Comunidad Valenciana | Alicante               | ✅       |
+|                      | Castellón              | ✅       |
+|                      | Valencia               | ✅       |
+|                      | Ontinyent              | ✅       |
+|                      | Vega Baja              | ✅       |
+
+
+| Ceuta y Melilla      | Ceuta                  | X       |
+|                      | Melilla                | X       |
