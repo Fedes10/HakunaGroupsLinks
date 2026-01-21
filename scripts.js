@@ -13,6 +13,8 @@ const groupDescriptions = {
 
 let currentCountry = null;
 let currentFilter = 'todos';
+let cityMarkers = [];
+let markersAdded = false;
 
 // Función principal para cargar los archivos JSON de España
 async function cargarBaseDeDatos() {
@@ -65,21 +67,16 @@ async function cargarBaseDeDatos() {
 cargarBaseDeDatos();
 
 /* ============================================================
-   MAPA INTERACTIVO
+   MAPA INTERACTIVO GLOBAL (Europa, Latam, Asia y USA)
    ============================================================ */
 function showMapView() {
     document.getElementById('country-selection').style.display = 'none';
     document.getElementById('city-view').style.display = 'none';
     document.getElementById('map-view').style.display = 'flex';
 
-    // Siempre mostrar el mapa, pero ajustar para móviles
     const mapContainer = document.getElementById('map');
-    const mobileMessage = document.getElementById('mobile-map-message');
-
     mapContainer.style.display = 'block';
-    mobileMessage.style.display = 'none';
 
-    // Forzar reflow antes de inicializar el mapa
     setTimeout(() => {
         initializeMap();
     }, 100);
@@ -91,14 +88,14 @@ function hideMapView() {
 }
 
 function initializeMap() {
-    if (window.mapInstance) return; // Evitar reinicializar
+    if (window.mapInstance) return;
 
     const map = new maplibregl.Map({
         container: 'map',
         style: 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json',
-        center: [0, 20],
-        zoom: 1.2,
-        minZoom: 0.5,
+        center: [-20, 30], // Vista equilibrada entre América y Europa
+        zoom: 2,
+        minZoom: 1.5,
         renderWorldCopies: true,
         dragRotate: false,
         attributionControl: false
@@ -107,129 +104,127 @@ function initializeMap() {
     window.mapInstance = map;
 
     map.on('load', () => {
-        // Forzar resize del mapa para móviles
-        setTimeout(() => {
-            map.resize();
-        }, 100);
+        map.resize();
 
-        // Listener para resize de ventana (útil para móviles)
-        window.addEventListener('resize', () => {
-            setTimeout(() => {
-                map.resize();
-            }, 100);
-        });
-
-        // Traducción a Español
-        const layers = map.getStyle().layers;
-        layers.forEach(layer => {
-            if (layer.layout && layer.layout['text-field']) {
-                map.setLayoutProperty(layer.id, 'text-field', [
-                    'coalesce', ['get', 'name:es'], ['get', 'name'], ['get', 'name_en']
-                ]);
-            }
-        });
-
-        // Cargar capa de España
-        fetch('https://raw.githubusercontent.com/johan/world.geo.json/master/countries/ESP.geo.json')
-            .then(response => response.json())
+        fetch('https://raw.githubusercontent.com/datasets/geo-boundaries-world-110m/master/countries.geojson')
+            .then(res => res.json())
             .then(data => {
-                map.addSource('espana-boundary', {
+                map.addSource('world-source', {
                     'type': 'geojson',
                     'data': data
                 });
 
-                // Relleno
-                map.addLayer({
-                    'id': 'relleno-espana',
-                    'type': 'fill',
-                    'source': 'espana-boundary',
-                    'layout': { 'visibility': 'visible' },
-                    'paint': {
-                        'fill-color': '#a3c9e2',
-                        'fill-opacity': 0.5
-                    }
+                // --- DICCIONARIO DE PAÍSES Y COLORES ---
+                const countriesToColor = [
+                    // España y Portugal
+                    { iso: 'ESP', color: '#a3c9e2' }, // Azul
+                    { iso: 'PRT', color: '#c2e5b9' }, // Verdoso claro
+
+                    // Europa nueva
+                    { iso: 'FRA', color: '#ffecb3' }, // Francia (Ámbar claro)
+                    { iso: 'GBR', color: '#d1c4e9' }, // Reino Unido (Violeta)
+                    { iso: 'DEU', color: '#f0f4c3' }, // Alemania (Lima)
+                    { iso: 'ITA', color: '#ffccbc' }, // Italia (Naranja)
+                    { iso: 'CHE', color: '#e1f5fe' }, // Suiza (Cian)
+                    { iso: 'BEL', color: '#f8bbd0' }, // Bélgica (Rosa)
+                    { iso: 'NLD', color: '#ffe0b2' }, // Países Bajos (Naranja suave)
+                    { iso: 'LUX', color: '#cfd8dc' }, // Luxemburgo (Gris azulado)
+                    { iso: 'POL', color: '#e8f5e9' }, // Polonia (Verde menta)
+                    { iso: 'IRL', color: '#c8e6c9' }, // Irlanda (Verde)
+
+                    // Latam
+                    { iso: 'MEX', color: '#f9ebae' }, { iso: 'COL', color: '#fbc7d4' },
+                    { iso: 'VEN', color: '#e1bee7' }, { iso: 'ECU', color: '#ffccbc' },
+                    { iso: 'ARG', color: '#b2ebf2' }, { iso: 'URY', color: '#d1c4e9' },
+                    { iso: 'HND', color: '#c8e6c9' }, { iso: 'GTM', color: '#dcedc8' },
+                    { iso: 'CRI', color: '#fff9c4' }, { iso: 'CHL', color: '#cfd8dc' },
+                    { iso: 'PER', color: '#f8bbd0' },
+
+                    // Asia
+                    { iso: 'KOR', color: '#fff9c4' }, // Corea del Sur
+
+                    // USA (Para resaltar las ciudades que pediste)
+                    { iso: 'USA', color: '#eeeeee' }  // Gris muy claro para fondo
+                ];
+
+                countriesToColor.forEach(c => {
+                    map.addLayer({
+                        'id': `pais-${c.iso}`,
+                        'type': 'fill',
+                        'source': 'world-source',
+                        'filter': ['==', ['get', 'iso_a3'], c.iso],
+                        'paint': {
+                            'fill-color': c.color,
+                            'fill-opacity': 0.6
+                        }
+                    });
                 });
 
-                // Borde
+                // Bordes para todos los países activos
                 map.addLayer({
-                    'id': 'borde-espana',
+                    'id': 'bordes-activos',
                     'type': 'line',
-                    'source': 'espana-boundary',
-                    'layout': { 'visibility': 'visible' },
-                    'paint': {
-                        'line-color': '#5a96bd',
-                        'line-width': 1.5
-                    }
-                });
-
-                // Eventos de clic
-                map.on('mouseenter', 'relleno-espana', () => map.getCanvas().style.cursor = 'pointer');
-                map.on('mouseleave', 'relleno-espana', () => map.getCanvas().style.cursor = '');
-                map.on('click', 'relleno-espana', () => {
-                    map.flyTo({ center: [-3.7, 40.41], zoom: 5.5, speed: 1.2 });
+                    'source': 'world-source',
+                    'filter': ['in', ['get', 'iso_a3'], ['literal', countriesToColor.map(c => c.iso)]],
+                    'paint': { 'line-color': '#90a4ae', 'line-width': 1 }
                 });
             });
 
-        // Agregar marcadores para ciudades de Hakuna
         addCityMarkers(map);
     });
 }
 
 function addCityMarkers(map) {
-    // Iterar a través de todos los países y regiones para agregar marcadores dinámicamente
-    for (const countryKey in db) {
-        const country = db[countryKey];
-        for (const regionKey in country) {
-            const region = country[regionKey];
-            for (const cityKey in region) {
-                const city = region[cityKey];
+    if (typeof cityMarkers === 'undefined') cityMarkers = [];
+    let markersAdded = false;
 
-                // Solo agregar si tiene coordenadas
-                if (city.coordinates && Array.isArray(city.coordinates) && city.coordinates.length === 2) {
-                    const [lng, lat] = city.coordinates;
+    // Limpiamos marcadores previos si existen
+    cityMarkers.forEach(m => m.remove());
+    cityMarkers = [];
 
-                    // Determinar color basado en disponibilidad de grupos
-                    let markerColor = '#e74c3c'; // Rojo por defecto (sin grupos disponibles)
-                    let hasAvailableGroups = false;
+    for (const cKey in db) {
+        for (const rKey in db[cKey]) {
+            for (const cityKey in db[cKey][rKey]) {
+                const city = db[cKey][rKey][cityKey];
 
-                    for (const groupKey in city.groups) {
-                        if (city.groups[groupKey].available) {
-                            hasAvailableGroups = true;
-                            break;
-                        }
+                if (city.coordinates && city.coordinates.length === 2) {
+                    let hasGroups = false;
+                    if (city.groups) {
+                        hasGroups = Object.values(city.groups).some(g => g.available);
                     }
 
-                    if (hasAvailableGroups) {
-                        markerColor = '#2ecc71'; // Verde si tiene grupos disponibles
-                    }
+                    const marker = new maplibregl.Marker({ color: hasGroups ? '#2ecc71' : '#e74c3c' })
+                        .setLngLat(city.coordinates)
+                        .setPopup(new maplibregl.Popup({ offset: 25 }).setHTML(`
+                            <div style="text-align:center;">
+                                <strong>${city.name}</strong><br>
+                                <button onclick="openModal('${cKey}', '${rKey}', '${cityKey}', 'universitarios')" 
+                                        style="margin-top:5px; cursor:pointer; border:none; background:#eee; padding:4px 8px; border-radius:4px;">Ver</button>
+                            </div>
+                        `));
 
-                    // Crear marcador
-                    const marker = new maplibregl.Marker({
-                        color: markerColor
-                    })
-                    .setLngLat([lng, lat])
-                    .setPopup(new maplibregl.Popup().setHTML(`
-                        <div style="text-align: center;">
-                            <h3 style="margin: 0 0 8px 0; color: #2c3e50;">${city.name}</h3>
-                            ${hasAvailableGroups ?
-                                `<button onclick="openModal('${countryKey}', '${regionKey}', '${cityKey}', 'universitarios')" style="background: #2ecc71; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">Ver</button>` :
-                                `<p style="margin: 0; font-size: 0.9em; color: #546e7a;">Sin grupos activos</p>`
-                            }
-                        </div>
-                    `))
-                    .addTo(map);
+                    cityMarkers.push(marker);
                 }
             }
         }
     }
-}
 
-function toggleEspana(visible) {
-    if (!window.mapInstance) return;
-    const status = visible ? 'visible' : 'none';
-    if (window.mapInstance.getLayer('relleno-espana')) {
-        window.mapInstance.setLayoutProperty('relleno-espana', 'visibility', status);
-        window.mapInstance.setLayoutProperty('borde-espana', 'visibility', status);
+    // Control de visibilidad por zoom
+    map.on('zoom', () => {
+        const z = map.getZoom();
+        if (z > 2 && !markersAdded) {
+            cityMarkers.forEach(m => m.addTo(map));
+            markersAdded = true;
+        } else if (z <= 2 && markersAdded) {
+            cityMarkers.forEach(m => m.remove());
+            markersAdded = false;
+        }
+    });
+
+    // Carga inicial si el zoom ya es suficiente
+    if (map.getZoom() > 2) {
+        cityMarkers.forEach(m => m.addTo(map));
+        markersAdded = true;
     }
 }
 
