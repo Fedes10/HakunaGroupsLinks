@@ -14,14 +14,50 @@ const groupDescriptions = {
 let currentCountry = null;
 let currentFilter = 'todos';
 
-// Función principal para cargar el archivo JSON
+// Función principal para cargar los archivos JSON de España
 async function cargarBaseDeDatos() {
     try {
-        const response = await fetch('ciudades.json');
-        db = await response.json();
-        console.log("Base de datos de Hakuna cargada correctamente.");
+        db = { "espana": {} };
+        const files = [
+            'Andalucía.json',
+            'Aragón.json',
+            'Asturias.json',
+            'Islas_Baleares.json',
+            'Islas_Canarias.json',
+            'Cantabria.json',
+            'Castilla_La_Mancha.json',
+            'Castilla_León.json',
+            'Cataluña.json',
+            'Extremadura.json',
+            'Galicia.json',
+            'La_Rioja.json',
+            'Madrid.json',
+            'Murcia.json',
+            'Navarra.json',
+            'Pais_Vasco.json',
+            'Comunidad_Valenciana.json',
+            'Ceuta_y_Melilla.json'
+        ];
+
+        const promises = files.map(file => fetch(`Ciudades/España/${file}`).then(response => {
+            if (!response.ok) {
+                console.warn(`Archivo ${file} no encontrado o vacío.`);
+                return {};
+            }
+            return response.json();
+        }).catch(error => {
+            console.warn(`Error al cargar ${file}:`, error);
+            return {};
+        }));
+
+        const results = await Promise.all(promises);
+        results.forEach(data => {
+            Object.assign(db["espana"], data);
+        });
+
+        console.log("Base de datos de Hakuna cargada correctamente desde múltiples archivos.");
     } catch (error) {
-        console.error("Error al cargar el JSON:", error);
+        console.error("Error al cargar los JSON:", error);
     }
 }
 
@@ -175,9 +211,10 @@ function addCityMarkers(map) {
                     .setPopup(new maplibregl.Popup().setHTML(`
                         <div style="text-align: center;">
                             <h3 style="margin: 0 0 8px 0; color: #2c3e50;">${city.name}</h3>
-                            <p style="margin: 0; font-size: 0.9em; color: #546e7a;">
-                                ${hasAvailableGroups ? 'Grupos disponibles' : 'Sin grupos activos'}
-                            </p>
+                            ${hasAvailableGroups ?
+                                `<button onclick="openModal('${countryKey}', '${regionKey}', '${cityKey}', 'universitarios')" style="background: #2ecc71; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">Ver</button>` :
+                                `<p style="margin: 0; font-size: 0.9em; color: #546e7a;">Sin grupos activos</p>`
+                            }
                         </div>
                     `))
                     .addTo(map);
@@ -369,7 +406,7 @@ function renderCities(searchTerm = "") {
                 const tabToOpen = currentFilter === 'todos' ? 'universitarios' : currentFilter;
 
                 regionHtml += `
-                    <div class="city-card" onclick="openModal('${regionName}', '${cityKey}', '${tabToOpen}')">
+                    <div class="city-card" onclick="openModal('${currentCountry}', '${regionName}', '${cityKey}', '${tabToOpen}')">
                         <h3>${cityData.name}</h3>
                         ${indicatorsHtml}
                     </div>
@@ -395,7 +432,8 @@ function renderCities(searchTerm = "") {
 /* ============================================================
    4. GESTIÓN DEL MODAL (VENTANAS DE CIUDAD)
    ============================================================ */
-function openModal(regionName, cityKey, initialTab) {
+function openModal(countryKey, regionName, cityKey, initialTab) {
+    currentCountry = countryKey;
     const cityData = db[currentCountry][regionName][cityKey];
     document.getElementById('modal-city-name').innerText = cityData.name;
 
@@ -608,7 +646,7 @@ function renderModalContent(cityData, category) {
                     <p style="font-size:0.9rem; margin-bottom:15px;">
                         <strong>👤 Contacto:</strong> ${group.revolcaderos.contacto}
                     </p>
-                    <a href="${group.revolcaderos.link}" target="_blank" class="btn-action" 
+                    <a href="${group.revolcaderos.link}" target="_blank" class="btn-action"
                        style="background:#173f5a; color:white; border-radius:8px;">
                         📝 Inscribirme al Revolcadero
                     </a>
@@ -628,7 +666,7 @@ function renderModalContent(cityData, category) {
                     <p style="font-size:0.95rem; color:#444; margin-bottom: 12px; line-height:1.5;">
                         Proyectos de voluntariado, misión y servicio para salir de uno mismo.
                     </p>
-                    <a href="${group.compartiriados}" target="_blank" class="btn-action btn-map" 
+                    <a href="${group.compartiriados}" target="_blank" class="btn-action btn-map"
                        style="background:#e7be37d8; color:#222; border-radius:8px;">
                         🔎 Ver Proyectos Disponibles
                     </a>
